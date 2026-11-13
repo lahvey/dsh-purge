@@ -145,13 +145,17 @@ Thank you to the original author, code contributors, and everyone who provided r
   <tr>
     <td align="center" width="120"><a href="https://github.com/Legeo969"><img src="https://avatars.githubusercontent.com/u/79903511?s=112" width="56" height="56" alt="Legeo969" /><br /><sub>Legeo969</sub></a></td>
     <td align="center" width="120"><a href="https://github.com/LinyiAIGC"><img src="https://avatars.githubusercontent.com/u/68159061?s=112" width="56" height="56" alt="LinyiAIGC" /><br /><sub>LinyiAIGC</sub></a></td>
+    <td align="center" width="120"><a href="https://github.com/loulin"><img src="https://avatars.githubusercontent.com/u/1905704?s=112" width="56" height="56" alt="loulin" /><br /><sub>loulin</sub></a></td>
     <td align="center" width="120"><a href="https://github.com/lyufeng000"><img src="https://avatars.githubusercontent.com/u/168790556?s=112" width="56" height="56" alt="lyufeng000" /><br /><sub>lyufeng000</sub></a></td>
+    <td align="center" width="120"><a href="https://github.com/mmparko"><img src="https://avatars.githubusercontent.com/u/72783367?s=112" width="56" height="56" alt="mmparko" /><br /><sub>mmparko</sub></a></td>
     <td align="center" width="120"><a href="https://github.com/Musan-34"><img src="https://avatars.githubusercontent.com/u/279201993?s=112" width="56" height="56" alt="Musan-34" /><br /><sub>Musan-34</sub></a></td>
-    <td align="center" width="120"><a href="https://github.com/qianxuno"><img src="https://avatars.githubusercontent.com/u/179305118?s=112" width="56" height="56" alt="qianxuno" /><br /><sub>qianxuno</sub></a></td>
-    <td align="center" width="120"><a href="https://github.com/TLcmmmm"><img src="https://avatars.githubusercontent.com/u/167976723?s=112" width="56" height="56" alt="TLcmmmm" /><br /><sub>TLcmmmm</sub></a></td>
   </tr>
   <tr>
+    <td align="center" width="120"><a href="https://github.com/qianxuno"><img src="https://avatars.githubusercontent.com/u/179305118?s=112" width="56" height="56" alt="qianxuno" /><br /><sub>qianxuno</sub></a></td>
+    <td align="center" width="120"><a href="https://github.com/summeriver13"><img src="https://avatars.githubusercontent.com/u/83163060?s=112" width="56" height="56" alt="summeriver13" /><br /><sub>summeriver13</sub></a></td>
+    <td align="center" width="120"><a href="https://github.com/TLcmmmm"><img src="https://avatars.githubusercontent.com/u/167976723?s=112" width="56" height="56" alt="TLcmmmm" /><br /><sub>TLcmmmm</sub></a></td>
     <td align="center" width="120"><a href="https://github.com/Tofu707"><img src="https://avatars.githubusercontent.com/u/178003727?s=112" width="56" height="56" alt="Tofu707" /><br /><sub>Tofu707</sub></a></td>
+    <td align="center" width="120"><a href="https://github.com/YifanHere"><img src="https://avatars.githubusercontent.com/u/62582492?s=112" width="56" height="56" alt="YifanHere" /><br /><sub>YifanHere</sub></a></td>
   </tr>
 </table>
 <!-- CONTRIBUTORS:END -->
