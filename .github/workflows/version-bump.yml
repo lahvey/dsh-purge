@@ -1,0 +1,73 @@
+name: Version bump
+
+# 本仓库是 lahvey/dsh-purge（社区版 1.6.x 的镜像 + 自有增量）。
+# 目的：每次 master 有新提交，就自动把 package.json 的 version 推进一格，
+# 用 `-lahvey.N` 后缀与上游 kingcharleslzy-ai/dsh-purge 的版本号区分开，
+# 这样 profile 里 `github:lahvey/dsh-purge` 的依赖每次都能看出装的是哪一版。
+#
+# 不碰别人的 bump 提交：带 `[bump]` 前缀的提交会被跳过，避免无限循环。
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: version-bump
+  cancel-in-progress: true
+
+jobs:
+  bump:
+    # 只处理仓库自己的提交；自动 bump 提交本身带 [bump] 前缀，跳过
+    if: ${{ !contains(github.event.head_commit.message, '[bump]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Compute next version
+        id: next
+        run: |
+          node - <<'EOF' >> "$GITHUB_OUTPUT"
+          const fs = require('node:fs')
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
+          const m = /^(\d+)\.(\d+)\.(\d+)(?:-lahvey\.(\d+))?$/.exec(pkg.version)
+          if (!m) {
+            console.error(`version 不是 X.Y.Z 或 X.Y.Z-lahvey.N：${pkg.version}`)
+            process.exit(1)
+          }
+          const [, major, minor, patch, seq] = m
+          const next = `${major}.${minor}.${patch}-lahvey.${Number(seq || 0) + 1}`
+          console.log(`version=${next}`)
+          console.log(`tag=v${next}`)
+          EOF
+
+      - name: Write package.json
+        run: |
+          node -e "
+            const fs=require('node:fs');
+            const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+            pkg.version='${{ steps.next.outputs.version }}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg,null,2)+'\n');
+          "
+
+      - name: Commit and tag
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package.json
+          git commit -m "chore[bump]: ${{ steps.next.outputs.version }}"
+          git tag "${{ steps.next.outputs.tag }}"
+          git push origin "HEAD:master" --follow-tags
