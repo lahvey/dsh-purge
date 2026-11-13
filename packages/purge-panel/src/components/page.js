@@ -192,7 +192,10 @@ export function VersionNotice({ info }) {
     );
   }
   const backend = info?.plugin_version;
-  if (!backend || backend === __PANEL_VERSION__) return null;
+  // 版本号可能带 -lahvey.N / +build 这类本仓库后缀：只比主干 X.Y.Z。
+  // 否则自动 bump 一次后缀就会误报「设置可能不生效」，而实际上前后端是同一份代码。
+  const base = (v) => String(v || "").split("-")[0].split("+")[0];
+  if (!backend || base(backend) === base(__PANEL_VERSION__)) return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
