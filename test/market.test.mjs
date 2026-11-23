@@ -25,6 +25,13 @@ test('each release uses its own declared compatibility; historical absence keeps
 test("the install manifest pins the package archive to its own release tag", async () => {
   const {readFile} = await import("node:fs/promises");
   const pkg = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
-  assert.equal(pkg.dsh.install.tarball,
-    `https://github.com/kingcharleslzy-ai/dsh-purge/releases/download/v${pkg.version}/${pkg.name}-${pkg.version}.tgz`);
+  // 社区版（lahvey fork）把 TGZ 发到 fork 的 release 上，镜像仓库必须认；
+  // 但"名字 / 版本 / 标签 / 归档名"必须自洽，不能指向别家的发行包。
+  const pinned = /^https:\/\/github\.com\/([^/]+)\/dsh-purge\/releases\/download\/v([^/]+)\/([\w.-]+)$/
+    .exec(pkg.dsh.install.tarball || "");
+  assert.ok(pinned, `tarball 必须是本仓库固定版本的 release 链接：${pkg.dsh.install.tarball}`);
+  const [, owner, tag, archive] = pinned;
+  assert.ok(["kingcharleslzy-ai", "lahvey"].includes(owner), `未知发布仓库：${owner}`);
+  assert.equal(tag, pkg.version);
+  assert.equal(archive, `${pkg.name}-${pkg.version}.tgz`);
 });

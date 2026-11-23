@@ -54,20 +54,21 @@ jobs:
           console.log(`tag=v${next}`)
           EOF
 
-      - name: Write package.json
-        run: |
-          node -e "
-            const fs=require('node:fs');
-            const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
-            pkg.version='${{ steps.next.outputs.version }}';
-            fs.writeFileSync('package.json', JSON.stringify(pkg,null,2)+'\n');
-          "
+      # 只改 package.json 会让 scripts/check-docs.mjs 立刻判过期（README / release-notes /
+      # 维护与安装文档 / AGENTS.md §9 / 固定版本 TGZ 链接都要跟着版本走），所以统一走脚本。
+      - name: Sync version surfaces
+        run: node scripts/bump-fork-version.mjs "${{ steps.next.outputs.version }}"
+
+      - name: Verify docs budget
+        run: node scripts/check-docs.mjs
 
       - name: Commit and tag
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add package.json
+          git add package.json package-lock.json README.md README.zh-CN.md docs/README.en.md \
+            docs/MAINTENANCE.md docs/INSTALLATION.md AGENTS.md release-notes.md \
+            "docs/releases/${{ steps.next.outputs.version }}.md"
           git commit -m "chore[bump]: ${{ steps.next.outputs.version }}"
           git tag "${{ steps.next.outputs.tag }}"
           git push origin "HEAD:master" --follow-tags

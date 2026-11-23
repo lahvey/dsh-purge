@@ -3,7 +3,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import { Maintenance, compatibility, ROOT, PACKAGE } from "../lib/community.js";
-import { findDshHome, patchDrift } from "../lib/core.js";
+import { findDshHome, liangshenStatusForHost, patchDrift } from "../lib/core.js";
 import { currentHost, diagnosticHost, hostSurface } from "../lib/instance.js";
 import { readOverrides, writeOverride, clearOverride } from "../lib/anchors.js";
 import { logAudit, readAudit } from "../lib/audit.js";
@@ -144,16 +144,30 @@ if (LEGACY[op]) {
     if (sub === "on" || sub === "off") {
       const next = writeTuning({ refusalRetry: sub === "on" });
       result = { ok: true, refusalRetry: next.refusalRetry, restart_required: false, effective: "next-turn" };
+    } else if (sub === "decompose") {
+      const mode = (argument2 || "status").toLowerCase();
+      if (mode === "on" || mode === "off") {
+        const next = writeTuning({ refusalDecompose: mode === "on" });
+        result = { ok: true, refusalDecompose: next.refusalDecompose, restart_required: false, effective: "next-turn" };
+      } else {
+        result = { ok: true, refusalDecompose: readTuning(home).refusalDecompose !== false, hint: "purge-community retry decompose on|off" };
+      }
     } else {
-      result = { ok: true, refusalRetry: readTuning(home).refusalRetry === true, hint: "purge-community retry on|off" };
+      const tuning = readTuning(home);
+      result = {
+        ok: true,
+        refusalRetry: tuning.refusalRetry === true,
+        refusalDecompose: tuning.refusalDecompose !== false,
+        hint: "purge-community retry on|off | retry decompose on|off",
+      };
     }
   } else if (op === "rewind") {
     const sub = (argument || "status").toLowerCase();
     if (sub === "on" || sub === "off") {
       const next = writeTuning({ rewind: sub === "on" });
-      result = { ok: true, rewind: next.rewind, restart_required: true };
+      result = { ok: true, rewind: next.rewind, restart_required: false, effective: "page-refresh" };
     } else {
-      result = { ok: true, rewind: readTuning(home).rewind !== false, hint: "purge-community rewind on|off" };
+      result = { ok: true, rewind: readTuning(home).rewind === true, hint: "purge-community rewind on|off" };
     }
   } else if (op === "inject") {
     // 注入位置：head / tail / both。改完下一轮对话即生效（section 每轮回读 tuning），
@@ -215,6 +229,8 @@ if (LEGACY[op]) {
           || (layer.broken.length ? JSON.stringify(layer.broken) : "")
           || (layer.pending && layer.pending.length ? `待应用 #${layer.pending.join("/#")}` : "");
         lines.push(`  ${mark} ${layer.title}  ${layer.applied}/${layer.required ?? layer.total}${tail ? "  " + tail : ""}`);
+        for (const file of layer.patch_evidence?.[71]?.files || [])
+          lines.push(`    #71 ${file.status}  ${file.path}`);
       }
       const pendingCount = (report.summary && report.summary.pending && report.summary.pending.patches) || 0;
       lines.push(
@@ -249,6 +265,7 @@ if (LEGACY[op]) {
       name: "Purge Community",
       package: PACKAGE,
       compatibility: compatibility(target),
+      ...(target ? {patch_evidence:{71:await liangshenStatusForHost(home, hostSurface(target))}} : {}),
       host_selection: target ? "explicit-or-running" : "unresolved",
       ...(target ? {} : { hint: "未取得当前实例入口；请指定 DSH_BASE / PURGE_DSH_CLI，或查看正在运行宿主的面板诊断。这不是插件未安装的证明。" }),
       backups: (() => { try { return maintenance().list(); } catch { return []; } })(),

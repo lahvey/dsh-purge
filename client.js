@@ -51,10 +51,10 @@ var { useState, useEffect, useCallback, useRef, Component } = import_react.defau
 var base_default = '.dshpp-root {\n  --dshpp-display:\n    "Songti SC", "Noto Serif SC", "Iowan Old Style", Palatino,\n    "Palatino Linotype", Georgia, serif;\n  --dshpp-sans:\n    "Yu Gothic UI", "Hiragino Sans GB", "Source Han Sans SC", system-ui,\n    sans-serif;\n  --dshpp-mono: "Cascadia Mono", "Sarasa Mono SC", ui-monospace, monospace;\n  --dshpp-ease: cubic-bezier(0.16, 1, 0.3, 1);\n  max-width: 920px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n  padding: 16px;\n  border-radius: 12px;\n  background: var(--dshpp-bg);\n  color: var(--dshpp-ink);\n  font-family: var(--dshpp-sans);\n}\n.dshpp-root {\n  --dshpp-bg: transparent;\n  --dshpp-paper: color-mix(\n    in srgb,\n    var(--dsw-alias-bg-layer-1, #f6f4ef) 74%,\n    transparent\n  );\n  --dshpp-ink: var(--dsw-alias-label-primary, #1a1916);\n  --dshpp-mute: color-mix(\n    in srgb,\n    var(--dsw-alias-label-primary, #1a1916) 74%,\n    var(--dsw-alias-label-secondary, #5c564c)\n  );\n  --dshpp-line: color-mix(\n    in srgb,\n    var(--dsw-alias-border-l1, #c8c2b6) 78%,\n    transparent\n  );\n  --dshpp-fill: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6d8f78) 14%,\n    transparent\n  );\n  --dshpp-accent: var(--dsw-alias-brand-primary, #3f6b52);\n  --dshpp-accent-soft: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6d8f78) 18%,\n    transparent\n  );\n  --dshpp-ok: #1f7a45;\n  --dshpp-warn: #8a5a12;\n  --dshpp-bad: #9a3434;\n}\n.dshpp-root[data-theme="white"] {\n  color-scheme: light;\n}\n.dshpp-root[data-theme="dusk"] {\n  color-scheme: dark;\n  --dshpp-ok: #8fd0a8;\n  --dshpp-warn: #e4c48a;\n  --dshpp-bad: #f0b4b4;\n}\n.dshpp-toolbar {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 8px;\n}\n.dshpp-switch {\n  display: inline-flex;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 999px;\n  overflow: hidden;\n  background: var(--dshpp-paper);\n}\n.dshpp-switch button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: 12px/1 var(--dshpp-sans);\n  padding: 6px 14px;\n  cursor: pointer;\n}\n.dshpp-switch button.is-on {\n  background: var(--dshpp-accent-soft);\n  color: var(--dshpp-ink);\n}\n.dshpp-switch button:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: -2px;\n}\n.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-paper);\n  border-radius: 10px;\n  padding: 18px 18px 16px;\n}\n.dshpp-kicker {\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--dshpp-mute);\n  margin: 0 0 4px;\n}\n.dshpp-title {\n  font-family: var(--dshpp-display);\n  font-size: 20px;\n  font-weight: 500;\n  letter-spacing: 0.02em;\n  line-height: 1.3;\n  margin: 0;\n  color: var(--dshpp-ink);\n}\n.dshpp-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  margin-bottom: 14px;\n  flex-wrap: wrap;\n}\n.dshpp-sub {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  margin: 20px 0 10px;\n}\n.dshpp-sub h4 {\n  margin: 0;\n  font-family: var(--dshpp-display);\n  font-size: 15px;\n  font-weight: 500;\n}\n.dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 8px;\n  margin-bottom: 14px;\n}\n.dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg);\n  padding: 12px;\n  min-height: 68px;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  border-radius: 8px;\n}\n.dshpp-metric b {\n  font-family: var(--dshpp-display);\n  font-size: 18px;\n  font-weight: 500;\n  line-height: 1.2;\n}\n.dshpp-metric span {\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n.dshpp-bar {\n  height: 3px;\n  border-radius: 99px;\n  background: var(--dshpp-line);\n  overflow: hidden;\n  margin: 8px 0 14px;\n}\n.dshpp-bar > i {\n  display: block;\n  height: 100%;\n  background: var(--dshpp-accent);\n  width: 0;\n  transition: width 0.4s var(--dshpp-ease);\n}\n.dshpp-group {\n  border: 1px solid var(--dshpp-line);\n  margin: 0 0 8px;\n  background: var(--dshpp-bg);\n  border-radius: 8px;\n  overflow: hidden;\n}\n.dshpp-group-h {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  padding: 9px 12px;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  cursor: pointer;\n  font: inherit;\n  text-align: left;\n}\n.dshpp-group-h:hover {\n  background: var(--dshpp-fill);\n}\n.dshpp-group-h:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: -2px;\n}\n.dshpp-group-h strong {\n  font-family: var(--dshpp-display);\n  font-size: 14px;\n  font-weight: 500;\n}\n.dshpp-group-h em {\n  font-style: normal;\n  font-size: 12px;\n  color: var(--dshpp-mute);\n  flex: 1;\n}\n.dshpp-count {\n  font-family: var(--dshpp-mono);\n  font-size: 12px;\n  color: var(--dshpp-mute);\n}\n.dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 12.5px;\n}\n.dshpp-table th {\n  text-align: left;\n  font-weight: 500;\n  font-size: 11px;\n  letter-spacing: 0.06em;\n  color: var(--dshpp-mute);\n  padding: 7px 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-table td {\n  padding: 8px 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: middle;\n}\n.dshpp-table tr:last-child td {\n  border-bottom: 0;\n}\n.dshpp-table tr.is-on td {\n  background: var(--dshpp-accent-soft);\n}\n.dshpp-id {\n  font-family: var(--dshpp-mono);\n  opacity: 0.75;\n  width: 42px;\n}\n.dshpp-actions {\n  text-align: right;\n  white-space: nowrap;\n}\n.dshpp-row {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-row + .dshpp-row {\n  margin-top: 10px;\n}\n.dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  padding: 2px 8px;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  line-height: 1.6;\n  background: var(--dshpp-bg);\n}\n.dshpp-pill::before {\n  content: "";\n  width: 6px;\n  height: 6px;\n  border-radius: 50%;\n  background: currentColor;\n}\n.dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 30%, var(--dshpp-line));\n}\n.dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 30%, var(--dshpp-line));\n}\n.dshpp-pill.is-miss {\n  color: var(--dshpp-mute);\n}\n.dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-btn {\n  appearance: none;\n  font-family: var(--dshpp-sans);\n  font-size: 13px;\n  font-weight: 500;\n  min-height: 34px;\n  padding: 0 14px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  cursor: pointer;\n  transition:\n    background 0.15s var(--dshpp-ease),\n    opacity 0.15s var(--dshpp-ease);\n}\n.dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n.dshpp-btn:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 2px;\n}\n.dshpp-btn-primary {\n  background: var(--dshpp-accent-soft);\n  color: var(--dshpp-ink);\n  border-color: color-mix(in srgb, var(--dshpp-accent) 35%, var(--dshpp-line));\n}\n.dshpp-btn-primary:hover:not(:disabled) {\n  background: color-mix(in srgb, var(--dshpp-accent) 22%, var(--dshpp-bg));\n}\n.dshpp-btn-ghost {\n  background: transparent;\n  color: var(--dshpp-ink);\n  border-color: var(--dshpp-line);\n}\n.dshpp-btn-danger {\n  background: transparent;\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, var(--dshpp-line));\n}\n.dshpp-btn-solid-danger {\n  background: color-mix(in srgb, var(--dshpp-bad) 16%, var(--dshpp-bg));\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 30%, var(--dshpp-line));\n}\n.dshpp-btn-tiny {\n  min-height: 28px;\n  padding: 0 10px;\n  font-size: 12px;\n}\n.dshpp-field,\n.dshpp-area {\n  width: 100%;\n  box-sizing: border-box;\n  font: 13px/1.55 var(--dshpp-mono);\n  padding: 8px 10px;\n  background: var(--dshpp-bg);\n  color: var(--dshpp-ink);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n}\n.dshpp-field {\n  width: auto;\n  min-width: 140px;\n}\n.dshpp-cr-row {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  margin: 8px 0 0;\n  font-size: 13px;\n}\n.dshpp-cr-row label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  color: var(--dshpp-ink);\n}\n.dshpp-cr-num {\n  width: 64px;\n  min-width: 64px;\n  height: 28px;\n  padding: 0 8px;\n}\n.dshpp-cr-text {\n  width: 120px;\n  min-width: 88px;\n  height: 28px;\n  padding: 0 8px;\n}\n.dshpp-ver {\n  width: 100%;\n  min-width: 0;\n  max-width: none;\n  height: 32px;\n  padding: 0 10px;\n  font-size: 12px;\n}\n.dshpp-rel {\n  margin: 0 0 14px;\n}\n.dshpp-now {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  flex-wrap: wrap;\n  margin: 0 0 4px;\n}\n.dshpp-now-label {\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  letter-spacing: 0.12em;\n  text-transform: uppercase;\n  color: var(--dshpp-mute);\n}\n.dshpp-now-ver {\n  font-family: var(--dshpp-display);\n  font-size: 20px;\n  font-weight: 500;\n  letter-spacing: 0.01em;\n}\n.dshpp-now-mark {\n  display: inline-flex;\n  align-items: center;\n  margin-left: 6px;\n  padding: 1px 7px;\n  border-radius: 99px;\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  font-style: normal;\n  font-weight: 500;\n  line-height: 1.5;\n  color: var(--dshpp-ok);\n  border: 1px solid color-mix(in srgb, var(--dshpp-ok) 38%, var(--dshpp-line));\n  background: color-mix(in srgb, var(--dshpp-ok) 14%, var(--dshpp-bg));\n}\n.dshpp-editions {\n  display: flex;\n  flex-direction: column;\n  margin: 10px 0 0;\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-edition {\n  display: grid;\n  grid-template-columns: auto minmax(0, 1fr) auto;\n  align-items: center;\n  gap: 10px;\n  padding: 10px 0;\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-edition-name {\n  display: inline-flex;\n  align-items: center;\n  gap: 0;\n  font-family: var(--dshpp-display);\n  font-size: 15px;\n  font-weight: 500;\n  white-space: nowrap;\n}\n.dshpp-edition.is-on .dshpp-edition-name {\n  color: var(--dshpp-ink);\n}\n.dshpp-edition:not(.is-on) .dshpp-edition-name {\n  color: var(--dshpp-mute);\n}\n.dshpp-edition .dshpp-btn {\n  min-width: 118px;\n}\n.dshpp-rel .dshpp-notice {\n  display: block;\n  margin-top: 8px;\n  min-height: 16px;\n}\n@media (max-width: 560px) {\n  .dshpp-edition {\n    grid-template-columns: 1fr auto;\n    grid-template-areas: "name btn" "sel sel";\n  }\n  .dshpp-edition-name {\n    grid-area: name;\n  }\n  .dshpp-edition .dshpp-ver {\n    grid-area: sel;\n  }\n  .dshpp-edition .dshpp-btn {\n    grid-area: btn;\n  }\n}\n.dshpp-area {\n  min-height: 220px;\n  resize: vertical;\n}\n.dshpp-field:focus,\n.dshpp-area:focus {\n  outline: none;\n  border-color: var(--dshpp-accent);\n  box-shadow: 0 0 0 3px var(--dshpp-accent-soft);\n}\n.dshpp-field:disabled,\n.dshpp-area:disabled {\n  opacity: 0.5;\n}\n.dshpp-ask {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n  margin-top: 10px;\n  padding: 10px 12px;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  background: var(--dshpp-bg);\n  font-size: 13px;\n}\n.dshpp-modal-bg {\n  position: fixed;\n  inset: 0;\n  z-index: 80;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  background: color-mix(in srgb, var(--dshpp-ink) 28%, transparent);\n}\n.dshpp-modal {\n  width: min(420px, 100%);\n  background: var(--dshpp-paper);\n  color: var(--dshpp-ink);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 20px 20px 16px;\n  box-shadow: 0 16px 40px color-mix(in srgb, var(--dshpp-ink) 18%, transparent);\n}\n.dshpp-modal h4 {\n  margin: 0 0 8px;\n  font-family: var(--dshpp-display);\n  font-size: 18px;\n  font-weight: 500;\n}\n.dshpp-modal p {\n  margin: 0 0 16px;\n  font-size: 13.5px;\n  line-height: 1.55;\n}\n.dshpp-modal-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n}\n.dshpp-restart-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 12000;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 24px;\n  background: rgba(0, 0, 0, 0.62);\n  font-family:\n    "Yu Gothic UI", "Hiragino Sans GB", "Source Han Sans SC",\n    "Microsoft YaHei UI", system-ui, sans-serif;\n}\n.dshpp-restart-card {\n  width: min(420px, 100%);\n  box-sizing: border-box;\n  padding: 22px 22px 18px;\n  border-radius: 14px;\n  background: var(--dsw-alias-bg-layer-1, #fffcf7);\n  color: var(--dsw-alias-label-primary, #16140f);\n  border: 1px solid var(--dsw-alias-border-l1, #c9c3b6);\n  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);\n}\n.dshpp-restart-card h4 {\n  margin: 0 0 10px;\n  font-family: inherit;\n  font-size: 20px;\n  font-weight: 650;\n  line-height: 1.35;\n  color: inherit;\n}\n.dshpp-restart-card p {\n  margin: 0 0 18px;\n  font-size: 16px;\n  font-weight: 500;\n  line-height: 1.65;\n  color: inherit;\n}\n.dshpp-restart-card .dshpp-modal-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 10px;\n}\n.dshpp-restart-card .dshpp-btn {\n  min-height: 38px;\n  padding: 0 16px;\n  font-size: 15px;\n  font-weight: 650;\n  color: var(--dsw-alias-label-primary, #16140f);\n  background: var(--dsw-alias-bg-layer-2, #fff);\n  border: 1px solid var(--dsw-alias-border-l1, #c9c3b6);\n}\n.dshpp-restart-card .dshpp-btn-primary,\n.dshpp-restart-card .dshpp-btn-primary:hover:not(:disabled) {\n  color: #fff;\n  background: #2f6b4f;\n  border-color: #2f6b4f;\n}\nbody[data-ds-dark-theme] .dshpp-restart-card,\n.dshpp-restart-mask[data-theme="dusk"] .dshpp-restart-card {\n  background: #1c1e24;\n  color: #f4f1ea;\n  border-color: #5a5e68;\n}\nbody[data-ds-dark-theme] .dshpp-restart-card .dshpp-btn,\n.dshpp-restart-mask[data-theme="dusk"] .dshpp-restart-card .dshpp-btn {\n  color: #f4f1ea;\n  background: #2a2d34;\n  border-color: #5a5e68;\n}\nbody[data-ds-dark-theme] .dshpp-restart-card .dshpp-btn-primary,\nbody[data-ds-dark-theme]\n  .dshpp-restart-card\n  .dshpp-btn-primary:hover:not(:disabled),\n.dshpp-restart-mask[data-theme="dusk"] .dshpp-restart-card .dshpp-btn-primary,\n.dshpp-restart-mask[data-theme="dusk"]\n  .dshpp-restart-card\n  .dshpp-btn-primary:hover:not(:disabled) {\n  color: #fff;\n  background: #3d8f68;\n  border-color: #3d8f68;\n}\n.dshpp-notice {\n  font-size: 12.5px;\n  line-height: 1.4;\n}\n.dshpp-notice.is-ok {\n  color: var(--dshpp-ok);\n}\n.dshpp-notice.is-bad {\n  color: var(--dshpp-bad);\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n.dshpp-skel {\n  height: 12px;\n  border-radius: 6px;\n  background: linear-gradient(\n    90deg,\n    var(--dshpp-fill),\n    var(--dshpp-line),\n    var(--dshpp-fill)\n  );\n  background-size: 200% 100%;\n  animation: dshpp-pulse 1.2s ease-in-out infinite;\n}\n.dshpp-active {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 10px 12px;\n  margin-bottom: 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg);\n  border-radius: 8px;\n}\n.dshpp-active b {\n  font-family: var(--dshpp-display);\n  font-weight: 500;\n}\n.dshpp-empty {\n  padding: 28px 12px;\n  font-size: 13px;\n  color: var(--dshpp-mute);\n  text-align: center;\n}\n.dshpp-split {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n.dshpp-rulelist {\n  display: flex;\n  flex-direction: column;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  background: var(--dshpp-bg);\n  overflow: hidden;\n}\n.dshpp-rulebody {\n  max-height: 240px;\n  overflow: auto;\n}\n.dshpp-ruleitem {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  width: 100%;\n  padding: 10px 12px;\n  border: 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  text-align: left;\n  cursor: pointer;\n}\n.dshpp-ruleitem:hover {\n  background: var(--dshpp-fill);\n}\n.dshpp-ruleitem.is-edit {\n  background: var(--dshpp-accent-soft);\n}\n.dshpp-rule-main {\n  flex: 1;\n  min-width: 0;\n}\n.dshpp-rule-name {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-family: var(--dshpp-display);\n  font-size: 14px;\n  line-height: 1.35;\n}\n.dshpp-rule-meta {\n  display: block;\n  margin-top: 3px;\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n.dshpp-rule-ops {\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  gap: 6px;\n  flex-shrink: 0;\n}\n.dshpp-create {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  padding: 10px 12px;\n  border-top: 1px solid var(--dshpp-line);\n  background: var(--dshpp-paper);\n}\n.dshpp-create-row {\n  display: flex;\n  gap: 6px;\n  align-items: center;\n}\n.dshpp-create .dshpp-field {\n  flex: 1;\n  min-width: 0;\n  width: auto;\n}\n.dshpp-editor {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  min-width: 0;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  background: var(--dshpp-bg);\n  padding: 12px;\n  min-height: 320px;\n}\n.dshpp-editor .dshpp-area {\n  flex: 1;\n  min-height: 240px;\n}\n.dshpp-editor-empty {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--dshpp-mute);\n  font-size: 13px;\n  min-height: 160px;\n}\n.dshpp-block {\n  padding: 14px 0;\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-block-head {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 0 0 8px;\n}\n.dshpp-block-head h4 {\n  margin: 0;\n  font-family: var(--dshpp-display);\n  font-size: 14px;\n  font-weight: 500;\n  flex: 1;\n  color: var(--dshpp-ink);\n}\n.dshpp-block-hint {\n  margin: 8px 0 0;\n  font-size: 12px;\n  line-height: 1.55;\n  color: var(--dshpp-mute);\n}\n.dshpp-policy-row {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n}\n.dshpp-policy-row > label {\n  font-size: 12px;\n  color: var(--dshpp-mute);\n  flex: 0 0 auto;\n}\n.dshpp-cwd-path {\n  margin: 0 0 8px;\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  color: var(--dshpp-mute);\n  word-break: break-all;\n  line-height: 1.5;\n}\n.dshpp-cwd-list {\n  display: flex;\n  flex-direction: column;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  background: var(--dshpp-bg);\n  overflow: hidden;\n}\n.dshpp-cwd-item {\n  display: flex;\n  align-items: flex-start;\n  gap: 10px;\n  padding: 10px 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  cursor: pointer;\n  margin: 0;\n}\n.dshpp-cwd-item:last-child {\n  border-bottom: 0;\n}\n.dshpp-cwd-item:hover {\n  background: var(--dshpp-fill);\n}\n.dshpp-cwd-item.is-on {\n  background: var(--dshpp-accent-soft);\n}\n.dshpp-cwd-item input {\n  margin: 3px 0 0;\n  flex: 0 0 auto;\n}\n.dshpp-cwd-main {\n  flex: 1;\n  min-width: 0;\n}\n.dshpp-cwd-name {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n  font-family: var(--dshpp-display);\n  font-size: 13.5px;\n  line-height: 1.35;\n  color: var(--dshpp-ink);\n}\n.dshpp-cwd-badge {\n  font-family: var(--dshpp-mono);\n  font-size: 10px;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  padding: 1px 7px;\n  border-radius: 99px;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n  line-height: 1.6;\n}\n.dshpp-cwd-size {\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n.dshpp-cwd-sub {\n  margin-top: 3px;\n  font-family: var(--dshpp-mono);\n  font-size: 11px;\n  color: var(--dshpp-mute);\n  word-break: break-all;\n}\n.dshpp-cwd-prev {\n  margin-top: 4px;\n  font-size: 11px;\n  line-height: 1.5;\n  color: var(--dshpp-mute);\n  max-height: 34px;\n  overflow: hidden;\n}\n@keyframes dshpp-pulse {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}\n@media (max-width: 640px) {\n  .dshpp-metrics {\n    grid-template-columns: 1fr;\n  }\n  .dshpp-ruleitem {\n    flex-wrap: wrap;\n  }\n  .dshpp-rule-ops {\n    width: 100%;\n    justify-content: flex-end;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .dshpp-btn,\n  .dshpp-bar > i {\n    transition: none;\n  }\n  .dshpp-skel {\n    animation: none;\n  }\n}\nbody:not([data-ds-dark-theme]) .dshpp-auth-modal {\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-bg-layer-1, #fffcf7) 92%,\n    transparent\n  );\n  color: var(--dsw-alias-label-primary, #1a1916);\n  border-color: color-mix(\n    in srgb,\n    var(--dsw-alias-border-l1, #c9c3b6) 80%,\n    transparent\n  );\n  backdrop-filter: blur(18px) saturate(1.3);\n  -webkit-backdrop-filter: blur(18px) saturate(1.3);\n}\nbody:not([data-ds-dark-theme]) .dshpp-auth-legal {\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-bg-layer-2, #f3f0e8) 90%,\n    transparent\n  );\n  color: var(--dsw-alias-label-primary, #1a1916);\n  border-color: color-mix(\n    in srgb,\n    var(--dsw-alias-border-l1, #c9c3b6) 80%,\n    transparent\n  );\n}\nbody:not([data-ds-dark-theme]) .dshpp-auth-warn {\n  background: color-mix(in srgb, #f5e6c8 88%, transparent);\n  color: #6b4a10;\n}\nbody:not([data-ds-dark-theme]) .dshpp-auth-ops button {\n  border-color: var(--dsw-alias-border-l1, #c9c3b6);\n  color: var(--dsw-alias-label-primary, #1a1916);\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-bg-layer-1, #fff) 88%,\n    transparent\n  );\n}\nbody:not([data-ds-dark-theme]) .dshpp-auth-ops button.primary {\n  background: var(--dsw-alias-brand-primary, #3f6b52);\n  border-color: var(--dsw-alias-brand-primary, #3f6b52);\n  color: #fff;\n}\n.dshpp-env-dialog {\n  position: fixed;\n  inset: 0;\n  width: min(480px, calc(100% - 32px));\n  max-height: calc(100% - 32px);\n  margin: auto;\n  border: 0;\n  padding: 0;\n  border-radius: 12px;\n  background: transparent;\n}\n.dshpp-env-dialog::backdrop {\n  background: rgba(0, 0, 0, 0.55);\n}\n.dshpp-env-dialog .dshpp-auth-modal {\n  box-sizing: border-box;\n  width: 100%;\n  overflow: auto;\n}\n.dshpp-auth-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 10100;\n  background: rgba(0, 0, 0, 0.62);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  pointer-events: auto;\n}\n.dshpp-auth-modal {\n  width: min(680px, 100%);\n  max-height: min(88vh, 820px);\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding: 16px;\n  border: 1px solid var(--dsw-alias-border-l1, #333);\n  border-radius: 12px;\n  background: var(--dsw-alias-bg-layer-1, #1a1a1a);\n  color: var(--dsw-alias-label-primary, #eee);\n}\n.dshpp-auth-modal h2 {\n  margin: 0;\n  font-size: 16px;\n  font-weight: 600;\n}\n.dshpp-auth-warn {\n  padding: 8px 10px;\n  border-radius: 8px;\n  background: #3a2e18;\n  color: #f0d48a;\n  font-size: 13px;\n}\n.dshpp-auth-legal {\n  overflow: auto;\n  height: 300px;\n  margin: 0;\n  padding: 10px 12px;\n  border: 1px solid var(--dsw-alias-border-l1, #333);\n  border-radius: 8px;\n  background: #121212;\n  font-size: 13px;\n  line-height: 1.55;\n}\n.dshpp-auth-legal h3 {\n  margin: 14px 0 4px;\n  font-size: 13px;\n}\n.dshpp-auth-legal h3:first-child {\n  margin-top: 0;\n}\n.dshpp-auth-legal p {\n  margin: 0 0 8px;\n}\n.dshpp-auth-checks {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  font-size: 13px;\n}\n.dshpp-auth-checks label {\n  display: flex;\n  gap: 8px;\n  align-items: flex-start;\n}\n.dshpp-auth-checks label.locked {\n  opacity: 0.45;\n}\n.dshpp-auth-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n}\n.dshpp-auth-ops button {\n  appearance: none;\n  border: 1px solid var(--dsw-alias-border-l1, #444);\n  background: transparent;\n  color: inherit;\n  border-radius: 8px;\n  padding: 6px 12px;\n  cursor: pointer;\n  font: inherit;\n}\n.dshpp-auth-ops button.primary {\n  background: #2a4033;\n  border-color: #8fbf9a;\n}\n.dshpp-auth-ops button:disabled {\n  opacity: 0.45;\n  cursor: default;\n}\n.dshpp-icon-btn {\n  appearance: none;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  height: 32px;\n  padding: 0 10px;\n  border: 1px solid\n    color-mix(in srgb, var(--dsw-alias-brand-primary, #6dbf8c) 45%, transparent);\n  border-radius: 8px;\n  background: transparent;\n  color: var(--dsw-alias-label-secondary, currentColor);\n  cursor: pointer;\n  font: 13px/1 inherit;\n  white-space: nowrap;\n  flex: 0 0 auto;\n}\n.dshpp-icon-btn:hover {\n  border-color: var(--dsw-alias-brand-primary, #6dbf8c);\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6dbf8c) 12%,\n    transparent\n  );\n  color: var(--dsw-alias-label-primary, currentColor);\n}\n.dshpp-icon-btn.on {\n  border-color: var(--dsw-alias-brand-primary, #6dbf8c);\n  color: var(--dsw-alias-brand-primary, #6dbf8c);\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6dbf8c) 16%,\n    transparent\n  );\n  box-shadow: 0 0 0 1px\n    color-mix(in srgb, var(--dsw-alias-brand-primary, #6dbf8c) 28%, transparent);\n}\n.dshpp-hbtn {\n  appearance: none;\n  display: inline-flex;\n  flex: 0 0 auto;\n  align-items: center;\n  gap: 6px;\n  border: 1px solid\n    color-mix(in srgb, var(--dsw-alias-brand-primary, #6dbf8c) 55%, transparent);\n  background: transparent;\n  color: var(--dsw-alias-label-secondary, currentColor);\n  cursor: pointer;\n  font: 12px/1 inherit;\n  padding: 5px 10px;\n  border-radius: 8px;\n  white-space: nowrap;\n}\n.dshpp-hbtn:hover {\n  border-color: var(--dsw-alias-brand-primary, #6dbf8c);\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6dbf8c) 12%,\n    transparent\n  );\n  color: var(--dsw-alias-label-primary, currentColor);\n}\n.dshpp-hbtn.on {\n  border-color: var(--dsw-alias-brand-primary, #6dbf8c);\n  color: var(--dsw-alias-brand-primary, #6dbf8c);\n  background: color-mix(\n    in srgb,\n    var(--dsw-alias-brand-primary, #6dbf8c) 18%,\n    transparent\n  );\n  box-shadow: 0 0 0 1px\n    color-mix(in srgb, var(--dsw-alias-brand-primary, #6dbf8c) 32%, transparent);\n}\n.dshpp-live-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  flex: none;\n  background: var(--dsw-alias-brand-primary, #6dbf8c);\n  box-shadow: 0 0 0 3px\n    color-mix(in srgb, var(--dsw-alias-brand-primary, #6dbf8c) 28%, transparent);\n}\n/* \u73BB\u7483\u8DDF\u968F\u5BBF\u4E3B\u989C\u8272\u3002\u5B57\u91CD\u548C\u5E95\u7684\u4E0D\u900F\u660E\u5EA6\u5206\u5F00\uFF1A\u58F3\u900F\uFF0C\u5B57\u5750\u5728\u66F4\u5B9E\u7684\u4E00\u5C42\u4E0A\u3002 */\n\n/* Keep the historical IDs addressable by sessions. Collapse a healthy alias\n   in Settings only while a usable canonical child is in the same roster. */\nul:has(\n    > li[data-agent-preset-id^="unrestricted-child-"]\n      > button[aria-disabled="false"]\n      [title$=" \xB7 \u5B50\u4EFB\u52A1"]\n  )\n  > li[data-agent-preset-id^="unrestricted-child-"]:has(\n    > button[aria-disabled="false"][aria-pressed="false"]\n      [title*=" \xB7 \u5B50\u4EFB\u52A1\uFF08\u5386\u53F2\u517C\u5BB9 \xB7 "][title$="\uFF09"]\n  ) {\n  display: none;\n}\n\nbutton[data-purge-collapsed-alias] {\n  display: none !important;\n}\n';
 
 // src/styles/native.css
-var native_default = '.dshpp-native.dshpp-root {\n  --dshpp-display: inherit;\n  --dshpp-sans: inherit;\n  --dshpp-paper: var(--dsw-alias-bg-base, transparent);\n  --dshpp-bg: transparent;\n  --dshpp-line: var(--dsw-alias-border-l1, #ddd);\n  --dshpp-ink: var(--dsw-alias-label-primary, #171717);\n  --dshpp-mute: var(--dsw-alias-label-secondary, #777);\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4775ed);\n  --dshpp-fill: var(--dsw-alias-interactive-bg-hover, #f3f3f3);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  max-width: none;\n  padding: 0;\n  gap: 0;\n  border-radius: 0;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n.dshpp-native * {\n  box-sizing: border-box;\n}\n.dshpp-native [hidden] {\n  display: none !important;\n}\n.dshpp-native-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 20px 20px 12px;\n  gap: 12px;\n  flex: none;\n}\n.dshpp-native-head h2 {\n  font: inherit;\n  font-size: 1.15em;\n  font-weight: 600;\n  margin: 0;\n}\n.dshpp-native-head p {\n  margin: 4px 0 0;\n  font-size: 0.85em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-badge {\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-nav {\n  display: flex;\n  gap: 4px;\n  padding: 0 16px;\n  border-bottom: 1px solid var(--dshpp-line);\n  flex: none;\n  overflow-x: auto;\n}\n.dshpp-native-nav button {\n  font: inherit;\n  font-size: 0.92em;\n  border: 0;\n  border-bottom: 2px solid transparent;\n  background: none;\n  color: var(--dshpp-mute);\n  padding: 10px 8px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.dshpp-native-nav button[aria-pressed="true"] {\n  color: var(--dshpp-ink);\n  border-bottom-color: var(--dshpp-accent);\n}\n.dshpp-native-content {\n  min-height: 0;\n  flex: 1;\n  overflow: auto;\n  padding: 20px;\n  scrollbar-gutter: stable;\n  overscroll-behavior: contain;\n}\n.dshpp-native .dshpp-panel {\n  border: 0;\n  border-radius: 0;\n  padding: 0;\n  background: transparent;\n  min-width: 0;\n}\n.dshpp-native\n  :is(\n    h3,\n    h4,\n    .dshpp-title,\n    .dshpp-group-h strong,\n    .dshpp-metric b,\n    .dshpp-now-ver,\n    .dshpp-edition-name\n  ) {\n  font-family: inherit;\n  font-size: 1em;\n  letter-spacing: normal;\n  font-weight: 550;\n}\n.dshpp-native .dshpp-metric b {\n  font-size: 1.12em;\n}\n.dshpp-native .dshpp-head {\n  margin-bottom: 12px;\n}\n.dshpp-native .dshpp-sub {\n  margin-top: 0;\n  flex-wrap: wrap;\n}\n.dshpp-native :is(button, input, select, textarea) {\n  font-family: inherit;\n  box-shadow: none;\n  background-image: none;\n  max-width: 100%;\n}\n.dshpp-native .dshpp-btn {\n  font-size: 0.9em;\n  min-height: 32px;\n  border-radius: 7px;\n  padding: 6px 10px;\n  transform: none;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-btn:hover:not(:disabled) {\n  background: var(--dshpp-fill);\n  box-shadow: none;\n  transform: none;\n}\n.dshpp-native .dshpp-btn-primary {\n  background: var(--dsw-alias-label-primary, #171717);\n  color: var(--dsw-alias-bg-base, #fff);\n  border-color: transparent;\n}\n.dshpp-native .dshpp-btn-primary:hover:not(:disabled) {\n  opacity: 0.85;\n  background: var(--dsw-alias-label-primary, #171717);\n}\n.dshpp-native :is(button, input, select, textarea):focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 2px;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-area {\n  font-family: inherit;\n  font-size: 0.92em;\n  line-height: 1.6;\n  min-height: 260px;\n  width: 100%;\n  border-radius: 8px;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-field {\n  font-size: 0.92em;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-metrics {\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.dshpp-native .dshpp-metric:nth-child(2) {\n  display: none;\n}\n.dshpp-native .dshpp-metric {\n  min-height: 60px;\n  padding: 12px;\n  background: var(--dshpp-fill);\n  border: 0;\n}\n.dshpp-native .dshpp-metric span {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-editions {\n  margin: 10px 0;\n  border: 0;\n}\n.dshpp-native summary {\n  cursor: pointer;\n  color: var(--dshpp-mute);\n  padding: 8px 0;\n  font-size: 0.9em;\n}\n.dshpp-native .dshpp-edition {\n  grid-template-columns: 1fr auto;\n  gap: 8px;\n}\n.dshpp-native .dshpp-edition-name {\n  grid-column: 1/-1;\n}\n.dshpp-native .dshpp-edition .dshpp-btn {\n  min-width: 0;\n}\n.dshpp-native .dshpp-table {\n  table-layout: fixed;\n  font-size: 0.83em;\n}\n.dshpp-native .dshpp-table td {\n  word-break: break-word;\n  padding: 8px;\n}\n.dshpp-native .dshpp-table th {\n  padding: 8px;\n}\n.dshpp-native .dshpp-group-h {\n  flex-wrap: wrap;\n  gap: 6px;\n}\n.dshpp-native .dshpp-group-h em {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-row {\n  gap: 8px;\n}\n.dshpp-native .dshpp-hint {\n  font-size: 0.85em !important;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-more {\n  border-top: 1px solid var(--dshpp-line);\n  padding-top: 20px;\n  margin-top: 24px;\n}\n.dshpp-native .dshpp-more p {\n  font-size: 0.9em;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-attribution {\n  margin-top: 32px;\n  font-size: 0.78em !important;\n}\n\n/* \u6F14\u7EC3\u53F0\uFF1A\u65E7\u7248\u8DD1\u5728\u53EF\u62D6\u62FD\u60AC\u6D6E\u7A97\u91CC\uFF0C\u73B0\u5728\u5D4C\u5728\u53F3\u4FA7\u680F\uFF0C\u5FC5\u987B\u81EA\u5DF1\u6491\u5F00\u5E76\u5141\u8BB8\u6EDA\u52A8 */\n.dshpp-native-drill {\n  width: 100%;\n  min-width: 0;\n  min-height: 72vh;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding-bottom: 24px;\n  box-sizing: border-box;\n}\n.dshpp-native-drill > .rt-dock.rt-embedded {\n  flex: 1 1 auto;\n  min-height: 0;\n  min-width: 0;\n  width: 100%;\n  height: auto;\n  overflow: visible;\n}\n/* \u53F3\u4FA7\u680F\u5F88\u7A84\uFF1A\u5185\u90E8\u6240\u6709 flex \u884C\u90FD\u5F97\u80FD\u6362\u884C\uFF0C\u8F93\u5165\u6846\u4E0D\u80FD\u628A\u5144\u5F1F\u5143\u7D20\u6324\u6210 1ch \u5BBD */\n.dshpp-native-drill .rt-dock,\n.dshpp-native-drill .rt-dock * {\n  box-sizing: border-box;\n  min-width: 0;\n  word-break: normal;\n  overflow-wrap: anywhere;\n}\n.dshpp-native-drill .rt-dock input,\n.dshpp-native-drill .rt-dock textarea,\n.dshpp-native-drill .rt-dock select {\n  width: 100%;\n  max-width: 100%;\n}\n\n/* \u300C\u66F4\u65B0\u901A\u9053\u300D\u4E0E\u300C\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0 / \u6BCF N \u5C0F\u65F6\u300D\u540C\u884C\u5E76\u6392\uFF1A\u9AD8\u5EA6\u3001\u5706\u89D2\u3001\u5B57\u53F7\u5BF9\u9F50 select\u3002\n   \u540C\u4E00\u7EC4\u4EF6\u540C\u65F6\u6302\u5728\u63D2\u4EF6\u8BBE\u7F6E\u9875(.dshpp-native)\u548C\u5DE6\u4FA7 Purge \u6574\u9875(.dshpp-page)\uFF0C\n   \u4E24\u5904\u6839 class \u4E0D\u540C\uFF0C\u9009\u62E9\u5668\u5FC5\u987B\u90FD\u8986\u76D6\u3002 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-open {\n  min-height: 32px;\n  padding: 4px 12px;\n  border-radius: 7px;\n  font-size: 0.9em;\n  white-space: nowrap;\n}\n/* \u65E7\u7248\u6807\u9898\u884C\u53F3\u5BF9\u9F50\u5E03\u5C40\u4FDD\u7559\u7ED9\u53EF\u80FD\u7684\u5916\u90E8\u8C03\u7528\uFF0C\u4F46\u4E3B\u5165\u53E3\u5DF2\u79FB\u5230\u8BBE\u7F6E\u884C\u3002 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head h3 {\n  margin: 0;\n}\n/* \u66F4\u65B0\u901A\u9053\u5BF9\u8BDD\u6846\uFF1A\u9762\u677F\u91CC\u6CA1\u6709\u53EF\u9760\u7684 react-dom portal\uFF0C\u7528\u56FA\u5B9A\u5B9A\u4F4D + \u906E\u7F69\u81EA\u5DF1\u5B9E\u73B0 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 12050;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  background: rgba(0, 0, 0, 0.55);\n  pointer-events: auto;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-card {\n  width: min(440px, 100%);\n  max-height: min(88vh, 720px);\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 18px;\n  border-radius: 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-layer-1, #fffcf7);\n  color: var(--dshpp-ink);\n  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-title {\n  margin: 0 0 2px;\n  font-family: inherit;\n  font-size: 1em;\n  font-weight: 600;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-label {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-field {\n  width: 100%;\n  min-width: 0;\n  font-size: 0.92em;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 4px;\n}\n';
+var native_default = '.dshpp-native.dshpp-root {\n  --dshpp-display: inherit;\n  --dshpp-sans: inherit;\n  --dshpp-paper: var(--dsw-alias-bg-base, transparent);\n  --dshpp-bg: transparent;\n  --dshpp-line: var(--dsw-alias-border-l1, #ddd);\n  --dshpp-ink: var(--dsw-alias-label-primary, #171717);\n  --dshpp-mute: var(--dsw-alias-label-secondary, #777);\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4775ed);\n  --dshpp-fill: var(--dsw-alias-interactive-bg-hover, #f3f3f3);\n  container: purge-settings / inline-size;\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  max-width: none;\n  padding: 0;\n  gap: 0;\n  border-radius: 0;\n  overflow: hidden;\n  box-sizing: border-box;\n}\n.dshpp-native * {\n  box-sizing: border-box;\n}\n.dshpp-native [hidden] {\n  display: none !important;\n}\n.dshpp-native-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 20px 20px 12px;\n  gap: 12px;\n  flex: none;\n}\n.dshpp-native-head h2 {\n  font: inherit;\n  font-size: 1.3em;\n  font-weight: 600;\n  margin: 0;\n}\n.dshpp-native-head p {\n  margin: 4px 0 0;\n  font-size: 0.85em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-badge {\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n.dshpp-native-nav {\n  display: flex;\n  gap: 4px;\n  padding: 0 16px;\n  border-bottom: 1px solid var(--dshpp-line);\n  flex: none;\n  overflow-x: auto;\n}\n.dshpp-native-nav button {\n  font: inherit;\n  font-size: 0.92em;\n  border: 0;\n  border-bottom: 2px solid transparent;\n  background: none;\n  color: var(--dshpp-mute);\n  padding: 10px 8px;\n  white-space: nowrap;\n  cursor: pointer;\n}\n.dshpp-native-nav button[aria-pressed="true"] {\n  color: var(--dshpp-ink);\n  border-bottom-color: var(--dshpp-accent);\n}\n.dshpp-native-content {\n  min-height: 0;\n  flex: 1;\n  overflow: auto;\n  padding: 16px 20px;\n  scrollbar-gutter: stable;\n  overscroll-behavior: contain;\n}\n.dshpp-native .dshpp-panel {\n  border: 0;\n  border-radius: 0;\n  padding: 0;\n  background: transparent;\n  min-width: 0;\n}\n.dshpp-native\n  :is(\n    h3,\n    h4,\n    .dshpp-title,\n    .dshpp-group-h strong,\n    .dshpp-metric b,\n    .dshpp-now-ver,\n    .dshpp-edition-name\n  ) {\n  font-family: inherit;\n  font-size: 1em;\n  letter-spacing: normal;\n  font-weight: 550;\n}\n.dshpp-native .dshpp-metric b {\n  font-size: 1.12em;\n}\n.dshpp-native .dshpp-head {\n  margin-bottom: 12px;\n}\n.dshpp-native .dshpp-sub {\n  margin-top: 0;\n  flex-wrap: wrap;\n}\n.dshpp-native :is(button, input, select, textarea) {\n  font-family: inherit;\n  box-shadow: none;\n  background-image: none;\n  max-width: 100%;\n}\n.dshpp-native .dshpp-btn {\n  font-size: 0.9em;\n  min-height: 32px;\n  border-radius: 7px;\n  padding: 6px 10px;\n  transform: none;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-btn:hover:not(:disabled) {\n  background: var(--dshpp-fill);\n  box-shadow: none;\n  transform: none;\n}\n.dshpp-native .dshpp-btn-primary {\n  background: var(--dsw-alias-label-primary, #171717);\n  color: var(--dsw-alias-bg-base, #fff);\n  border-color: transparent;\n}\n.dshpp-native .dshpp-btn-primary:hover:not(:disabled) {\n  opacity: 0.85;\n  background: var(--dsw-alias-label-primary, #171717);\n}\n.dshpp-native :is(button, input, select, textarea):focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 2px;\n  box-shadow: none;\n}\n.dshpp-native .dshpp-area {\n  font-family: inherit;\n  font-size: 0.92em;\n  line-height: 1.6;\n  min-height: 260px;\n  width: 100%;\n  border-radius: 8px;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-field {\n  font-size: 0.92em;\n  background: transparent;\n  color: inherit;\n}\n.dshpp-native .dshpp-metrics {\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 8px;\n}\n.dshpp-native .dshpp-metric:nth-child(2) {\n  display: none;\n}\n.dshpp-native .dshpp-metric {\n  min-height: 60px;\n  padding: 12px;\n  background: var(--dshpp-fill);\n  border: 0;\n}\n.dshpp-native .dshpp-metric span {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-editions {\n  margin: 10px 0;\n  border: 0;\n}\n.dshpp-native summary {\n  cursor: pointer;\n  color: var(--dshpp-mute);\n  padding: 8px 0;\n  font-size: 0.9em;\n}\n.dshpp-native .dshpp-edition {\n  grid-template-columns: 1fr auto;\n  gap: 8px;\n}\n.dshpp-native .dshpp-edition-name {\n  grid-column: 1/-1;\n}\n.dshpp-native .dshpp-edition .dshpp-btn {\n  min-width: 0;\n}\n.dshpp-native .dshpp-table {\n  table-layout: fixed;\n  font-size: 0.83em;\n}\n.dshpp-native .dshpp-table td {\n  word-break: break-word;\n  padding: 8px;\n}\n.dshpp-native .dshpp-table th {\n  padding: 8px;\n}\n.dshpp-native .dshpp-group-h {\n  flex-wrap: wrap;\n  gap: 6px;\n}\n.dshpp-native .dshpp-group-h em {\n  font-size: 0.85em;\n}\n.dshpp-native .dshpp-row {\n  gap: 8px;\n}\n.dshpp-native .dshpp-hint {\n  font-size: 0.85em !important;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-more {\n  border-top: 1px solid var(--dshpp-line);\n  padding-top: 20px;\n  margin-top: 24px;\n}\n.dshpp-native .dshpp-more p {\n  font-size: 0.9em;\n  line-height: 1.6;\n  color: var(--dshpp-mute);\n}\n.dshpp-native .dshpp-attribution {\n  margin-top: 32px;\n  font-size: 0.78em !important;\n}\n\n/* \u6F14\u7EC3\u53F0\uFF1A\u65E7\u7248\u8DD1\u5728\u53EF\u62D6\u62FD\u60AC\u6D6E\u7A97\u91CC\uFF0C\u73B0\u5728\u5D4C\u5728\u53F3\u4FA7\u680F\uFF0C\u5FC5\u987B\u81EA\u5DF1\u6491\u5F00\u5E76\u5141\u8BB8\u6EDA\u52A8 */\n.dshpp-native-drill {\n  width: 100%;\n  min-width: 0;\n  min-height: 72vh;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding-bottom: 24px;\n  box-sizing: border-box;\n}\n.dshpp-native-drill > .rt-dock.rt-embedded {\n  flex: 1 1 auto;\n  min-height: 0;\n  min-width: 0;\n  width: 100%;\n  height: auto;\n  overflow: visible;\n}\n/* \u53F3\u4FA7\u680F\u5F88\u7A84\uFF1A\u5185\u90E8\u6240\u6709 flex \u884C\u90FD\u5F97\u80FD\u6362\u884C\uFF0C\u8F93\u5165\u6846\u4E0D\u80FD\u628A\u5144\u5F1F\u5143\u7D20\u6324\u6210 1ch \u5BBD */\n.dshpp-native-drill .rt-dock,\n.dshpp-native-drill .rt-dock * {\n  box-sizing: border-box;\n  min-width: 0;\n  word-break: normal;\n  overflow-wrap: anywhere;\n}\n.dshpp-native-drill .rt-dock input,\n.dshpp-native-drill .rt-dock textarea,\n.dshpp-native-drill .rt-dock select {\n  width: 100%;\n  max-width: 100%;\n}\n\n/* \u300C\u66F4\u65B0\u901A\u9053\u300D\u4E0E\u300C\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0 / \u6BCF N \u5C0F\u65F6\u300D\u540C\u884C\u5E76\u6392\uFF1A\u9AD8\u5EA6\u3001\u5706\u89D2\u3001\u5B57\u53F7\u5BF9\u9F50 select\u3002\n   \u540C\u4E00\u7EC4\u4EF6\u540C\u65F6\u6302\u5728\u63D2\u4EF6\u8BBE\u7F6E\u9875(.dshpp-native)\u548C\u5DE6\u4FA7 Purge \u6574\u9875(.dshpp-page)\uFF0C\n   \u4E24\u5904\u6839 class \u4E0D\u540C\uFF0C\u9009\u62E9\u5668\u5FC5\u987B\u90FD\u8986\u76D6\u3002 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-open {\n  min-height: 32px;\n  padding: 4px 12px;\n  border-radius: 7px;\n  font-size: 0.9em;\n  white-space: nowrap;\n}\n/* \u65E7\u7248\u6807\u9898\u884C\u53F3\u5BF9\u9F50\u5E03\u5C40\u4FDD\u7559\u7ED9\u53EF\u80FD\u7684\u5916\u90E8\u8C03\u7528\uFF0C\u4F46\u4E3B\u5165\u53E3\u5DF2\u79FB\u5230\u8BBE\u7F6E\u884C\u3002 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-head h3 {\n  margin: 0;\n}\n/* \u66F4\u65B0\u901A\u9053\u5BF9\u8BDD\u6846\uFF1A\u9762\u677F\u91CC\u6CA1\u6709\u53EF\u9760\u7684 react-dom portal\uFF0C\u7528\u56FA\u5B9A\u5B9A\u4F4D + \u906E\u7F69\u81EA\u5DF1\u5B9E\u73B0 */\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-mask {\n  position: fixed;\n  inset: 0;\n  z-index: 12050;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 20px;\n  background: rgba(0, 0, 0, 0.55);\n  pointer-events: auto;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-card {\n  width: min(440px, 100%);\n  max-height: min(88vh, 720px);\n  overflow: auto;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 18px;\n  border-radius: 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-layer-1, #fffcf7);\n  color: var(--dshpp-ink);\n  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-title {\n  margin: 0 0 2px;\n  font-family: inherit;\n  font-size: 1em;\n  font-weight: 600;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-label {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-field {\n  width: 100%;\n  min-width: 0;\n  font-size: 0.92em;\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.88em;\n  color: var(--dshpp-mute);\n}\n:is(.dshpp-native, .dshpp-page) .dshpp-updch-ops {\n  display: flex;\n  justify-content: flex-end;\n  gap: 8px;\n  margin-top: 4px;\n}\n\n:is(.dshpp-native, .dshpp-page) .dshpp-composer-settings {\n  padding-block: 2px 8px;\n  margin-bottom: 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-composer-settings h3 {\n  margin: 0;\n  font: inherit;\n  font-weight: 600;\n}\n.dshpp-setting-row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  min-height: 44px;\n  cursor: pointer;\n}\n.dshpp-setting-row input[role="switch"] {\n  appearance: none;\n  flex: none;\n  box-sizing: border-box;\n  width: 32px;\n  height: 20px;\n  margin: 0 2px;\n  padding: 2px;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  background: var(--dsw-alias-interactive-bg-hover, rgba(127, 127, 127, 0.23));\n  cursor: pointer;\n}\n.dshpp-setting-row input::before {\n  content: "";\n  display: block;\n  width: 14px;\n  height: 14px;\n  border-radius: 50%;\n  background: var(--dsw-alias-label-secondary, #777);\n}\n.dshpp-setting-row input:checked {\n  background: var(--dshpp-accent);\n  border-color: var(--dshpp-accent);\n}\n.dshpp-setting-row input:checked::before {\n  transform: translateX(12px);\n  background: white;\n}\n.dshpp-setting-row input:focus-visible {\n  outline: 2px solid var(--dshpp-accent);\n  outline-offset: 3px;\n}\n.dshpp-setting-row input:disabled {\n  opacity: 0.6;\n}\n@media (forced-colors: active) {\n  .dshpp-setting-row input[role="switch"] {\n    appearance: auto;\n  }\n  .dshpp-setting-row input::before {\n    content: none;\n  }\n}\n@container purge-settings (max-width: 520px) {\n  .dshpp-native-head {\n    padding: 14px 12px 8px;\n  }\n  .dshpp-native-nav {\n    padding-inline: 8px;\n    gap: 0;\n  }\n  .dshpp-native-nav button {\n    flex: 1 0 auto;\n    min-height: 44px;\n  }\n  .dshpp-native-content {\n    padding: 12px;\n    scrollbar-gutter: auto;\n  }\n}\n';
 
 // src/styles/page.css
-var page_default = '/* \u6574\u9875\uFF08\u5DE6\u4FA7\u680F\u5165\u53E3\uFF09\u6837\u5F0F\uFF1A\u6CBF\u7528 DSH \u81EA\u5DF1\u7684\u5B57\u4F53\u3001\u95F4\u8DDD\u4E0E\u4E3B\u9898\u53D8\u91CF\uFF0C\u4E0D\u5F15\u5165\u81EA\u5B9A\u4E49\u5B57\u4F53\u3002 */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px 24px 40px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.15em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \u9876\u90E8\u4E00\u884C\u72B6\u6001\u6458\u8981\uFF1A\u4E0D\u7528\u5361\u7247\uFF0C\u8DDF DSH \u7684 subtitle \u884C\u4E00\u81F4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 14px 0 2px;\n  padding: 10px 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \u9875\u7B7E\uFF1A\u4E0B\u5212\u7EBF\u5F0F\uFF0C\u8DDF DSH \u8BBE\u7F6E\u9875\u7684 tab \u4E00\u81F4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.92em;\n  padding: 9px 12px 10px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \u5361\u7247\uFF1ADSH \u7684 layer-1 \u9762\u677F */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \u5B57\u6BB5\u884C\uFF1A\u5DE6\u6807\u9898\u53F3\u63A7\u4EF6\uFF1B\u7A84\u5C4F\u81EA\u52A8\u6362\u884C */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@media (max-width: 720px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \u4E3B\u6309\u94AE\uFF1A\u4E0D\u8981\u7528 brand-primary \u5F53\u5E95\u8272\u2014\u2014\u6DF1\u8272\u6A21\u5F0F\u4E0B\u5B83\u662F\u9AD8\u4EAE\u6587\u5B57\u8272\uFF0C\n   \u76F4\u63A5\u94FA\u6210\u80CC\u666F\u5C31\u6210\u4E86"\u767D\u5E95\u767D\u5B57"\u7684\u65B9\u5757\u3002\u8FD9\u91CC\u7528\u56FA\u5B9A\u7684\u5B9E\u5FC3\u7EFF + \u767D\u5B57\u3002 */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \u6F14\u7EC3\u53F0\u5360\u6EE1\u5269\u4F59\u9AD8\u5EA6 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \u540D\u8BCD\u89E3\u91CA\uFF1A\u6807\u9898\u540E\u9762\u7684\u5C0F\u95EE\u53F7 */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \u64CD\u4F5C\u6761\uFF1A\u6700\u5E38\u7528\u7684\u300C\u5E94\u7528\u300D\u56FA\u5B9A\u5728\u5185\u5BB9\u533A\u9876\u90E8 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \u6307\u6807\uFF1A\u4E09\u5217\u7D27\u51D1 */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \u6298\u53E0\u5757\uFF1A\u8865\u4E01\u660E\u7EC6 / \u7EF4\u62A4 / \u81EA\u68C0 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \u72B6\u6001\u884C\uFF08\u81EA\u68C0 / \u5F3A\u5316\u6BB5\uFF09 */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \u9010\u5C42\u81EA\u68C0\uFF1A\u4E24\u5217/\u591A\u5217\u7F51\u683C\uFF0C\u4E0D\u518D\u4E00\u6761\u4E00\u884C */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \u72B6\u6001\u9875 hero\uFF1A\u4E00\u773C\u770B\u5230"\u73B0\u5728\u4EC0\u4E48\u72B6\u6001\u3001\u4E0B\u4E00\u6B65\u70B9\u54EA" */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n';
+var page_default = '/* \u6574\u9875\uFF08\u5DE6\u4FA7\u680F\u5165\u53E3\uFF09\u6837\u5F0F\uFF1A\u6CBF\u7528 DSH \u81EA\u5DF1\u7684\u5B57\u4F53\u3001\u95F4\u8DDD\u4E0E\u4E3B\u9898\u53D8\u91CF\uFF0C\u4E0D\u5F15\u5165\u81EA\u5B9A\u4E49\u5B57\u4F53\u3002 */\n.dshpp-page {\n  --dshpp-line: var(--dsw-alias-border-l1, rgba(127, 127, 127, 0.22));\n  --dshpp-line-strong: var(--dsw-alias-border-l2, rgba(127, 127, 127, 0.4));\n  --dshpp-fg: var(--dsw-alias-label-primary, currentColor);\n  --dshpp-mute: var(\n    --dsw-alias-label-secondary,\n    color-mix(in srgb, currentColor 62%, transparent)\n  );\n  --dshpp-bg: var(--dsw-alias-bg-layer-1, transparent);\n  --dshpp-bg-2: var(--dsw-alias-bg-layer-2, rgba(127, 127, 127, 0.06));\n  --dshpp-accent: var(--dsw-alias-brand-primary, #4d6bfe);\n  --dshpp-ok: var(--dsw-alias-state-success-primary, #1f9d55);\n  --dshpp-warn: var(--dsw-alias-state-warn-primary, #b7791f);\n  --dshpp-bad: var(--dsw-alias-state-error-primary, #d14343);\n  box-sizing: border-box;\n  container: purge-page / inline-size;\n  width: 100%;\n  min-width: 0;\n  height: 100%;\n  min-height: 0;\n  overflow: auto;\n  padding: 20px clamp(12px, 3%, 32px) 32px;\n  color: var(--dshpp-fg);\n  font: inherit;\n  font-size: var(--dsh-content-font-size, 14px);\n  line-height: 1.55;\n  -webkit-font-smoothing: antialiased;\n}\n.dshpp-page *,\n.dshpp-page *::before,\n.dshpp-page *::after {\n  box-sizing: border-box;\n}\n\n.dshpp-page-head {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  min-width: 0;\n}\n.dshpp-page-glyph {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 34px;\n  height: 34px;\n  border-radius: 10px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-accent);\n  flex: none;\n}\n.dshpp-page-title {\n  min-width: 0;\n}\n.dshpp-page-title h1 {\n  margin: 0;\n  font-size: 1.3em;\n  font-weight: 600;\n  letter-spacing: 0.01em;\n}\n.dshpp-page-title p {\n  margin: 2px 0 0;\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-page-ver {\n  padding: 1px 6px;\n  border-radius: 999px;\n  border: 1px solid var(--dshpp-line);\n  font-size: 0.92em;\n}\n\n/* \u9876\u90E8\u4E00\u884C\u72B6\u6001\u6458\u8981\uFF1A\u4E0D\u7528\u5361\u7247\uFF0C\u8DDF DSH \u7684 subtitle \u884C\u4E00\u81F4 */\n.dshpp-strip {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px 18px;\n  margin: 0;\n  padding: 0 0 12px;\n  border-bottom: 1px solid var(--dshpp-line);\n  font-size: 0.86em;\n  color: var(--dshpp-mute);\n}\n.dshpp-strip-item {\n  display: inline-flex;\n  align-items: center;\n  gap: 5px;\n  min-width: 0;\n}\n.dshpp-strip-item b {\n  color: var(--dshpp-fg);\n  font-weight: 600;\n}\n.dshpp-dot {\n  width: 7px;\n  height: 7px;\n  border-radius: 50%;\n  background: var(--dshpp-mute);\n  flex: none;\n}\n.dshpp-dot.is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-dot.is-warn {\n  background: var(--dshpp-warn);\n}\n.dshpp-dot.is-bad {\n  background: var(--dshpp-bad);\n}\n\n/* \u9875\u7B7E\uFF1A\u4E0B\u5212\u7EBF\u5F0F\uFF0C\u8DDF DSH \u8BBE\u7F6E\u9875\u7684 tab \u4E00\u81F4 */\n.dshpp-page-tabs {\n  display: flex;\n  gap: 2px;\n  margin: 10px 0 0;\n  border-bottom: 1px solid var(--dshpp-line);\n  overflow-x: auto;\n  scrollbar-width: none;\n}\n.dshpp-page-tabs::-webkit-scrollbar {\n  display: none;\n}\n.dshpp-page-tabs button {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 1em;\n  padding: 10px 12px;\n  border-bottom: 2px solid transparent;\n  margin-bottom: -1px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page-tabs button:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-page-tabs button[aria-selected="true"] {\n  color: var(--dshpp-fg);\n  border-bottom-color: var(--dshpp-accent);\n  font-weight: 600;\n}\n\n.dshpp-page-body {\n  padding-top: 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  min-width: 0;\n}\n.dshpp-sec[hidden] {\n  display: none;\n}\n\n/* \u5361\u7247\uFF1ADSH \u7684 layer-1 \u9762\u677F */\n.dshpp-page .dshpp-card,\n.dshpp-page section.dshpp-panel {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  margin: 0;\n  min-width: 0;\n}\n.dshpp-page .dshpp-card > h3:first-child,\n.dshpp-page section.dshpp-panel > h3:first-child {\n  margin: 0 0 12px;\n  font-size: 1em;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-panel {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n/* \u5B57\u6BB5\u884C\uFF1A\u5DE6\u6807\u9898\u53F3\u63A7\u4EF6\uFF1B\u7A84\u5C4F\u81EA\u52A8\u6362\u884C */\n.dshpp-page .dshpp-field {\n  display: grid;\n  grid-template-columns: minmax(120px, 190px) 1fr;\n  gap: 8px 14px;\n  align-items: center;\n}\n.dshpp-page .dshpp-field > .dshpp-field-label {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n}\n.dshpp-page .dshpp-field > .dshpp-field-body {\n  min-width: 0;\n}\n@container purge-page (max-width: 640px) {\n  .dshpp-page .dshpp-field {\n    grid-template-columns: 1fr;\n  }\n}\n\n.dshpp-page .dshpp-muted,\n.dshpp-page .dshpp-hint {\n  color: var(--dshpp-mute) !important;\n  font-size: 0.86em !important;\n  line-height: 1.6;\n  margin: 0;\n}\n\n.dshpp-page .dshpp-row {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  align-items: center;\n  min-width: 0;\n}\n.dshpp-page input,\n.dshpp-page select,\n.dshpp-page textarea {\n  font: inherit;\n  color: var(--dshpp-fg);\n  background: var(--dshpp-bg-2);\n  border: 1px solid var(--dshpp-line);\n  border-radius: 8px;\n  padding: 7px 10px;\n  max-width: 100%;\n}\n.dshpp-page input:focus-visible,\n.dshpp-page select:focus-visible,\n.dshpp-page textarea:focus-visible {\n  outline: 2px solid color-mix(in srgb, var(--dshpp-accent) 55%, transparent);\n  outline-offset: 1px;\n}\n.dshpp-page textarea {\n  width: 100%;\n  min-height: 320px;\n  resize: vertical;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 0.86em;\n  line-height: 1.6;\n}\n\n.dshpp-page .dshpp-btn {\n  font: inherit;\n  font-size: 0.9em;\n  border-radius: 8px;\n  padding: 6px 12px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  color: var(--dshpp-fg);\n  cursor: pointer;\n  white-space: nowrap;\n}\n.dshpp-page .dshpp-btn:hover:not(:disabled) {\n  border-color: var(--dshpp-line-strong);\n}\n.dshpp-page .dshpp-btn:disabled {\n  opacity: 0.45;\n  cursor: not-allowed;\n}\n/* \u4E3B\u6309\u94AE\uFF1A\u4E0D\u8981\u7528 brand-primary \u5F53\u5E95\u8272\u2014\u2014\u6DF1\u8272\u6A21\u5F0F\u4E0B\u5B83\u662F\u9AD8\u4EAE\u6587\u5B57\u8272\uFF0C\n   \u76F4\u63A5\u94FA\u6210\u80CC\u666F\u5C31\u6210\u4E86"\u767D\u5E95\u767D\u5B57"\u7684\u65B9\u5757\u3002\u8FD9\u91CC\u7528\u56FA\u5B9A\u7684\u5B9E\u5FC3\u7EFF + \u767D\u5B57\u3002 */\n.dshpp-page {\n  --dshpp-solid: #2f6b4f;\n  --dshpp-solid-hover: #3a8260;\n  --dshpp-solid-danger: #a63b3b;\n  --dshpp-solid-danger-hover: #bd4747;\n}\n.dshpp-page .dshpp-btn-primary {\n  background: var(--dshpp-solid);\n  border-color: var(--dshpp-solid);\n  color: #fff;\n  font-weight: 600;\n}\n.dshpp-page .dshpp-btn-primary:hover:not(:disabled) {\n  background: var(--dshpp-solid-hover);\n  border-color: var(--dshpp-solid-hover);\n}\n.dshpp-page .dshpp-btn-solid-danger {\n  background: var(--dshpp-solid-danger);\n  border-color: var(--dshpp-solid-danger);\n  color: #fff;\n}\n.dshpp-page .dshpp-btn-solid-danger:hover:not(:disabled) {\n  background: var(--dshpp-solid-danger-hover);\n  border-color: var(--dshpp-solid-danger-hover);\n}\n.dshpp-page .dshpp-btn-danger {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n.dshpp-page .dshpp-btn-tiny {\n  padding: 3px 8px;\n  font-size: 0.82em;\n}\n\n.dshpp-page .dshpp-pill {\n  display: inline-flex;\n  align-items: center;\n  padding: 1px 8px;\n  border-radius: 999px;\n  font-size: 0.8em;\n  border: 1px solid var(--dshpp-line);\n  color: var(--dshpp-mute);\n}\n.dshpp-page .dshpp-pill.is-ok {\n  color: var(--dshpp-ok);\n  border-color: color-mix(in srgb, var(--dshpp-ok) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-wait {\n  color: var(--dshpp-warn);\n  border-color: color-mix(in srgb, var(--dshpp-warn) 35%, transparent);\n}\n.dshpp-page .dshpp-pill.is-bad {\n  color: var(--dshpp-bad);\n  border-color: color-mix(in srgb, var(--dshpp-bad) 40%, transparent);\n}\n\n.dshpp-page .dshpp-table {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-table th,\n.dshpp-page .dshpp-table td {\n  text-align: left;\n  padding: 7px 10px;\n  border-bottom: 1px solid var(--dshpp-line);\n  vertical-align: top;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-table th {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 0.95em;\n}\n.dshpp-page .dshpp-group-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n  width: 100%;\n  border: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  padding: 8px 0;\n  cursor: pointer;\n}\n.dshpp-page .dshpp-count {\n  color: var(--dshpp-mute);\n  font-size: 0.85em;\n}\n\n/* \u6F14\u7EC3\u53F0\u5360\u6EE1\u5269\u4F59\u9AD8\u5EA6 */\n.dshpp-page-drill {\n  min-height: 60vh;\n}\n.dshpp-page-drill .rt-dock.rt-embedded {\n  width: 100%;\n  min-width: 0;\n}\n\n.dshpp-page-foot {\n  margin-top: 28px;\n  padding-top: 14px;\n  border-top: 1px solid var(--dshpp-line);\n  font-size: 0.8em;\n  color: var(--dshpp-mute);\n}\n\n/* \u540D\u8BCD\u89E3\u91CA\uFF1A\u6807\u9898\u540E\u9762\u7684\u5C0F\u95EE\u53F7 */\n.dshpp-help {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n}\n.dshpp-help-btn {\n  appearance: none;\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 0.85em;\n  line-height: 1;\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  border: 1px solid var(--dshpp-line);\n  cursor: help;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0;\n}\n.dshpp-help-btn:hover,\n.dshpp-help-btn[aria-expanded="true"] {\n  color: var(--dshpp-fg);\n  border-color: var(--dshpp-line-strong);\n  background: var(--dshpp-bg-2);\n}\n.dshpp-tip {\n  position: absolute;\n  left: 0;\n  top: calc(100% + 6px);\n  z-index: 2147483000;\n  width: max-content;\n  max-width: min(340px, 70vw);\n  padding: 9px 11px;\n  border-radius: 8px;\n  border: 1px solid var(--dshpp-line);\n  background: var(--dsw-alias-bg-overlay, canvas);\n  color: var(--dshpp-fg);\n  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);\n  font-size: 0.82em;\n  line-height: 1.6;\n  white-space: normal;\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.dshpp-tip b {\n  font-weight: 600;\n}\n\n.dshpp-page .dshpp-warn {\n  margin: 10px 0 0;\n  padding: 8px 12px;\n  border-radius: 8px;\n  border: 1px solid color-mix(in srgb, var(--dshpp-warn) 45%, transparent);\n  color: var(--dshpp-warn);\n  background: color-mix(in srgb, var(--dshpp-warn) 10%, transparent);\n  font-size: 0.86em;\n}\n\n/* \u64CD\u4F5C\u6761\uFF1A\u6700\u5E38\u7528\u7684\u300C\u5E94\u7528\u300D\u56FA\u5B9A\u5728\u5185\u5BB9\u533A\u9876\u90E8 */\n.dshpp-page .dshpp-actions {\n  position: sticky;\n  top: 0;\n  z-index: 5;\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n  padding: 10px 0 12px;\n  margin: -4px 0 6px;\n  background: linear-gradient(\n    var(--dsw-alias-bg-base, canvas) 78%,\n    transparent\n  );\n  backdrop-filter: blur(2px);\n  border-bottom: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-actions .dshpp-pill {\n  margin-left: auto;\n}\n\n/* \u6307\u6807\uFF1A\u4E09\u5217\u7D27\u51D1 */\n.dshpp-page .dshpp-metrics {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));\n  gap: 10px;\n  margin: 4px 0 2px;\n}\n.dshpp-page .dshpp-metric {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 10px 12px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-page .dshpp-metric b {\n  display: block;\n  font-size: 1.05em;\n  font-weight: 600;\n  margin-bottom: 2px;\n  overflow-wrap: anywhere;\n}\n.dshpp-page .dshpp-metric span {\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n\n/* \u6298\u53E0\u5757\uFF1A\u8865\u4E01\u660E\u7EC6 / \u7EF4\u62A4 / \u81EA\u68C0 */\n.dshpp-page .dshpp-fold,\n.dshpp-page .dshpp-fold-inline {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  background: var(--dshpp-bg);\n  padding: 0 12px;\n}\n.dshpp-page .dshpp-fold > summary,\n.dshpp-page .dshpp-fold-inline > summary {\n  cursor: pointer;\n  padding: 10px 0;\n  font-size: 0.92em;\n  color: var(--dshpp-fg);\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-fold > summary::-webkit-details-marker,\n.dshpp-page .dshpp-fold-inline > summary::-webkit-details-marker {\n  display: none;\n}\n.dshpp-page .dshpp-fold > summary::before,\n.dshpp-page .dshpp-fold-inline > summary::before {\n  content: "\u25B8";\n  color: var(--dshpp-mute);\n  font-size: 0.9em;\n  transition: transform 0.12s ease;\n}\n.dshpp-page .dshpp-fold[open] > summary::before,\n.dshpp-page .dshpp-fold-inline[open] > summary::before {\n  transform: rotate(90deg);\n}\n.dshpp-page .dshpp-fold > summary b,\n.dshpp-page .dshpp-fold-inline > summary b {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  margin-left: auto;\n}\n\n/* \u72B6\u6001\u884C\uFF08\u81EA\u68C0 / \u5F3A\u5316\u6BB5\uFF09 */\n.dshpp-page .dshpp-line {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-wrap: wrap;\n  padding: 6px 0;\n}\n.dshpp-page .dshpp-line + .dshpp-line {\n  border-top: 1px solid var(--dshpp-line);\n}\n.dshpp-page .dshpp-line-main {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 0.92em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-line-main b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-fold-inline {\n  border: 0;\n  padding: 0;\n  background: transparent;\n}\n.dshpp-page .dshpp-fold-inline > summary {\n  padding: 2px 0;\n  color: var(--dshpp-mute);\n  font-size: 0.86em;\n}\n.dshpp-page .dshpp-fold-inline[open] {\n  flex-basis: 100%;\n}\n\n/* \u9010\u5C42\u81EA\u68C0\uFF1A\u4E24\u5217/\u591A\u5217\u7F51\u683C\uFF0C\u4E0D\u518D\u4E00\u6761\u4E00\u884C */\n.dshpp-page .dshpp-checks {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n  gap: 2px 14px;\n  padding: 6px 0 10px;\n}\n.dshpp-page .dshpp-check {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 0.84em;\n  min-width: 0;\n  padding: 2px 0;\n}\n.dshpp-page .dshpp-check.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-page .dshpp-check-name {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  min-width: 0;\n}\n.dshpp-page .dshpp-check-val {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-variant-numeric: tabular-nums;\n}\n\n/* \u72B6\u6001\u9875 hero\uFF1A\u4E00\u773C\u770B\u5230"\u73B0\u5728\u4EC0\u4E48\u72B6\u6001\u3001\u4E0B\u4E00\u6B65\u70B9\u54EA" */\n.dshpp-page .dshpp-hero {\n  border: 1px solid var(--dshpp-line);\n  border-radius: var(--dsw-radius-md, 10px);\n  background: var(--dshpp-bg);\n  padding: 16px 18px;\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.dshpp-page .dshpp-hero-state {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 1.02em;\n  min-width: 0;\n}\n.dshpp-page .dshpp-hero-state b {\n  font-weight: 600;\n}\n.dshpp-page .dshpp-hero-sub {\n  margin-left: auto;\n  color: var(--dshpp-mute);\n  font-size: 0.82em;\n}\n.dshpp-page .dshpp-hero-actions {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: 8px;\n}\n.dshpp-page .dshpp-btn-lead {\n  padding: 9px 20px;\n  font-size: 0.98em;\n  font-weight: 600;\n  border-radius: 10px;\n}\n.dshpp-page .dshpp-hero-hint {\n  margin: 0;\n  color: var(--dshpp-mute);\n  font-size: 0.84em;\n  line-height: 1.6;\n}\n.dshpp-check.is-warn {\n  color: var(--dshpp-warn);\n}\n\n.dshpp-page .dshpp-probe-msg {\n  margin: 6px 0 0;\n  padding: 8px 10px;\n  border-radius: 8px;\n  border: 1px dashed var(--dshpp-line);\n  background: var(--dshpp-bg-2);\n  font-size: 0.82em;\n  white-space: pre-wrap;\n  overflow-wrap: anywhere;\n}\n\n@container purge-page (max-width: 520px) {\n  .dshpp-page-head {\n    gap: 8px;\n  }\n  .dshpp-page-tabs {\n    gap: 0;\n  }\n  .dshpp-page-tabs button {\n    flex: 1 0 auto;\n    padding-inline: 6px;\n    min-height: 44px;\n  }\n  .dshpp-page-body {\n    padding-top: 12px;\n  }\n  .dshpp-sec {\n    gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-card, section.dshpp-panel, .dshpp-hero) {\n    padding: 12px;\n  }\n  .dshpp-strip {\n    column-gap: 12px;\n  }\n  .dshpp-page :is(.dshpp-row, .dshpp-sub, .dshpp-hero-state) {\n    flex-wrap: wrap;\n  }\n  .dshpp-page :is(input, select, textarea) {\n    max-width: 100%;\n    min-width: 0;\n  }\n  .dshpp-page .dshpp-table {\n    table-layout: fixed;\n    overflow-wrap: anywhere;\n  }\n}\n\n/* The detail route owns scrolling; the sidebar owns its own viewport. */\n.dshpp-detail-settings .dshpp-page {\n  height: auto;\n  overflow: visible;\n  padding-inline: 0;\n}\n\n/* \u2500\u2500 \u72B6\u6001\u9875\u91CD\u6392\uFF081.7.18\uFF09\uFF1A\u5065\u5EB7\u5EA6 / \u8865\u4E01\u7EC4\u5F00\u5173 / \u8FC7\u6EE4 / \u5199\u5165\u6D41\u7A0B \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */\n\n.dshpp-scan {\n  border: 0;\n  background: transparent;\n  color: var(--dshpp-mute);\n  font: inherit;\n  font-size: 12px;\n  padding: 6px 2px;\n  cursor: pointer;\n  text-decoration: underline;\n  text-underline-offset: 2px;\n  white-space: nowrap;\n}\n.dshpp-scan:hover {\n  color: var(--dshpp-fg);\n}\n.dshpp-scan:disabled {\n  cursor: default;\n  opacity: 0.55;\n}\n\n.dshpp-health {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 14px 16px;\n  margin-top: 12px;\n  background: var(--dshpp-bg);\n  min-width: 0;\n}\n.dshpp-health-top {\n  display: flex;\n  align-items: baseline;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.dshpp-health-big {\n  font-size: 26px;\n  font-weight: 660;\n  letter-spacing: -0.3px;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-health-big small {\n  font-size: 13px;\n  font-weight: 500;\n  color: var(--dshpp-mute);\n  letter-spacing: 0;\n}\n.dshpp-health-verdict {\n  font-size: 12.5px;\n  color: var(--dshpp-mute);\n  min-width: 0;\n}\n.dshpp-bar {\n  display: flex;\n  height: 7px;\n  border-radius: 99px;\n  overflow: hidden;\n  background: var(--dshpp-bg-2);\n  margin: 10px 0 12px;\n}\n.dshpp-bar i {\n  display: block;\n  height: 100%;\n}\n.dshpp-bar .is-ok {\n  background: var(--dshpp-ok);\n}\n.dshpp-bar .is-wait {\n  background: var(--dshpp-warn);\n}\n.dshpp-bar .is-off {\n  background: var(--dshpp-mute);\n  opacity: 0.45;\n}\n.dshpp-tiles {\n  display: grid;\n  grid-template-columns: repeat(4, minmax(0, 1fr));\n  gap: 10px;\n}\n.dshpp-tile {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 10px;\n  padding: 8px 11px;\n  background: var(--dshpp-bg-2);\n  min-width: 0;\n}\n.dshpp-tile.is-na {\n  border-style: dashed;\n}\n.dshpp-tile-k {\n  display: flex;\n  align-items: center;\n  gap: 4px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n  white-space: nowrap;\n}\n.dshpp-tile-v {\n  margin-top: 2px;\n  font-size: 18px;\n  font-weight: 640;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-tile.is-ok .dshpp-tile-v {\n  color: var(--dshpp-ok);\n}\n.dshpp-tile.is-wait .dshpp-tile-v {\n  color: var(--dshpp-warn);\n}\n.dshpp-tile.is-off .dshpp-tile-v,\n.dshpp-tile.is-na .dshpp-tile-v {\n  color: var(--dshpp-mute);\n}\n\n.dshpp-switches {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 12px;\n  margin-top: 12px;\n}\n.dshpp-sw {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 12px 14px;\n  background: var(--dshpp-bg);\n  min-width: 0;\n}\n.dshpp-sw.is-on {\n  box-shadow: inset 3px 0 0 var(--dshpp-accent);\n}\n.dshpp-sw-h {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 10px;\n}\n.dshpp-sw-t {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  font-weight: 600;\n  min-width: 0;\n}\n.dshpp-sw-d {\n  margin: 6px 0 8px;\n  font-size: 12.5px;\n  line-height: 1.5;\n  color: var(--dshpp-mute);\n}\n.dshpp-sw-f {\n  display: flex;\n  gap: 6px;\n  flex-wrap: wrap;\n}\n.dshpp-chip {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  padding: 2px 8px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-chip.is-on {\n  color: var(--dshpp-accent);\n  border-color: currentColor;\n}\n.dshpp-track {\n  position: relative;\n  width: 42px;\n  height: 24px;\n  flex: none;\n  padding: 0;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  background: var(--dshpp-bg-2);\n  cursor: pointer;\n}\n.dshpp-track.is-on {\n  background: var(--dshpp-accent);\n  border-color: var(--dshpp-accent);\n}\n.dshpp-track:disabled {\n  cursor: default;\n  opacity: 0.55;\n}\n.dshpp-knob {\n  position: absolute;\n  top: 2px;\n  left: 2px;\n  width: 18px;\n  height: 18px;\n  border-radius: 99px;\n  background: #fff;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);\n  transition: transform 0.15s ease;\n}\n.dshpp-track.is-on .dshpp-knob {\n  transform: translateX(18px);\n}\n.dshpp-sw-note {\n  margin: 6px 0 0;\n  font-size: 12.5px;\n  color: var(--dshpp-ok);\n}\n.dshpp-sw-note.is-bad {\n  color: var(--dshpp-bad);\n}\n.dshpp-sw-hint {\n  margin: 6px 2px 0;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-filter {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  flex-wrap: wrap;\n  margin: 10px 0 8px;\n}\n.dshpp-fbtn {\n  border: 1px solid transparent;\n  background: transparent;\n  color: var(--dshpp-mute);\n  border-radius: 99px;\n  padding: 4px 10px;\n  min-height: 32px;\n  font: inherit;\n  font-size: 12.5px;\n  cursor: pointer;\n}\n.dshpp-fbtn:hover {\n  background: var(--dshpp-bg-2);\n}\n.dshpp-fbtn.is-cur {\n  color: var(--dshpp-accent);\n  border-color: currentColor;\n  background: color-mix(in srgb, var(--dshpp-accent) 10%, transparent);\n}\n.dshpp-fbtn-n {\n  margin-left: 5px;\n  opacity: 0.7;\n  font-variant-numeric: tabular-nums;\n}\n.dshpp-filter-hint {\n  margin-left: auto;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-caret {\n  width: 12px;\n  flex: none;\n  color: var(--dshpp-mute);\n  font-size: 10px;\n}\n.dshpp-group-chips {\n  margin-left: auto;\n  display: flex;\n  gap: 4px;\n  flex-wrap: wrap;\n  justify-content: flex-end;\n}\n.dshpp-group-notes {\n  margin: 0;\n  padding: 0 12px 8px 30px;\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-row-note {\n  display: block;\n  margin-top: 1px;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n\n.dshpp-flow {\n  border: 1px solid var(--dshpp-line);\n  border-radius: 12px;\n  padding: 13px 15px;\n  margin-top: 12px;\n  background: var(--dshpp-bg);\n}\n.dshpp-flow h4 {\n  margin: 0 0 10px;\n  font-size: 13px;\n  font-weight: 600;\n}\n.dshpp-steps {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: 12px;\n}\n.dshpp-step {\n  display: flex;\n  gap: 9px;\n  min-width: 0;\n}\n.dshpp-step-no {\n  width: 20px;\n  height: 20px;\n  flex: none;\n  border: 1px solid var(--dshpp-line);\n  border-radius: 99px;\n  display: grid;\n  place-items: center;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n.dshpp-step b {\n  display: block;\n  font-size: 12.5px;\n  font-weight: 600;\n}\n.dshpp-step span {\n  font-size: 11.5px;\n  color: var(--dshpp-mute);\n}\n.dshpp-flow-foot {\n  margin: 10px 0 0;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n}\n\n/* \u7A84\u5C4F\uFF1A\u4E24\u5217 \u2192 \u5355\u5217\uFF0C\u56DB\u683C \u2192 2\xD72\uFF0C\u5F00\u5173\u52A0\u5927\u89E6\u6478\u76EE\u6807 */\n@container purge-page (max-width: 640px) {\n  .dshpp-health-big {\n    font-size: 22px;\n  }\n  .dshpp-tiles {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n  .dshpp-switches {\n    grid-template-columns: 1fr;\n  }\n  .dshpp-steps {\n    grid-template-columns: 1fr;\n  }\n  .dshpp-filter-hint {\n    display: none;\n  }\n  .dshpp-track {\n    width: 46px;\n    height: 26px;\n  }\n  .dshpp-knob {\n    width: 20px;\n    height: 20px;\n  }\n  .dshpp-track.is-on .dshpp-knob {\n    transform: translateX(20px);\n  }\n  .dshpp-group-notes {\n    padding-left: 12px;\n  }\n  /* \u7A84\u5C4F\uFF1A\u7EC4\u5934\u5141\u8BB8\u6362\u884C\uFF0C\u72B6\u6001\u80F6\u56CA\u72EC\u5360\u4E00\u884C\uFF0C\u5426\u5219\u53EA\u4F1A\u9732\u51FA\u7B2C\u4E00\u4E2A */\n  .dshpp-group-h {\n    flex-wrap: wrap;\n    row-gap: 4px;\n  }\n  .dshpp-group-chips {\n    flex: 1 0 100%;\n    margin-left: 0;\n    justify-content: flex-start;\n  }\n  .dshpp-group-h {\n    justify-content: flex-start;\n    column-gap: 8px;\n  }\n  .dshpp-group-h .dshpp-count {\n    margin-left: auto;\n  }\n  /* \u4E09\u5217\u8868\u683C\u5728 360px \u4F1A\u9876\u7834\u5BB9\u5668\uFF1A\u56FA\u5B9A\u5217\u5BBD + \u5141\u8BB8\u72B6\u6001\u8BCD\u6362\u884C */\n  .dshpp-page .dshpp-table {\n    width: 100%;\n    table-layout: fixed;\n  }\n  .dshpp-page .dshpp-table :is(th, td):first-child {\n    width: 44px;\n  }\n  .dshpp-page .dshpp-table :is(th, td):last-child {\n    width: 88px;\n  }\n  .dshpp-page .dshpp-table .dshpp-pill {\n    white-space: normal;\n    text-align: center;\n  }\n  .dshpp-sw-d,\n  .dshpp-sw-hint,\n  .dshpp-group-notes {\n    overflow-wrap: anywhere;\n  }\n}\n\n@container purge-page (max-width: 400px) {\n  .dshpp-tile-k {\n    white-space: normal;\n  }\n  .dshpp-fbtn {\n    padding: 4px 8px;\n    font-size: 12px;\n  }\n  .dshpp-sw {\n    padding: 11px 12px;\n  }\n  .dshpp-health {\n    padding: 12px;\n  }\n}\n\n/* \u8865\u4E01\u660E\u7EC6\u6539\u6210\u5E38\u663E\u533A\u5757\uFF08\u4E0D\u518D\u662F\u6298\u53E0\u58F3\uFF09 */\n.dshpp-fold.is-open {\n  display: block;\n}\n.dshpp-fold-t {\n  display: flex;\n  align-items: baseline;\n  gap: 8px;\n  margin: 18px 0 6px;\n  font-size: 13px;\n  font-weight: 600;\n}\n.dshpp-fold-n {\n  color: var(--dshpp-mute);\n  font-weight: 500;\n  font-size: 12px;\n  font-variant-numeric: tabular-nums;\n}\n\n/* \u2500\u2500 \u89C6\u89C9\u5BF9\u9F50\u6837\u7A3F\uFF081.7.18\uFF09\uFF1A\u6570\u5B57\u3001\u95F4\u8DDD\u3001\u5706\u89D2\u3001\u989C\u8272\u7EDF\u4E00\u5230\u540C\u4E00\u5957\u523B\u5EA6 \u2500\u2500\u2500\u2500\u2500\u2500\n   DSH \u81EA\u8EAB\u7684 brand \u8272\u662F\u5355\u8272\u9ED1\u767D\uFF0C\u6837\u7A3F\u7528\u7684\u662F\u54C1\u724C\u84DD/\u7EFF\uFF1B\u8FD9\u91CC\u53EA\u5728\u672C\u9875\u8303\u56F4\u5185\n   \u8986\u76D6\uFF0C\u907F\u514D\u5F71\u54CD\u9762\u677F\u5176\u5B83\u533A\u5757\u3002 */\n.dshpp-page {\n  --pg-accent: #2563eb;\n  --pg-ok: #15803d;\n  --pg-warn: #b45309;\n}\n\n/* \u6807\u9898\u884C\uFF1A\u9875\u9762\u540D + \u64CD\u4F5C\u7EC4 + \u626B\u63CF\u65F6\u95F4 */\n.dshpp-status-head {\n  display: flex;\n  align-items: flex-end;\n  justify-content: space-between;\n  gap: 14px;\n  flex-wrap: wrap;\n  margin: 2px 0 16px;\n}\n.dshpp-status-title {\n  margin: 0;\n  font-size: 19px;\n  font-weight: 650;\n  letter-spacing: -0.2px;\n}\n.dshpp-status-ops {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  flex-wrap: wrap;\n}\n.dshpp-status-note {\n  margin: -8px 0 12px;\n  font-size: 12.5px;\n  color: var(--dshpp-mute);\n}\n\n/* \u6309\u94AE\uFF1A\u6837\u7A3F\u7684 9px \u5706\u89D2 / 13px \u5B57 / \u4E3B\u6309\u94AE\u53CD\u8272 */\n.dshpp-page .dshpp-btn {\n  font-size: 13px;\n  padding: 7px 13px;\n  border-radius: 9px;\n  line-height: 1.2;\n}\n.dshpp-page .dshpp-btn.dshpp-btn-apply {\n  background: var(--dshpp-fg);\n  border-color: var(--dshpp-fg);\n  color: var(--dshpp-bg, #fff);\n  font-weight: 560;\n}\n.dshpp-page .dshpp-btn.dshpp-btn-apply:not(:disabled):hover {\n  opacity: 0.88;\n}\n\n/* \u5065\u5EB7\u5EA6\uFF1A\u4E3B\u6570\u5B57\u4E0E\u56DB\u683C */\n.dshpp-health {\n  padding: 18px 20px;\n  border-radius: 12px;\n}\n.dshpp-health-big {\n  font-size: 30px;\n  font-weight: 680;\n}\n.dshpp-health-big small {\n  font-size: 15px;\n}\n.dshpp-tile {\n  padding: 10px 12px;\n}\n.dshpp-tile-k {\n  font-size: 11.5px;\n}\n.dshpp-tile-v {\n  font-size: 19px;\n  font-weight: 640;\n}\n\n/* \u5F00\u5173\uFF1A\u54C1\u724C\u84DD\u800C\u4E0D\u662F\u5355\u8272\u9ED1 */\n.dshpp-sw {\n  padding: 15px 17px;\n  border-radius: 12px;\n}\n.dshpp-sw-t {\n  font-size: 14px;\n}\n.dshpp-sw-d {\n  font-size: 12.5px;\n}\n.dshpp-chip {\n  font-size: 11.5px;\n  padding: 2px 8px;\n}\n.dshpp-track.is-on {\n  background: var(--pg-accent);\n  border-color: var(--pg-accent);\n}\n\n/* \u8FC7\u6EE4\u6761\uFF1A\u9009\u4E2D\u6001\u7528\u6837\u7A3F\u7684\u84DD\u8272\u63CF\u8FB9 + \u6D45\u5E95 */\n.dshpp-fbtn {\n  font-size: 12.5px;\n}\n.dshpp-fbtn.is-cur {\n  color: var(--pg-accent);\n  border-color: var(--pg-accent);\n  background: color-mix(in srgb, var(--pg-accent) 10%, transparent);\n}\n\n/* \u660E\u7EC6\u8868\uFF1A13px \u6B63\u6587\u300111.5px \u72B6\u6001\u80F6\u56CA */\n.dshpp-page .dshpp-table {\n  font-size: 13px;\n}\n.dshpp-page .dshpp-table th {\n  font-size: 11.5px;\n  letter-spacing: 0.03em;\n  padding: 7px 15px;\n}\n.dshpp-page .dshpp-table td {\n  padding: 7px 15px;\n}\n.dshpp-page .dshpp-pill {\n  font-size: 11.5px;\n  padding: 2px 8px;\n}\n.dshpp-caret {\n  font-size: 10px;\n}\n.dshpp-group-notes {\n  font-size: 11.5px;\n}\n\n/* \u5199\u5165\u6D41\u7A0B */\n.dshpp-flow {\n  padding: 16px 18px;\n  border-radius: 12px;\n}\n.dshpp-flow h4 {\n  font-size: 13.5px;\n}\n.dshpp-step b {\n  font-size: 13px;\n}\n.dshpp-step span {\n  font-size: 12.5px;\n}\n\n/* \u7EF4\u62A4\u533A\u5934\u90E8\u7684\u7248\u672C\u53F7 */\n.dshpp-maint-head {\n  display: flex;\n  align-items: baseline;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n.dshpp-maint-head h3 {\n  margin: 0;\n}\n.dshpp-maint-ver {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 12px;\n  color: var(--dshpp-mute);\n}\n.dshpp-maint-ver b {\n  font-weight: 600;\n  color: var(--pg-ok);\n  border: 1px solid color-mix(in srgb, var(--pg-ok) 40%, transparent);\n  border-radius: 99px;\n  padding: 0 6px;\n  font-size: 11px;\n}\n\n/* \u660E\u7EC6\u8868\u7B2C\u4E8C\u884C\uFF1A\u82F1\u6587\u6807\u8BC6\u7B26\uFF08\u5BF9\u9F50\u6837\u7A3F\u7684\u4E24\u884C\u7ED3\u6784\uFF09 */\n.dshpp-row-en {\n  display: block;\n  margin-top: 1px;\n  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;\n  font-size: 11px;\n  color: var(--dshpp-mute);\n  letter-spacing: 0.01em;\n}\n';
 
 // src/shared/runtime-error.js
 function runtimeRepairDetails(report) {
@@ -9201,6 +9201,7 @@ var zh = {
   "metric.driftedShort": "\u951A\u70B9\u6F02\u79FB {n}",
   "metric.disabledShort": "\u53EF\u9009\u5173\u95ED {n}",
   "metric.skipShort": "\u8DF3\u8FC7 {n}",
+  "metric.naShort": "\u672C\u7AEF\u4E0D\u9002\u7528 {n}",
   "metric.unlocated.count": "\u2014",
   "metric.shim": "shim",
   "metric.shim.na": "\u672C\u7AEF\u4E0D\u9700\u8981",
@@ -9209,6 +9210,70 @@ var zh = {
   "metric.bak.hint": "\u5907\u4EFD",
   "table.patch": "\u9879\u76EE",
   "table.status": "\u72B6\u6001",
+  "health.applied": "\u5DF2\u5E94\u7528",
+  "status.title": "Purge \u72B6\u6001",
+  "scan.recent": "\u4E0A\u6B21\u626B\u63CF {time} \xB7 \u70B9\u51FB\u5237\u65B0",
+  "scan.hint": "\u70B9\u51FB\u91CD\u65B0\u626B\u63CF\u5BBF\u4E3B",
+  "health.pending": "\u5F85\u5E94\u7528",
+  "health.off": "\u672A\u542F\u7528",
+  "health.na": "\u672C\u7AEF\u4E0D\u9002\u7528",
+  "health.denomUnit": "\u6761\u5DF2\u5199\u5165\u5BBF\u4E3B",
+  "health.hint.applied": "\u951A\u70B9\u5DF2\u66FF\u6362\uFF0C\u91CD\u542F\u540E\u751F\u6548\u3002",
+  "health.hint.pending": "\u5F00\u5173\u5DF2\u5F00\u3001\u8FD8\u6CA1\u5199\u76D8\uFF1B\u70B9\u4E00\u6B21\u300C\u5E94\u7528\u300D\u5199\u5165\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\u3002",
+  "health.hint.off": "\u5BF9\u5E94\u5F00\u5173\u5173\u7740\uFF0C\u6240\u4EE5\u6CA1\u5199\u3002\u4E0D\u662F\u5931\u8D25\uFF0C\u62E8\u5F00\u624D\u4F1A\u8FDB\u5165\u5F85\u5E94\u7528\u3002",
+  "health.hint.na": "\u8FD9\u53F0\u5BBF\u4E3B\u6CA1\u6709\u5BF9\u5E94\u7EC4\u4EF6\u6216\u6587\u4EF6\uFF0C\u8FDB\u4E86\u4E5F\u4E0D\u8FDB\u5206\u6BCD\u3002\u6C38\u8FDC 0 \u5DE5\u4F5C\u91CF\u3002",
+  "health.verdict.pending": "\u6709 {n} \u6761\u5DF2\u542F\u7528\u4F46\u8FD8\u6CA1\u5199\u76D8",
+  "evidence.summary": "\u4EC5\u6709\u5206\u7EC4\u6458\u8981",
+  "evidence.unknown": "\u65E0\u6CD5\u6838\u5B9E",
+  "health.verdict.ok": "\u5BBF\u4E3B\u8865\u4E01\u5168\u90E8\u5C31\u4F4D",
+  "groups.unreadable": "\u8BFB\u53D6\u5931\u8D25\uFF0C\u8865\u4E01\u660E\u7EC6\u6682\u4E0D\u53EF\u7528\uFF1B\u8BF7\u5237\u65B0\u91CD\u8BD5\u3002",
+  "filter.all": "\u5168\u90E8",
+  "filter.pending": "\u5F85\u5E94\u7528",
+  "filter.off": "\u672A\u542F\u7528",
+  "filter.na": "\u672C\u7AEF\u4E0D\u9002\u7528",
+  "filter.hint": "\u70B9\u7EC4\u6807\u9898\u5C55\u5F00\u660E\u7EC6\uFF1B\u60AC\u505C\u72B6\u6001\u770B\u539F\u56E0",
+  "filter.empty": "\u8FD9\u4E2A\u8FC7\u6EE4\u6761\u4EF6\u4E0B\u6CA1\u6709\u8865\u4E01\u3002",
+  "sw.permission": "\u6743\u9650\u8865\u4E01",
+  "sw.permission.desc": "\u8BA9\u5BBF\u4E3B\u4E0D\u518D\u7528\u6C99\u7BB1\u8FB9\u754C\u548C\u5BA1\u6279\u5F39\u7A97\u62E6\u5DE5\u5177\u8C03\u7528\u3002\u9ED8\u8BA4\u5F00\u3002",
+  "sw.permission.hint": "\u6539\u5199\u5BBF\u4E3B\u91CC\u7684\u6C99\u7BB1 / \u5BA1\u6279 / \u81EA\u52A8\u653E\u884C\u4EE3\u7801\uFF0C\u5171 14 \u6761\uFF1A#6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62\u3002\u5F00\u542F\u540E\u5FC5\u987B\u70B9\u300C\u5E94\u7528\u300D\u624D\u5199\u76D8\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\uFF1B\u9700\u8981\u4F60\u624B\u52A8\u9000\u51FA\u91CD\u5F00 DSH \u624D\u751F\u6548\u3002\u5173\u6389\u5B83\u4E0D\u4F1A\u7ACB\u523B\u56DE\u6EDA\u5DF2\u5199\u5165\u7684\u6587\u4EF6\uFF0C\u4E0B\u6B21\u300C\u5E94\u7528\u300D\u624D\u56DE\u6EDA\u3002",
+  "sw.context": "\u4E0A\u4E0B\u6587\u7BA1\u7406",
+  "sw.context.desc": "\u5173\u6389\u91CD\u590D\u8C03\u7528\u63D0\u9192\u4E0E\u5DE5\u5177\u7ED3\u679C\u4FEE\u526A\u3002\u9ED8\u8BA4\u5173\uFF0C\u5F00\u4E86 token \u4F1A\u6DA8\u3002",
+  "sw.context.hint": "\u5BF9\u5E94 #18 \u91CD\u590D\u8C03\u7528\u63D0\u9192\u3001#19 \u5DE5\u5177\u7ED3\u679C\u4FEE\u526A\u3002\u5173\u6389\u540E\u6A21\u578B\u4E0D\u518D\u6536\u5230\u91CD\u590D\u8C03\u7528\u63D0\u9192\uFF0C\u957F\u5DE5\u5177\u8F93\u51FA\u4E5F\u4E0D\u518D\u88AB\u88C1\u526A\u2014\u2014\u4EE3\u4EF7\u662F token \u6301\u7EED\u589E\u957F\uFF0C\u91CD\u5EA6\u4F1A\u8BDD\u66F4\u5BB9\u6613\u649E\u4E0A\u9650\u3002\u9ED8\u8BA4\u5173\u3002",
+  "sw.chip.pending": "{n} \u6761 \xB7 \u5F85\u5199\u5165",
+  "sw.chip.on": "{n} \u6761 \xB7 \u5DF2\u5199\u5165 {written} \xB7 \u5F85\u5199 {pending}",
+  "detail.title": "\u8865\u4E01\u660E\u7EC6",
+  "detail.reading": "\u8BFB\u53D6\u4E2D",
+  "detail.unknown": "\u72B6\u6001\u672A\u77E5",
+  "detail.unlocated": "\u672A\u5B9A\u4F4D\u5BBF\u4E3B",
+  "sw.chip.written": "\u5DF2\u5199\u5165 {n}",
+  "sw.chip.off": "{n} \u6761 \xB7 \u672A\u542F\u7528",
+  "sw.saving": "\u4FDD\u5B58\u4E2D\u2026",
+  "sw.saved": "\u5DF2\u4FDD\u5B58\uFF0C\u70B9\u300C\u5E94\u7528\u300D\u5199\u5165\u5BBF\u4E3B",
+  "sw.fail": "\u4FDD\u5B58\u5931\u8D25\uFF1A{error}",
+  "sw.applyHint": "\u5F00\u5173\u53EA\u6539\u63D2\u4EF6\u8BBE\u7F6E\uFF1B\u8981\u5199\u8FDB\u5BBF\u4E3B\uFF0C\u8FD8\u5F97\u70B9\u4E0A\u9762\u7684\u300C\u5E94\u7528\u300D\u518D\u9000\u51FA\u91CD\u5F00\u3002",
+  "steps.title": "\u5199\u5165\u6D41\u7A0B",
+  "steps.1.t": "\u70B9\u300C\u5E94\u7528\u300D",
+  "steps.1.d": "\u628A\u5F00\u5173\u5BF9\u5E94\u7684\u8865\u4E01\u5199\u8FDB\u5BBF\u4E3B\u6587\u4EF6\uFF0C\u5199\u524D\u81EA\u52A8\u5907\u4EFD\u3002",
+  "steps.2.t": "\u624B\u52A8\u9000\u51FA DSH",
+  "steps.2.d": "\u7531\u4F60\u81EA\u5DF1\u9000\u51FA\u5E76\u91CD\u65B0\u6253\u5F00\uFF0C\u672C\u63D2\u4EF6\u4E0D\u4F1A\u66FF\u4F60\u91CD\u542F\u3002",
+  "steps.3.t": "\u56DE\u6765\u6838\u5BF9",
+  "steps.3.d": "\u672C\u9875\u6570\u5B57\u5E94\u4E3A\u5168\u7EFF\uFF1B\u53C8\u51FA\u73B0\u5F85\u5E94\u7528\u8BF4\u660E\u5BBF\u4E3B\u5347\u7EA7\u8986\u76D6\u8FC7\uFF0C\u518D\u70B9\u4E00\u6B21\u3002",
+  "steps.foot": "\u300C\u672C\u7AEF\u4E0D\u9002\u7528\u300D\u4E0D\u8FDB\u5206\u6BCD\uFF0C\u4E5F\u4E0D\u8BA1\u5165\u4EFB\u4F55\u5931\u8D25\u8BA1\u6570\u3002",
+  "hint.applied": "\u951A\u70B9\u5DF2\u66FF\u6362\uFF0C\u91CD\u542F\u540E\u751F\u6548\u3002",
+  "hint.pending": "\u951A\u70B9\u8FD8\u5728\u539F\u6587\u91CC\uFF0C\u70B9\u300C\u5E94\u7528\u300D\u5199\u5165\u3002",
+  "hint.disabled": "\u5F52\u5C5E\u5F00\u5173\u5173\u95ED\uFF0C\u672A\u5199\u5165\u3002\u4E0D\u662F\u5931\u8D25\u3002",
+  "hint.na": "\u8FD9\u53F0\u5BBF\u4E3B\u6CA1\u6709\u5BF9\u5E94\u7EC4\u4EF6\u3002",
+  "hint.skipped": "\u76EE\u6807\u6587\u4EF6\u4E0D\u5728\u672C\u5B89\u88C5\u91CC\u3002",
+  "hint.missing_file": "\u76EE\u6807\u6587\u4EF6\u4E0D\u5728\u672C\u5B89\u88C5\u91CC\u3002",
+  "hint.drifted": "\u951A\u70B9\u6F02\u79FB\uFF1A\u5BBF\u4E3B\u6539\u8FC7\u8FD9\u6BB5\u4EE3\u7801\uFF0C\u9700\u8981\u66F4\u65B0\u8865\u4E01\u3002",
+  "hint.unmatched": "\u951A\u70B9\u6CA1\u5BF9\u4E0A\uFF1A\u5BBF\u4E3B\u7248\u672C\u4E0D\u5339\u914D\u3002",
+  "hint.partial": "\u90E8\u5206\u76EE\u6807\u6587\u4EF6\u547D\u4E2D\uFF0C\u53E6\u4E00\u4E2A\u5B58\u5728\u4F46\u6CA1\u5BF9\u4E0A\u3002",
+  "hint.off": "\u5DF2\u5173\u95ED\u3002",
+  "metric.unverifiedShort": "{n} \u9879\u672A\u6838\u5B9E",
+  "file.missing_file": "\u7F3A\u5C11\u9884\u8BBE\u6587\u4EF6",
+  "file.unreadable": "\u65E0\u6CD5\u8BFB\u53D6",
+  "file.unknown": "\u65E0\u6CD5\u9759\u6001\u6838\u5B9E",
+  "hint.unknown": "\u72B6\u6001\u672A\u77E5\u3002",
   "status.applied": "\u5DF2\u5E94\u7528",
   "status.off": "\u5DF2\u5173\u95ED",
   "status.pending": "\u5F85\u5E94\u7528",
@@ -9461,6 +9526,9 @@ var zh = {
   "metric.sealed.count": "\u5F85\u89E3\u5F00",
   "metric.lost": "\u8865\u4E01\u5DF2\u4E22\u5931\uFF0C\u8BF7\u91CD\u65B0\u5E94\u7528",
   "metric.lost.count": "\u5DF2\u4E22\u5931",
+  "rewind.settings": "\u4F1A\u8BDD\u5916\u89C2",
+  "rewind.show": "\u663E\u793A\u8F93\u5165\u6846\u56DE\u9000\u6309\u94AE",
+  "rewind.readAgain": "\u91CD\u65B0\u8BFB\u53D6",
   "rewind.label": "\u56DE\u9000",
   "rewind.aria": "\u56DE\u9000",
   "rewind.busy": "\u56DE\u9000\u4E2D\u2026",
@@ -9581,6 +9649,7 @@ var en = {
   "metric.driftedShort": "Drifted {n}",
   "metric.disabledShort": "Opt-in off {n}",
   "metric.skipShort": "Skipped {n}",
+  "metric.naShort": "Not for this host {n}",
   "metric.unlocated.count": "\u2014",
   "metric.shim": "shim",
   "metric.shim.na": "Not needed here",
@@ -9589,6 +9658,70 @@ var en = {
   "metric.bak.hint": "Backup",
   "table.patch": "Item",
   "table.status": "Status",
+  "health.applied": "Applied",
+  "status.title": "Purge status",
+  "scan.recent": "Scanned {time} \xB7 click to refresh",
+  "scan.hint": "Click to rescan the host",
+  "health.pending": "Pending",
+  "health.off": "Not enabled",
+  "health.na": "Not for this host",
+  "health.denomUnit": "patches written to the host",
+  "health.hint.applied": "Anchors replaced; effective after a restart.",
+  "health.hint.pending": "Switch is on but nothing is written yet. Apply to write; a backup is taken first.",
+  "health.hint.off": "Its switch is off, so nothing was written. Not a failure.",
+  "health.hint.na": "This host has no such component or file. Excluded from the denominator; zero work.",
+  "health.verdict.pending": "{n} enabled but not written yet",
+  "evidence.summary": "Group summary only",
+  "evidence.unknown": "Cannot verify",
+  "health.verdict.ok": "All host patches in place",
+  "groups.unreadable": "Read failed; patch detail is unavailable. Refresh to retry.",
+  "filter.all": "All",
+  "filter.pending": "Pending",
+  "filter.off": "Not enabled",
+  "filter.na": "Not for this host",
+  "filter.hint": "Open a group for rows; hover a status for the reason",
+  "filter.empty": "No patches match this filter.",
+  "sw.permission": "Permission patches",
+  "sw.permission.desc": "Stop the host from blocking tool calls behind sandbox and approval gates. On by default.",
+  "sw.permission.hint": "Rewrites the host sandbox / approval / auto-grant code: 14 patches (#6 #7 #8 #9 #10 #13 #14 #15 #16 #35 #51 #59 #60 #62). Nothing is written until you press Apply, and a backup is taken first; you must quit and reopen DSH yourself. Turning it off does not roll back what is already written; the next Apply does.",
+  "sw.context": "Context management",
+  "sw.context.desc": "Turn off the repeat-call reminder and tool-result pruning. Off by default; tokens grow when on.",
+  "sw.context.hint": "#18 repeat-tool reminder and #19 tool-result pruner. With them off the model no longer gets repeat-call reminders and long tool output is kept in full; the cost is steady token growth. Off by default.",
+  "sw.chip.pending": "{n} patches \xB7 to write",
+  "sw.chip.on": "{n} patches \xB7 {written} written \xB7 {pending} to write",
+  "detail.title": "Patch detail",
+  "detail.reading": "Reading",
+  "detail.unknown": "Unknown",
+  "detail.unlocated": "Host not located",
+  "sw.chip.written": "{n} written",
+  "sw.chip.off": "{n} patches \xB7 not enabled",
+  "sw.saving": "Saving\u2026",
+  "sw.saved": "Saved. Press Apply to write to the host",
+  "sw.fail": "Save failed: {error}",
+  "sw.applyHint": "The switch only changes the plugin setting. Press Apply above and restart to reach the host.",
+  "steps.title": "Write flow",
+  "steps.1.t": "Press Apply",
+  "steps.1.d": "Writes the selected patches into host files, with a backup first.",
+  "steps.2.t": "Quit DSH yourself",
+  "steps.2.d": "You close and reopen it; this plugin never restarts the app.",
+  "steps.3.t": "Come back and check",
+  "steps.3.d": "Everything should be green. Pending again means a host upgrade overwrote it; apply once more.",
+  "steps.foot": '"Not for this host" is excluded from the denominator and from every failure count.',
+  "hint.applied": "Anchors replaced; effective after restart.",
+  "hint.pending": "Anchor still present; press Apply to write.",
+  "hint.disabled": "Its group switch is off; nothing written.",
+  "hint.na": "This host has no such component.",
+  "hint.skipped": "Target file is not part of this install.",
+  "hint.missing_file": "Target file is not part of this install.",
+  "hint.drifted": "Drifted: the host changed this code; the patch needs an update.",
+  "hint.unmatched": "No match: host version mismatch.",
+  "hint.partial": "Some targets matched, another existed but did not match.",
+  "hint.off": "Off.",
+  "metric.unverifiedShort": "{n} unverified",
+  "file.missing_file": "Missing preset file",
+  "file.unreadable": "Unreadable",
+  "file.unknown": "Cannot verify statically",
+  "hint.unknown": "Unknown state.",
   "status.applied": "Applied",
   "status.off": "Off",
   "status.pending": "Pending",
@@ -9841,6 +9974,9 @@ var en = {
   "metric.lost.count": "Lost",
   "status.unlocated": "Not located",
   "metric.unlocated": "This install was not found yet",
+  "rewind.settings": "Conversation appearance",
+  "rewind.show": "Show the rewind button in the composer",
+  "rewind.readAgain": "Try again",
   "rewind.label": "Undo",
   "rewind.aria": "Undo",
   "rewind.busy": "Undoing\u2026",
@@ -10045,6 +10181,161 @@ function AuthGate(props) {
   );
 }
 
+// src/state/rewind-visibility.js
+var visible = false;
+var pendingRead;
+var listeners = /* @__PURE__ */ new Set();
+function subscribeRewind(listener) {
+  listeners.add(listener);
+  listener(visible);
+  return () => listeners.delete(listener);
+}
+function publish(value) {
+  visible = value;
+  for (const listener of listeners) listener(value);
+  return value;
+}
+function valueFrom(reply) {
+  if (reply?.ok !== true || typeof reply.rewind !== "boolean")
+    throw new Error(reply?.error || "\u65E0\u6CD5\u8BFB\u53D6\u56DE\u9000\u6309\u94AE\u8BBE\u7F6E");
+  return reply.rewind;
+}
+function readRewindVisibility() {
+  if (pendingRead) return pendingRead;
+  const request = apiJson("/dsh-purge/boost").then(
+    (reply) => pendingRead === request ? publish(valueFrom(reply)) : visible
+  ).finally(() => {
+    if (pendingRead === request) pendingRead = void 0;
+  });
+  pendingRead = request;
+  return request;
+}
+async function saveRewindVisibility(value) {
+  const reply = await apiJson("/dsh-purge/boost", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ rewind: value })
+  });
+  const saved = valueFrom(reply);
+  pendingRead = void 0;
+  return publish(saved);
+}
+
+// src/components/rewind-setting.js
+function RewindSetting() {
+  const t = useT();
+  const [visible2, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    let active = true;
+    const unsubscribe = subscribeRewind(setVisible);
+    readRewindVisibility().then(
+      () => {
+        if (active) setReady(true);
+      },
+      (e) => {
+        if (active) setError(e.message);
+      }
+    );
+    return () => {
+      active = false;
+      unsubscribe();
+    };
+  }, [attempt]);
+  async function change(event) {
+    const checked = event.target.checked;
+    setBusy(true);
+    setError("");
+    try {
+      await saveRewindVisibility(checked);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  return h(
+    "section",
+    { className: "dshpp-composer-settings" },
+    h("h3", null, t("rewind.settings")),
+    h(
+      "label",
+      { className: "dshpp-setting-row" },
+      t("rewind.show"),
+      h("input", {
+        type: "checkbox",
+        role: "switch",
+        checked: visible2,
+        disabled: !ready || busy,
+        onChange: change
+      })
+    ),
+    error && h(
+      "div",
+      { role: "alert" },
+      error,
+      !ready && h(
+        "button",
+        {
+          type: "button",
+          onClick: () => {
+            setError("");
+            setAttempt(attempt + 1);
+          }
+        },
+        t("rewind.readAgain")
+      )
+    )
+  );
+}
+
+// ../../lib/patch-state.mjs
+function patchNotApplicable(patch, status) {
+  return status === "na" || status === "off" || status === "disabled" || status === "not_needed" && patch?.id === 76 || status === "missing_file" && patch?.optional === true || status === "skipped" && patch?.settleWhenAbsent === true;
+}
+function patchStateCategory(patch, status) {
+  if (patchNotApplicable(patch, status)) return "inactive";
+  if (status === "applied" || status === "already") return "applied";
+  if (status === "pending") return "pending";
+  if (!status || ["unknown", "unreadable", "unlocated"].includes(status)) return "unknown";
+  return "broken";
+}
+function summarizePatchRows(rows) {
+  const out = {
+    all: 0,
+    total: 0,
+    applied: 0,
+    pending: 0,
+    broken: 0,
+    unknown: 0,
+    not_applicable: 0,
+    partial: 0,
+    missing_file: 0,
+    skipped: 0,
+    na: 0,
+    off: 0,
+    disabled: 0,
+    unmatched: 0,
+    drifted: 0
+  };
+  for (const row of rows || []) {
+    const status = row.status ?? row.st;
+    const category = patchStateCategory(row, status);
+    out.all++;
+    if (["partial", "missing_file", "skipped", "na", "off", "disabled", "unmatched", "drifted"].includes(status))
+      out[status]++;
+    if (category === "inactive") out.not_applicable++;
+    else {
+      out.total++;
+      out[category]++;
+    }
+  }
+  return out;
+}
+
 // src/components/patch-status.js
 function statusKind(st) {
   if (st === "applied" || st === "already") return "ok";
@@ -10066,10 +10357,11 @@ function statusLabel(st, t) {
   if (st === "partial") return t("status.partial");
   if (st === "drifted") return t("status.drifted");
   if (st === "disabled") return t("status.disabled");
-  if (st === "skipped") return t("status.skipped");
-  if (st === "missing_file") return t("skip");
+  if (st === "skipped") return t("health.na");
+  if (st === "missing_file") return t("file.missing_file");
+  if (st === "unknown" || st === "unreadable") return t("file." + st);
   if (st === "unlocated") return t("status.unlocated");
-  if (st === "na") return t("status.na");
+  if (st === "na") return t("health.na");
   return st || t("unknown");
 }
 var LAYER_GROUP = {
@@ -10080,141 +10372,557 @@ var LAYER_GROUP = {
   "0.2.0 \u517C\u5BB9": "dsh20"
 };
 var GROUP_ORDER = ["prompt", "code", "tools", "compat", "dsh20"];
-function patchRowsOf(state) {
-  if (!state || !state.ai_base) return [];
-  const fromList = Array.isArray(state.patches) ? state.patches : null;
-  const rows = fromList ? fromList.map((p) => ({
-    id: Number(p.id),
-    st: p.status || "missing_file",
-    layer: p.layer || ""
-  })) : Object.keys(state.patch_status || {}).map((id) => ({
-    id: Number(id),
-    st: state.patch_status[id],
-    layer: ""
-  }));
-  return rows.filter((r) => r.st && r.st !== "na" && Number.isFinite(r.id));
+var PERMISSION_PATCH_IDS = [
+  6,
+  7,
+  8,
+  9,
+  10,
+  13,
+  14,
+  15,
+  16,
+  35,
+  51,
+  59,
+  60,
+  62
+];
+var CONTEXT_PATCH_IDS = [18, 19];
+var PERMISSION_SET = new Set(PERMISSION_PATCH_IDS);
+var CONTEXT_SET = new Set(CONTEXT_PATCH_IDS);
+function patchGroupOf(id) {
+  const n = Number(id);
+  if (PERMISSION_SET.has(n)) return "permission";
+  if (CONTEXT_SET.has(n)) return "context";
+  return "normal";
+}
+function patchEvidence(state) {
+  const empty = { kind: "unknown", rows: [], groups: [] };
+  if (!state?.ai_base || state.ok === false) return empty;
+  const validId = (id) => (typeof id === "number" || typeof id === "string" && /^\d+$/.test(id)) && Number.isSafeInteger(Number(id)) && Number(id) >= 0;
+  const status = (st) => typeof st === "string" && st ? st : "unknown";
+  const rows = Array.isArray(state.patch_rows) ? state.patch_rows : [];
+  const map = state.patch_status;
+  const source = rows.length ? rows : map && typeof map === "object" && !Array.isArray(map) ? Object.entries(map).map(([id, st]) => ({
+    id,
+    status: st,
+    name: state.patch_names?.[id]
+  })) : [];
+  if (source.length && source.every((p) => validId(p?.id)) && new Set(source.map((p) => Number(p.id))).size === source.length)
+    return {
+      kind: "detail",
+      groups: [],
+      rows: source.map((p) => ({
+        id: Number(p.id),
+        st: status(p.status),
+        layer: p.layer || "",
+        name: p.name || "",
+        optional: p.optional === true,
+        settleWhenAbsent: p.settleWhenAbsent === true
+      }))
+    };
+  const groups = Array.isArray(state.patches) ? state.patches.filter(
+    (p) => p && typeof p === "object" && !Array.isArray(p)
+  ) : [];
+  return groups.length ? { kind: "summary", rows: [], groups } : empty;
+}
+function isNaRow(row) {
+  return row.st !== "disabled" && row.st !== "off" && patchNotApplicable(row, row.st);
+}
+function patchGroupCounts(rows) {
+  const counts = summarizePatchRows(rows);
+  return {
+    applied: counts.applied,
+    pending: counts.pending + counts.broken + counts.unknown,
+    off: counts.disabled + counts.off,
+    na: counts.not_applicable - counts.disabled - counts.off,
+    total: counts.all,
+    denom: counts.total
+  };
 }
 function tallyPatches(rows) {
-  const out = {
-    applied: 0,
-    pending: 0,
-    unmatched: 0,
-    partial: 0,
-    drifted: 0,
-    disabled: 0,
-    skipped: 0,
-    total: 0
+  const counts = summarizePatchRows(rows);
+  return {
+    applied: counts.applied,
+    pending: counts.pending,
+    unmatched: counts.unmatched,
+    partial: counts.partial,
+    drifted: counts.drifted,
+    disabled: counts.disabled + counts.off,
+    skipped: counts.skipped,
+    unverified: counts.unknown + (rows || []).filter(
+      (row) => row.st === "missing_file" && !patchNotApplicable(row, row.st)
+    ).length,
+    total: counts.all
   };
-  for (const row of rows || []) {
-    out.total += 1;
-    if (row.st === "applied" || row.st === "already") out.applied += 1;
-    else if (row.st === "pending") out.pending += 1;
-    else if (row.st === "unmatched") out.unmatched += 1;
-    else if (row.st === "partial") out.partial += 1;
-    else if (row.st === "drifted") out.drifted += 1;
-    else if (row.st === "disabled") out.disabled += 1;
-    else out.skipped += 1;
-  }
-  return out;
 }
-function PatchGroups({ state }) {
-  const t = useT();
-  const [open, setOpen] = useState({});
-  if (state?.ok === false)
-    return h(
-      "p",
-      { role: "status" },
-      "\u8BFB\u53D6\u5931\u8D25\uFF0C\u8865\u4E01\u660E\u7EC6\u6682\u4E0D\u53EF\u7528\uFF1B\u8BF7\u5237\u65B0\u91CD\u8BD5\u3002"
-    );
-  if (!state || !state.patch_status)
-    return h("div", { className: "dshpp-skel", style: { height: 120 } });
-  const located = !!state.ai_base;
-  if (!located) return null;
-  const grouped = /* @__PURE__ */ new Map();
-  for (const row of patchRowsOf(state)) {
-    const key = LAYER_GROUP[row.layer] || "code";
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push(row);
-  }
-  return GROUP_ORDER.filter((key) => grouped.has(key)).map((key) => {
-    const rows = grouped.get(key).slice().sort((a, b) => a.id - b.id);
-    if (!rows.length) return null;
-    const tally = tallyPatches(rows);
-    const notes = [];
-    if (tally.pending)
-      notes.push(t("metric.pendingShort", { n: tally.pending }));
-    if (tally.unmatched)
-      notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-    if (tally.partial)
-      notes.push(t("metric.partialShort", { n: tally.partial }));
-    if (tally.drifted)
-      notes.push(t("metric.driftedShort", { n: tally.drifted }));
-    if (tally.disabled)
-      notes.push(t("metric.disabledShort", { n: tally.disabled }));
-    if (tally.skipped) notes.push(t("metric.skipShort", { n: tally.skipped }));
-    const expanded = !!open[key];
-    return h(
+function Tile({ kind, label, value, title, text }) {
+  return h(
+    "div",
+    { className: "dshpp-tile is-" + kind },
+    h(
       "div",
-      { key, className: "dshpp-group" },
+      { className: "dshpp-tile-k" },
+      label,
+      h(HelpTip, { title, label }, text)
+    ),
+    h("div", { className: "dshpp-tile-v" }, String(value))
+  );
+}
+function PatchHealth({ state }) {
+  const t = useT();
+  if (!state || !state.ai_base) return null;
+  const evidence = patchEvidence(state);
+  if (evidence.kind !== "detail")
+    return h("p", { role: "status" }, t("evidence." + evidence.kind));
+  const counts = patchGroupCounts(evidence.rows);
+  const denom = Math.max(counts.denom, 1);
+  const pct = (n) => n / denom * 100;
+  const verdict = counts.pending ? t("health.verdict.pending", { n: counts.pending }) : t("health.verdict.ok");
+  return h(
+    "div",
+    { className: "dshpp-health" },
+    h(
+      "div",
+      { className: "dshpp-health-top" },
+      h(
+        "b",
+        { className: "dshpp-health-big" },
+        String(counts.applied),
+        h("small", null, " / " + counts.denom + " " + t("health.denomUnit"))
+      ),
+      h("span", { className: "dshpp-health-verdict" }, verdict)
+    ),
+    h(
+      "div",
+      { className: "dshpp-bar", "aria-hidden": "true" },
+      h("i", {
+        className: "is-ok",
+        style: { width: pct(counts.applied) + "%" }
+      }),
+      h("i", {
+        className: "is-wait",
+        style: { width: pct(counts.pending) + "%" }
+      }),
+      h("i", {
+        className: "is-off",
+        style: { width: pct(counts.off) + "%" }
+      })
+    ),
+    h(
+      "div",
+      { className: "dshpp-tiles" },
+      h(Tile, {
+        kind: "ok",
+        label: t("health.applied"),
+        value: counts.applied,
+        title: t("health.applied"),
+        text: t("health.hint.applied")
+      }),
+      h(Tile, {
+        kind: "wait",
+        label: t("health.pending"),
+        value: counts.pending,
+        title: t("health.pending"),
+        text: t("health.hint.pending")
+      }),
+      h(Tile, {
+        kind: "off",
+        label: t("health.off"),
+        value: counts.off,
+        title: t("health.off"),
+        text: t("health.hint.off")
+      }),
+      h(Tile, {
+        kind: "na",
+        label: t("health.na"),
+        value: counts.na,
+        title: t("health.na"),
+        text: t("health.hint.na")
+      })
+    )
+  );
+}
+function Switch({ on, busy, label, desc, hintTitle, hint, chip, onToggle }) {
+  const t = useT();
+  return h(
+    "div",
+    { className: "dshpp-sw" + (on ? " is-on" : "") },
+    h(
+      "div",
+      { className: "dshpp-sw-h" },
+      h(
+        "div",
+        { className: "dshpp-sw-t" },
+        label,
+        h(HelpTip, { title: hintTitle, label }, hint)
+      ),
       h(
         "button",
         {
           type: "button",
-          className: "dshpp-group-h",
-          "aria-expanded": expanded ? "true" : "false",
-          onClick: () => setOpen((prev) => Object.assign({}, prev, { [key]: !prev[key] }))
+          className: "dshpp-track" + (on ? " is-on" : ""),
+          role: "switch",
+          "aria-checked": on ? "true" : "false",
+          "aria-label": label,
+          disabled: busy,
+          onClick: onToggle
         },
-        h("strong", null, t("group." + key)),
-        h(
-          "span",
-          { className: "dshpp-count" },
-          tally.applied + "/" + tally.total + (notes.length ? " \xB7 " + notes.join(" \xB7 ") : "")
-        )
-      ),
-      expanded ? h(
-        "table",
-        { className: "dshpp-table" },
-        h(
-          "thead",
-          null,
-          h(
-            "tr",
+        h("span", { className: "dshpp-knob" })
+      )
+    ),
+    h("p", { className: "dshpp-sw-d" }, desc),
+    h(
+      "div",
+      { className: "dshpp-sw-f" },
+      h("span", { className: "dshpp-chip" + (on ? " is-on" : "") }, chip),
+      busy ? h("span", { className: "dshpp-chip" }, t("sw.saving")) : null
+    )
+  );
+}
+function PatchGroupSwitches({ state, onSaved }) {
+  const t = useT();
+  const [flags, setFlags] = useState(null);
+  const [busy, setBusy] = useState("");
+  const [note, setNote] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    apiJson("/dsh-purge/boost").then((d) => {
+      if (!alive || !d || !d.ok) return;
+      setFlags({
+        permissionPatches: d.permissionPatches !== false,
+        contextManagement: d.contextManagement === true
+      });
+    }).catch(() => {
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const { kind, rows } = patchEvidence(state);
+  const permApplied = rows.filter(
+    (r) => patchGroupOf(r.id) === "permission" && r.st === "applied"
+  ).length;
+  const permPending = rows.filter(
+    (r) => patchGroupOf(r.id) === "permission" && r.st === "pending"
+  ).length;
+  const ctxApplied = rows.filter(
+    (r) => patchGroupOf(r.id) === "context" && r.st === "applied"
+  ).length;
+  const toggle = (key) => {
+    if (!flags || busy) return;
+    const next = !flags[key];
+    setBusy(key);
+    setNote(null);
+    apiJson("/dsh-purge/boost", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ [key]: next })
+    }).then((d) => {
+      if (!d || !d.ok) throw new Error(d && d.error || "save failed");
+      setFlags({
+        permissionPatches: d.permissionPatches !== false,
+        contextManagement: d.contextManagement === true
+      });
+      setNote({ kind: "ok", text: t("sw.saved") });
+      if (typeof onSaved === "function") onSaved();
+    }).catch(
+      (e) => setNote({ kind: "error", text: t("sw.fail", { error: String(e) }) })
+    ).then(() => setBusy(""));
+  };
+  const permOn = flags ? flags.permissionPatches : true;
+  const ctxOn = flags ? flags.contextManagement : false;
+  return h(
+    "div",
+    null,
+    h(
+      "div",
+      { className: "dshpp-switches" },
+      h(Switch, {
+        on: permOn,
+        busy: busy === "permissionPatches",
+        label: t("sw.permission"),
+        desc: t("sw.permission.desc"),
+        hintTitle: t("sw.permission"),
+        hint: t("sw.permission.hint"),
+        chip: kind !== "detail" ? t("evidence." + kind) : permOn ? t("sw.chip.on", {
+          n: PERMISSION_PATCH_IDS.length,
+          written: permApplied,
+          pending: permPending
+        }) : t("sw.chip.off", { n: PERMISSION_PATCH_IDS.length }),
+        onToggle: () => toggle("permissionPatches")
+      }),
+      h(Switch, {
+        on: ctxOn,
+        busy: busy === "contextManagement",
+        label: t("sw.context"),
+        desc: t("sw.context.desc"),
+        hintTitle: t("sw.context"),
+        hint: t("sw.context.hint"),
+        chip: kind !== "detail" ? t("evidence." + kind) : ctxOn ? t("sw.chip.on", {
+          n: CONTEXT_PATCH_IDS.length,
+          written: ctxApplied,
+          pending: CONTEXT_PATCH_IDS.length - ctxApplied
+        }) : t("sw.chip.off", { n: CONTEXT_PATCH_IDS.length }),
+        onToggle: () => toggle("contextManagement")
+      })
+    ),
+    note ? h(
+      "p",
+      {
+        className: "dshpp-sw-note" + (note.kind === "error" ? " is-bad" : ""),
+        role: "status"
+      },
+      note.text
+    ) : null,
+    h("p", { className: "dshpp-sw-hint" }, t("sw.applyHint"))
+  );
+}
+var FILTERS = ["all", "pending", "off", "na"];
+function PatchGroups({ state }) {
+  const t = useT();
+  const [open, setOpen] = useState({ code: true });
+  const [filter, setFilter] = useState("all");
+  if (state?.ok === false)
+    return h("p", { role: "status" }, t("groups.unreadable"));
+  if (!state)
+    return h("div", { className: "dshpp-skel", style: { height: 120 } });
+  const located = !!state.ai_base;
+  if (!located) return null;
+  const { kind, rows: allRows, groups } = patchEvidence(state);
+  if (kind === "unknown")
+    return h("p", { role: "status" }, t("evidence.unknown"));
+  if (kind === "summary")
+    return h(
+      "ul",
+      { "aria-label": t("evidence.summary") },
+      groups.map(
+        (g, i) => h(
+          "li",
+          { key: i },
+          [
+            g.layer,
+            g.name,
+            Array.isArray(g.ids) ? g.ids.map((id) => "#" + id).join("\u3001") : g.id != null ? "#" + g.id : ""
+          ].filter(Boolean).join(" \xB7 "),
+          "\uFF1A",
+          statusLabel(typeof g.status === "string" ? g.status : "unknown", t),
+          Array.isArray(g.members) && h(
+            "ul",
             null,
-            h("th", null, "#"),
-            h("th", null, t("table.patch")),
-            h("th", null, t("table.status"))
-          )
-        ),
-        h(
-          "tbody",
-          null,
-          rows.map(
-            (r) => h(
-              "tr",
-              { key: r.id },
-              h("td", { className: "dshpp-id" }, "#" + r.id),
-              h("td", null, t("patch." + r.id)),
-              h(
-                "td",
-                null,
-                h(Pill, { value: r.st }),
-                r.st === "partial" ? h(
-                  "span",
-                  { className: "dshpp-sub" },
-                  t("status.partialDetail", {
-                    done: (state.patch_files?.[r.id] || []).filter(
-                      (f) => f.status === "applied"
-                    ).length,
-                    total: (state.patch_files?.[r.id] || []).length
-                  })
-                ) : null
+            g.members.filter((m) => m && typeof m.status === "string").map(
+              (m, j) => h(
+                "li",
+                { key: j },
+                "#" + m.id + "\uFF1A" + statusLabel(m.status, t)
               )
             )
           )
         )
-      ) : null
+      )
     );
+  const counts = patchGroupCounts(allRows);
+  const filterCount = {
+    all: counts.total,
+    pending: counts.pending,
+    off: counts.off,
+    na: counts.na
+  };
+  const kept = allRows.filter((row) => {
+    if (filter === "pending")
+      return ["pending", "unknown", "broken"].includes(
+        patchStateCategory(row, row.st)
+      );
+    if (filter === "off") return row.st === "disabled" || row.st === "off";
+    if (filter === "na") return isNaRow(row);
+    return true;
   });
+  const grouped = /* @__PURE__ */ new Map();
+  for (const row of kept) {
+    const key = LAYER_GROUP[row.layer] || "code";
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(row);
+  }
+  return h(
+    "div",
+    null,
+    h(
+      "div",
+      { className: "dshpp-filter" },
+      FILTERS.map(
+        (f) => h(
+          "button",
+          {
+            key: f,
+            type: "button",
+            className: "dshpp-fbtn" + (filter === f ? " is-cur" : ""),
+            onClick: () => setFilter(f)
+          },
+          t("filter." + f),
+          h("span", { className: "dshpp-fbtn-n" }, String(filterCount[f]))
+        )
+      ),
+      h("span", { className: "dshpp-filter-hint" }, t("filter.hint"))
+    ),
+    GROUP_ORDER.filter((key) => grouped.has(key)).map((key) => {
+      const rows = grouped.get(key).slice().sort((a, b) => a.id - b.id);
+      const tally = tallyPatches(rows);
+      const groupCounts = patchGroupCounts(rows);
+      const notes = [];
+      if (tally.pending)
+        notes.push(t("metric.pendingShort", { n: tally.pending }));
+      if (tally.unmatched)
+        notes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
+      if (tally.partial)
+        notes.push(t("metric.partialShort", { n: tally.partial }));
+      if (tally.unverified)
+        notes.push(t("metric.unverifiedShort", { n: tally.unverified }));
+      if (tally.drifted)
+        notes.push(t("metric.driftedShort", { n: tally.drifted }));
+      if (tally.disabled)
+        notes.push(t("metric.disabledShort", { n: tally.disabled }));
+      const expanded = !!open[key];
+      return h(
+        "div",
+        { key, className: "dshpp-group" },
+        h(
+          "button",
+          {
+            type: "button",
+            className: "dshpp-group-h",
+            "aria-expanded": expanded ? "true" : "false",
+            onClick: () => setOpen((prev) => Object.assign({}, prev, { [key]: !prev[key] }))
+          },
+          h("span", { className: "dshpp-caret" }, expanded ? "\u25BE" : "\u25B8"),
+          h("strong", null, t("group." + key)),
+          h(
+            "span",
+            { className: "dshpp-count" },
+            groupCounts.applied + " / " + (groupCounts.denom || 0)
+          ),
+          h(
+            "span",
+            { className: "dshpp-group-chips" },
+            groupCounts.applied ? h(
+              "span",
+              { className: "dshpp-pill is-ok" },
+              String(groupCounts.applied)
+            ) : null,
+            groupCounts.pending ? h(
+              "span",
+              { className: "dshpp-pill is-wait" },
+              String(groupCounts.pending)
+            ) : null,
+            groupCounts.off ? h(
+              "span",
+              { className: "dshpp-pill is-muted" },
+              String(groupCounts.off)
+            ) : null,
+            groupCounts.na ? h(
+              "span",
+              { className: "dshpp-pill is-miss" },
+              String(groupCounts.na)
+            ) : null
+          )
+        ),
+        notes.length ? h("p", { className: "dshpp-group-notes" }, notes.join(" \xB7 ")) : null,
+        expanded ? h(
+          "table",
+          { className: "dshpp-table" },
+          h(
+            "thead",
+            null,
+            h(
+              "tr",
+              null,
+              h("th", null, "#"),
+              h("th", null, t("table.patch")),
+              h("th", null, t("table.status"))
+            )
+          ),
+          h(
+            "tbody",
+            null,
+            rows.map(
+              (r) => h(
+                "tr",
+                { key: r.id },
+                h("td", { className: "dshpp-id" }, "#" + r.id),
+                h(
+                  "td",
+                  null,
+                  (t("patch." + r.id) !== "patch." + r.id ? t("patch." + r.id) : r.name) || "patch." + r.id,
+                  // 样稿是两行：中文名 + 英文标识符。英文只在有独立名字时补一行。
+                  r.name && t("patch." + r.id) !== "patch." + r.id ? h("span", { className: "dshpp-row-en" }, r.name) : null,
+                  // 已应用的行不再重复解释原因：60 行同样的字只会把表撑长。
+                  r.st === "applied" || r.st === "already" ? null : h(
+                    "span",
+                    { className: "dshpp-row-note" },
+                    r.st === "missing_file" && !isNaRow(r) ? t("file.missing_file") : t("hint." + (r.st || "unknown"))
+                  )
+                ),
+                h(
+                  "td",
+                  null,
+                  r.st === "missing_file" && !isNaRow(r) ? h(Pill, {
+                    value: "unmatched",
+                    label: t("file.missing_file")
+                  }) : h(Pill, { value: r.st }),
+                  (r.id === 71 || !["applied", "already"].includes(r.st)) && (state.patch_files?.[r.id] || []).map(
+                    (file) => h(
+                      "div",
+                      {
+                        key: file.path,
+                        className: "dshpp-row-note",
+                        style: { overflowWrap: "anywhere" }
+                      },
+                      (["missing_file", "unreadable", "unknown"].includes(
+                        file.status
+                      ) ? t("file." + file.status) : statusLabel(file.status, t)) + " \xB7 " + file.path
+                    )
+                  ),
+                  r.st === "partial" ? h(
+                    "span",
+                    { className: "dshpp-sub" },
+                    t("status.partialDetail", {
+                      done: (state.patch_files?.[r.id] || []).filter(
+                        (f) => f.status === "applied"
+                      ).length,
+                      total: (state.patch_files?.[r.id] || []).length
+                    })
+                  ) : null
+                )
+              )
+            )
+          )
+        ) : null
+      );
+    }),
+    !grouped.size ? h("p", { className: "dshpp-filter-hint" }, t("filter.empty")) : null
+  );
+}
+function PatchApplySteps() {
+  const t = useT();
+  const step = (n, title, desc) => h(
+    "div",
+    { className: "dshpp-step" },
+    h("span", { className: "dshpp-step-no" }, String(n)),
+    h("div", null, h("b", null, title), h("span", null, desc))
+  );
+  return h(
+    "div",
+    { className: "dshpp-flow" },
+    h("h4", null, t("steps.title")),
+    h(
+      "div",
+      { className: "dshpp-steps" },
+      step(1, t("steps.1.t"), t("steps.1.d")),
+      step(2, t("steps.2.t"), t("steps.2.d")),
+      step(3, t("steps.3.t"), t("steps.3.d"))
+    ),
+    h("p", { className: "dshpp-flow-foot" }, t("steps.foot"))
+  );
 }
 
 // src/components/primitives.js
@@ -10285,685 +10993,6 @@ function HelpTip({ title, children, label }) {
       title ? h("b", null, title) : null,
       children ? h("span", null, children) : null
     ) : null
-  );
-}
-
-// src/components/maintenance.js
-function useText() {
-  const t = useT();
-  return (key, fallback) => {
-    const hit = t(key);
-    return hit && hit !== key ? hit : fallback;
-  };
-}
-function StatusExtras() {
-  const [check, setCheck] = useState(null);
-  const [boost, setBoost] = useState(null);
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  const load = () => Promise.all([
-    apiJson("/dsh-purge/selfcheck").then(setCheck).catch(() => setCheck(null)),
-    apiJson("/dsh-purge/boost").then((r) => setBoost(!!r.enabled)).catch(() => setBoost(null))
-  ]);
-  useEffect(() => {
-    load();
-  }, []);
-  async function toggle() {
-    try {
-      const r = await apiJson("/dsh-purge/boost", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ enabled: !boost })
-      });
-      setBoost(!!r.enabled);
-      setNotice(r.enabled ? "\u5DF2\u5F00\u542F\uFF0C\u91CD\u542F\u540E\u751F\u6548" : "\u5DF2\u5173\u95ED\uFF0C\u91CD\u542F\u540E\u751F\u6548");
-    } catch (e) {
-      setNotice(e.message);
-    }
-  }
-  async function rerun() {
-    setBusy(true);
-    try {
-      setCheck(await apiJson("/dsh-purge/selfcheck"));
-    } catch (e) {
-      setNotice(e.message);
-    } finally {
-      setBusy(false);
-    }
-  }
-  const layers = check && Array.isArray(check.layers) ? check.layers : [];
-  const failed = layers.filter(
-    (l) => l.state === "broken" || !l.state && !l.ok
-  );
-  const pendingLayers = layers.filter((l) => l.state === "pending");
-  const uncertain = layers.filter(
-    (l) => ["inferred", "unknown"].includes(l.state)
-  );
-  const pendingPatches = pendingLayers.reduce(
-    (n, l) => n + (l.pending?.length || 0),
-    0
-  );
-  const total = layers.filter((layer) => layer.applicable !== false).length;
-  return h(
-    "section",
-    { className: "dshpp-card", "aria-label": "\u7834\u7532\u72B6\u6001" },
-    h(
-      "div",
-      { className: "dshpp-line" },
-      h(
-        "span",
-        { className: "dshpp-line-main" },
-        h("i", {
-          className: "dshpp-dot " + (check ? failed.length ? "is-bad" : pendingLayers.length || uncertain.length ? "is-warn" : "is-ok" : "")
-        }),
-        "\u7834\u7532\u81EA\u68C0",
-        h(
-          "b",
-          null,
-          check ? failed.length ? `${failed.length} \u5C42\u672A\u751F\u6548` : pendingLayers.length ? `${pendingPatches} \u6761\u5F85\u5E94\u7528` : uncertain.length ? `${uncertain.length} \u5C42\u9700\u786E\u8BA4` : `${total} \u5C42\u5168\u90E8\u5728\u4F4D` : "\u68C0\u6D4B\u4E2D\u2026"
-        )
-      ),
-      h(
-        "details",
-        { className: "dshpp-fold-inline" },
-        h("summary", null, "\u67E5\u770B\u9010\u5C42"),
-        h(
-          "div",
-          { className: "dshpp-checks" },
-          check && Array.isArray(check.layers) ? check.layers.map(
-            (layer) => h(
-              "div",
-              {
-                key: layer.title,
-                className: "dshpp-check" + (["pending", "inferred", "unknown"].includes(layer.state) ? " is-warn" : layer.ok ? "" : " is-bad")
-              },
-              h("i", {
-                className: "dshpp-dot " + (["pending", "inferred", "unknown"].includes(layer.state) ? "is-warn" : layer.ok ? "is-ok" : "is-bad")
-              }),
-              h("span", { className: "dshpp-check-name" }, layer.title),
-              h(
-                "span",
-                { className: "dshpp-check-val" },
-                layer.applicable === false ? "\u4E0D\u9002\u7528" : layer.state === "pending" ? `\u5F85\u5E94\u7528 #${(layer.pending || []).join("/#")}` : layer.state === "inferred" ? "\u5BBF\u4E3B\u63A8\u5BFC" : layer.state === "unknown" ? "\u672A\u786E\u8BA4" : `${layer.applied}/${layer.required ?? layer.total}`
-              ),
-              layer.note ? h(HelpTip, { title: layer.title }, layer.note) : null
-            )
-          ) : h("div", { className: "dshpp-muted" }, "\u68C0\u6D4B\u4E2D\u2026")
-        )
-      ),
-      h(
-        Btn,
-        { tiny: true, disabled: busy, onClick: rerun },
-        busy ? "\u2026" : "\u91CD\u6D4B"
-      ),
-      h(
-        Btn,
-        {
-          tiny: true,
-          title: "\u751F\u6210\u4E00\u6B21\u6027\u63A2\u9488\uFF1A\u4E0B\u4E00\u8F6E\u56DE\u590D\u91CC\u770B\u6A21\u578B\u6709\u6CA1\u6709\u539F\u6837\u56DE\u663E\u8BE5\u6807\u8BB0",
-          onClick: async () => {
-            try {
-              const r = await apiJson("/dsh-purge/probe", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: "{}"
-              });
-              setNotice(r.message || "");
-            } catch (e) {
-              setNotice(e.message);
-            }
-          }
-        },
-        "\u63A2\u9488"
-      )
-    ),
-    h(
-      "div",
-      { className: "dshpp-line" },
-      h(
-        "span",
-        { className: "dshpp-line-main" },
-        "\u7834\u7532\u5F3A\u5316\u6BB5",
-        h(
-          HelpTip,
-          { title: "\u7834\u7532\u5F3A\u5316\u6BB5" },
-          "\u5728\u7CFB\u7EDF\u63D0\u793A\u8BCD\u672B\u5C3E\u8FFD\u52A0\u4E00\u6BB5\u4E0E\u6CE8\u5165\u540C\u7EA7\u7684\u6587\u672C\uFF1A\u5C42\u7EA7\u58F0\u660E / \u62D2\u7EDD\u5373\u6545\u969C / \u6297\u8C04\u5A9A / \u591A\u8F6E\u91CD\u7533\u3002\u9ED8\u8BA4\u5F00\u542F\u3002"
-        ),
-        h("b", null, boost === null ? "\u2026" : boost ? "\u5DF2\u5F00\u542F" : "\u5DF2\u5173\u95ED")
-      ),
-      h(
-        Btn,
-        { tiny: true, disabled: boost === null, onClick: toggle },
-        boost ? "\u5173\u95ED" : "\u5F00\u542F"
-      ),
-      notice ? h("span", { className: "dshpp-muted" }, notice) : null
-    )
-  );
-}
-function assertMaintenanceResult(result) {
-  if (!result || typeof result !== "object")
-    throw new Error("\u7EF4\u62A4\u63A5\u53E3\u8FD4\u56DE\u4E86\u65E0\u6548\u7ED3\u679C");
-  if (result.ok === false) {
-    const errors = Array.isArray(result.errors) ? result.errors.filter(Boolean).join("\uFF1B") : "";
-    const partial = result.applied ? "\uFF1B\u90E8\u5206\u76EE\u6807\u5DF2\u66F4\u65B0\uFF0C\u8BF7\u91CD\u542F\u5BF9\u5E94 DSH \u8FDB\u7A0B\u52A0\u8F7D" : "";
-    throw new Error((result.error || errors || "\u7EF4\u62A4\u64CD\u4F5C\u5931\u8D25") + partial);
-  }
-}
-function maintenanceNotice(op, result) {
-  if (op === "backup") {
-    if (!result.id)
-      throw new Error("\u5907\u4EFD\u64CD\u4F5C\u672A\u8FD4\u56DE\u5907\u4EFD\u7F16\u53F7\uFF0C\u8BF7\u5237\u65B0\u5217\u8868\u6838\u5BF9\u7ED3\u679C");
-    return `\u5907\u4EFD\u5DF2\u521B\u5EFA\uFF1A${result.id}`;
-  }
-  if (op === "rollback")
-    return (result.note || "\u63D2\u4EF6\u56DE\u6EDA\u5DF2\u5B8C\u6210") + "\u3002\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002";
-  if (op === "update") {
-    if (result.applied === false || result.skipped)
-      return result.note || "\u672A\u5B89\u88C5\u65B0\u7248\u672C\uFF0C\u5F53\u524D\u5B89\u88C5\u672A\u66F4\u65B0\u3002";
-    if (result.applied || result.needRestart || result.restart_required) {
-      const version = result.release?.version || result.localVersion || result.remoteVersion;
-      const warnings = result.cleanup_warnings || [];
-      const cleanup = warnings.length ? `\u6E05\u7406\u672A\u5B8C\u6210\uFF08${warnings.map((w) => `${w.stage}:${w.code}`).join("\uFF0C")}\uFF09\uFF0C\u6B8B\u7559\u5DF2\u4FDD\u7559\u3002` : "";
-      return `${cleanup}\u63D2\u4EF6\u5DF2\u5B89\u88C5${version ? "\uFF1A" + version : ""}\u3002\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002`;
-    }
-    return result.note || "\u66F4\u65B0\u8BF7\u6C42\u5DF2\u5B8C\u6210\uFF0C\u8BF7\u5237\u65B0\u72B6\u6001\u6838\u5BF9\u5B89\u88C5\u7ED3\u679C\u3002";
-  }
-  return result.note || "\u7EF4\u62A4\u64CD\u4F5C\u5DF2\u5B8C\u6210";
-}
-function UpdatePreferences({
-  value,
-  status = {},
-  onSaved,
-  onOpenChannel
-}) {
-  const tr = useText();
-  const [saving, setSaving] = useState(false), [error, setError] = useState("");
-  const locked = useRef(false);
-  if (!value) return null;
-  async function save(patch) {
-    if (locked.current) return;
-    locked.current = true;
-    setSaving(true);
-    setError("");
-    try {
-      const result = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op: "preferences", value: patch })
-      });
-      assertMaintenanceResult(result);
-      onSaved(result.update_preferences);
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      locked.current = false;
-      setSaving(false);
-    }
-  }
-  return h(
-    "section",
-    { "aria-label": "\u81EA\u52A8\u66F4\u65B0\u8BBE\u7F6E", className: "dshpp-card" },
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "label",
-        null,
-        h("input", {
-          type: "checkbox",
-          checked: value.autoCheck,
-          disabled: saving,
-          onChange: (e) => save({ autoCheck: e.target.checked }),
-          "aria-label": "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0"
-        }),
-        "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0"
-      ),
-      h(HelpTip, {
-        title: "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0",
-        children: "\u542F\u52A8 30 \u79D2\u540E\u68C0\u67E5\uFF0C\u4E4B\u540E\u6309\u95F4\u9694\u68C0\u67E5\u3002\u5173\u95ED\u4E0D\u4F1A\u6539\u53D8\u5DF2\u4FDD\u5B58\u7684\u81EA\u52A8\u5B89\u88C5\u504F\u597D\uFF0C\u4F46\u4F1A\u6682\u505C\u81EA\u52A8\u5B89\u88C5\u3002"
-      }),
-      h(
-        "select",
-        {
-          "aria-label": "\u66F4\u65B0\u68C0\u67E5\u95F4\u9694",
-          value: value.intervalHours,
-          disabled: saving || !value.autoCheck,
-          onChange: (e) => save({ intervalHours: Number(e.target.value) })
-        },
-        [.../* @__PURE__ */ new Set([1, 6, 12, 24, value.intervalHours])].sort((a, b) => a - b).map((v) => h("option", { key: v, value: v }, `\u6BCF ${v} \u5C0F\u65F6`))
-      ),
-      // 「更新通道」与上面两个控件同行并排，尺寸与 select 一致：
-      // 它配置的正是这条更新检查走的代理/密钥，不该漂到标题最右端。
-      onOpenChannel ? h(
-        Btn,
-        {
-          tiny: true,
-          className: "dshpp-updch-open",
-          disabled: saving,
-          onClick: () => onOpenChannel(),
-          title: tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5")
-        },
-        tr("updch.open", "\u66F4\u65B0\u901A\u9053")
-      ) : null
-    ),
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "label",
-        null,
-        h("input", {
-          type: "checkbox",
-          checked: value.autoInstall,
-          disabled: saving,
-          onChange: (e) => save({ autoInstall: e.target.checked }),
-          "aria-label": "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0"
-        }),
-        "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0"
-      ),
-      h(HelpTip, {
-        title: "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0",
-        children: "\u4EC5\u5728\u81EA\u52A8\u68C0\u67E5\u5F00\u542F\u3001\u53D1\u73B0\u672A\u9501\u5B9A\u7684\u65B0\u6B63\u5F0F\u7248\u65F6\u5B89\u88C5\u3002\u5B89\u88C5\u524D\u5907\u4EFD\u3001\u6821\u9A8C\u53D1\u884C\u5305\uFF1B\u5931\u8D25\u4E0D\u81EA\u52A8\u5207\u6362\u6765\u6E90\u3002\u5B89\u88C5\u540E\u7B49\u5F85\u4F60\u624B\u52A8\u91CD\u542F\uFF0C\u4E0D\u4F1A\u81EA\u52A8\u91CD\u542F DSH\u3002"
-      })
-    ),
-    h(
-      "p",
-      { className: "dshpp-hint" },
-      status.reconciliationError ? "\u5B89\u88C5\u72B6\u6001\u5F85\u6838\u5BF9\uFF0C\u81EA\u52A8\u5B89\u88C5\u5DF2\u6682\u505C\u3002" : status.restartRequired ? `\u78C1\u76D8\u7248\u672C ${status.pendingVersion}\uFF0C\u5F53\u524D\u8FD0\u884C ${status.runningVersion || "\u672A\u77E5"}\uFF1B\u7B49\u5F85\u4F60\u624B\u52A8\u91CD\u542F DSH\u3002` : !value.autoCheck ? "\u81EA\u52A8\u68C0\u67E5\u5DF2\u5173\u95ED\uFF0C\u81EA\u52A8\u5B89\u88C5\u6682\u505C\u3002" : status.checkedAt ? `\u4E0A\u6B21\u68C0\u67E5\uFF1A${new Date(status.checkedAt).toLocaleString()}${status.hasUpdate ? ` \xB7 \u53EF\u7528\u7248\u672C ${status.availableVersion}` : ""}` : "\u542F\u52A8\u540E\u81EA\u52A8\u68C0\u67E5\uFF1B\u5B89\u88C5\u540E\u4EC5\u63D0\u793A\u624B\u52A8\u91CD\u542F\u3002"
-    ),
-    status.reconciliationError ? h("p", { role: "alert" }, status.reconciliationError) : null,
-    [...new Set([status.error, status.installError].filter(Boolean))].map(
-      (message) => h("p", { key: message, role: "alert" }, message)
-    ),
-    error ? h("p", { role: "alert" }, error) : null
-  );
-}
-function UpdateChannelDialog({ value, onClose, onSaved }) {
-  const tr = useText();
-  const [proxy, setProxy] = useState(value?.proxyUrl || "");
-  const [mirror, setMirror] = useState(value?.mirrorUrl || "");
-  const [token, setToken] = useState("");
-  const [clearToken, setClearToken] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const proxyRef = useRef(null);
-  const hasToken = !!value?.hasGithubToken;
-  useEffect(() => {
-    try {
-      proxyRef.current?.focus?.();
-    } catch {
-    }
-  }, []);
-  useEffect(() => {
-    if (typeof document === "undefined" || !document.addEventListener)
-      return void 0;
-    const onKey = (e) => {
-      if (e.key !== "Escape") return;
-      e.stopPropagation();
-      onClose();
-    };
-    document.addEventListener("keydown", onKey, true);
-    return () => document.removeEventListener("keydown", onKey, true);
-  }, [onClose]);
-  async function save() {
-    if (saving) return;
-    const next = {};
-    if (mirror.trim() !== (value?.mirrorUrl || ""))
-      next.mirrorUrl = mirror.trim();
-    if (proxy.trim() !== (value?.proxyUrl || "")) next.proxyUrl = proxy.trim();
-    if (clearToken) next.clearGithubToken = true;
-    else if (token.trim()) next.githubToken = token.trim();
-    setSaving(true);
-    setError("");
-    try {
-      const result = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op: "preferences", value: next })
-      });
-      assertMaintenanceResult(result);
-      onSaved(result.update_preferences);
-      onClose();
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setSaving(false);
-    }
-  }
-  return h(
-    "div",
-    {
-      className: "dshpp-updch-mask",
-      role: "dialog",
-      "aria-modal": "true",
-      "aria-label": tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5"),
-      onClick: (e) => {
-        if (e.target === e.currentTarget && !saving) onClose();
-      }
-    },
-    h(
-      "div",
-      { className: "dshpp-updch-card" },
-      h(
-        "h4",
-        { className: "dshpp-updch-title" },
-        tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5")
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        tr(
-          "updch.scope",
-          "\u8FD9\u91CC\u7684\u4EE3\u7406\u4E0E\u5BC6\u94A5\u53EA\u4F5C\u7528\u4E8E\u672C\u63D2\u4EF6\u7684\u66F4\u65B0\u68C0\u67E5\u4E0E\u4E0B\u8F7D\u901A\u9053\uFF0C\u4E0D\u5F71\u54CD\u5176\u5B83\u6A21\u578B\u5382\u5546\u7684\u8BF7\u6C42\uFF0C\u4E5F\u4E0D\u5199\u5165\u5BBF\u4E3B\u8FDB\u7A0B\u73AF\u5883\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002"
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, "GitHub \u955C\u50CF\uFF08\u53EF\u9009\uFF09"),
-        h("input", {
-          type: "text",
-          value: mirror,
-          placeholder: "https://\u955C\u50CF\u4E3B\u673A/",
-          onChange: (e) => setMirror(e.target.value),
-          disabled: saving
-        }),
-        h(
-          "small",
-          null,
-          "\u7528\u4E8E\u67E5\u8BE2\u4E0E\u4E0B\u8F7D\uFF1B\u4E0D\u53D1\u9001 GitHub \u5BC6\u94A5\u3002\u5B89\u88C5\u4ECD\u987B\u4ECE GitHub \u83B7\u53D6\u5B98\u65B9\u6821\u9A8C\u503C\uFF0C\u53EF\u4F7F\u7528\u66F4\u65B0\u4EE3\u7406\u3002\u7559\u7A7A\u5173\u95ED\u955C\u50CF\u3002"
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, tr("updch.proxy", "\u4EE3\u7406\u5730\u5740")),
-        h("input", {
-          ref: proxyRef,
-          type: "text",
-          className: "dshpp-field dshpp-updch-field",
-          "aria-label": tr("updch.proxy", "\u4EE3\u7406\u5730\u5740"),
-          value: proxy,
-          disabled: saving,
-          placeholder: tr("updch.proxy.ph", "socks5://127.0.0.1:60808"),
-          spellCheck: false,
-          autoComplete: "off",
-          onChange: (e) => setProxy(e.target.value)
-        })
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        tr(
-          "updch.proxy.hint",
-          "\u652F\u6301 http:// / https:// / socks5:// \u524D\u7F00\uFF0C\u4F8B\u5982 http://127.0.0.1:7890\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002"
-        )
-      ),
-      h(
-        "label",
-        { className: "dshpp-updch-label" },
-        h("span", null, tr("updch.token", "GitHub \u5BC6\u94A5")),
-        h("input", {
-          type: "password",
-          className: "dshpp-field dshpp-updch-field",
-          "aria-label": tr("updch.token", "GitHub \u5BC6\u94A5"),
-          value: token,
-          disabled: saving || clearToken,
-          placeholder: tr(
-            "updch.token.ph",
-            "\u53EF\u9009\uFF1A\u63D0\u9AD8 GitHub API \u989D\u5EA6\uFF0C\u7559\u7A7A\u5219\u4E0D\u4FEE\u6539"
-          ),
-          spellCheck: false,
-          autoComplete: "off",
-          onChange: (e) => setToken(e.target.value)
-        })
-      ),
-      h(
-        "p",
-        { className: "dshpp-hint" },
-        hasToken ? tr(
-          "updch.token.set",
-          "\u672C\u673A\u5DF2\u914D\u7F6E\u5BC6\u94A5\u3002\u8F93\u5165\u6846\u59CB\u7EC8\u4E3A\u7A7A\uFF0C\u7559\u7A7A\u4FDD\u5B58\u8868\u793A\u4FDD\u6301\u4E0D\u53D8\u3002"
-        ) : tr("updch.token.unset", "\u672C\u673A\u5C1A\u672A\u914D\u7F6E\u5BC6\u94A5\u3002\u7559\u7A7A\u8868\u793A\u4E0D\u914D\u7F6E\u3002")
-      ),
-      hasToken ? h(
-        "label",
-        { className: "dshpp-updch-check" },
-        h("input", {
-          type: "checkbox",
-          checked: clearToken,
-          disabled: saving,
-          "aria-label": tr("updch.token.clear", "\u6E05\u9664\u5DF2\u4FDD\u5B58\u7684\u5BC6\u94A5"),
-          onChange: (e) => setClearToken(!!e.target.checked)
-        }),
-        h("span", null, tr("updch.token.clear", "\u6E05\u9664\u5DF2\u4FDD\u5B58\u7684\u5BC6\u94A5"))
-      ) : null,
-      error ? h("p", { role: "alert" }, error) : null,
-      h(
-        "div",
-        { className: "dshpp-updch-ops" },
-        h(
-          Btn,
-          { disabled: saving, onClick: onClose },
-          tr("updch.cancel", "\u53D6\u6D88")
-        ),
-        h(
-          Btn,
-          { kind: "primary", disabled: saving, onClick: save },
-          saving ? tr("updch.saving", "\u4FDD\u5B58\u4E2D\u2026") : tr("updch.save", "\u4FDD\u5B58")
-        )
-      )
-    )
-  );
-}
-function CommunityMaintenance() {
-  const [value, setValue] = useState(null), [notice, setNotice] = useState(""), [busy, setBusy] = useState(false), [selected, setSelected] = useState(""), [releases, setReleases] = useState(null), [release, setRelease] = useState("");
-  const [listState, setListState] = useState("loading"), [listError, setListError] = useState("");
-  const [channelOpen, setChannelOpen] = useState(false);
-  const tr = useText();
-  const mounted = useRef(false), generation = useRef(0), running = useRef(false);
-  const load = useCallback(async () => {
-    const request = ++generation.current;
-    setListState("loading");
-    setListError("");
-    try {
-      const result = await apiJson("/dsh-purge/community");
-      assertMaintenanceResult(result);
-      if (!Array.isArray(result.backups)) throw new Error("\u5907\u4EFD\u5217\u8868\u54CD\u5E94\u65E0\u6548");
-      if (!mounted.current || request !== generation.current) return;
-      setValue(result);
-      setSelected(
-        (current) => result.backups.some((b) => b.id === current) ? current : ""
-      );
-      setListState("ready");
-    } catch (e) {
-      if (!mounted.current || request !== generation.current) return;
-      setListError(e.message);
-      setListState("error");
-    }
-  }, []);
-  useEffect(() => {
-    mounted.current = true;
-    load();
-    return () => {
-      mounted.current = false;
-      generation.current++;
-    };
-  }, [load]);
-  async function run(op) {
-    if (running.current) return;
-    if (op === "rollback" && !window.confirm(
-      "\u53EA\u56DE\u6EDA Purge \u63D2\u4EF6\u53CA\u5176\u5165\u53E3\uFF0C\u4FDD\u7559\u5F53\u524D\u63D0\u793A\u8BCD\u548C\u8BBE\u7F6E\uFF1B\u5B8C\u6210\u540E\u9700\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002\u7EE7\u7EED\uFF1F"
-    ))
-      return;
-    if (op === "update" && !window.confirm(
-      "\u5C06\u5148\u5907\u4EFD\uFF0C\u518D\u5B89\u88C5\u6240\u9009\u793E\u533A\u6B63\u5F0F\u7248\uFF1B\u4E0D\u4F1A\u91CD\u65B0\u5E94\u7528\u5BBF\u4E3B\u8865\u4E01\u3002\u5B89\u88C5\u540E\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002\u7EE7\u7EED\uFF1F"
-    ))
-      return;
-    running.current = true;
-    setBusy(true);
-    setNotice("\u5904\u7406\u4E2D\u2026");
-    try {
-      const r = await apiJson("/dsh-purge/community", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ op, id: selected, ref: release })
-      });
-      assertMaintenanceResult(r);
-      if (!mounted.current) return;
-      if (op === "check") {
-        if (!Array.isArray(r.versions)) throw new Error("\u53D1\u884C\u5217\u8868\u54CD\u5E94\u65E0\u6548");
-        setReleases(r.versions.filter((v) => v.asset));
-        setRelease(r.versions.find((v) => v.asset)?.ref || "");
-        setNotice(
-          r.degraded ? `${r.degraded}\uFF1B${r.stale ? "\u5F53\u524D\u663E\u793A\u7F13\u5B58\u5217\u8868\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5" : "\u5DF2\u663E\u793A\u5907\u7528\u5217\u8868"}` : r.error ? `\u68C0\u67E5\u66F4\u65B0\u5931\u8D25\uFF1A${r.error}` : r.hasUpdate ? `\u53D1\u73B0\u65B0\u7248\u672C ${r.remoteVersion}` : "\u5F53\u524D\u5DF2\u662F\u6700\u65B0\u6B63\u5F0F\u7248"
-        );
-      } else {
-        setNotice(maintenanceNotice(op, r));
-      }
-    } catch (e) {
-      if (mounted.current)
-        setNotice(
-          e.message === "timeout" ? "\u7EF4\u62A4\u8BF7\u6C42\u8D85\u65F6\uFF0C\u64CD\u4F5C\u53EF\u80FD\u4ECD\u5728\u6267\u884C\uFF1B\u8BF7\u5148\u5237\u65B0\u72B6\u6001\uFF0C\u52FF\u91CD\u590D\u63D0\u4EA4\u3002" : e.message
-        );
-    } finally {
-      if (op !== "check" && mounted.current) await load();
-      running.current = false;
-      if (mounted.current) setBusy(false);
-    }
-  }
-  return h(
-    "section",
-    { className: "dshpp-panel", "aria-label": "\u793E\u533A\u7248\u7EF4\u62A4" },
-    h("h3", null, "\u7EF4\u62A4\uFF1A\u66F4\u65B0\u4E0E\u672C\u673A\u5907\u4EFD"),
-    // 通道现状摘要：代理是否直连、密钥是否已配置（密钥明文永不回显）。
-    // 入口按钮不在这里，它跟「自动检查更新」放在同一行。
-    value ? h(
-      "p",
-      { className: "dshpp-hint" },
-      (value.update_preferences?.proxyUrl ? tr("updch.state.proxy", "\u66F4\u65B0\u901A\u9053\u4EE3\u7406\uFF1A") + value.update_preferences.proxyUrl : tr("updch.state.direct", "\u66F4\u65B0\u901A\u9053\uFF1A\u7EE7\u627F\u73AF\u5883\u6216\u7CFB\u7EDF\u4EE3\u7406")) + " \xB7 " + (value.update_preferences?.hasGithubToken ? tr("updch.state.token.on", "GitHub \u5BC6\u94A5\u5DF2\u914D\u7F6E") : tr("updch.state.token.off", "\u672A\u914D\u7F6E GitHub \u5BC6\u94A5"))
-    ) : null,
-    h(UpdatePreferences, {
-      value: value?.update_preferences,
-      status: value?.update_status,
-      onSaved: (next) => setValue((current) => ({ ...current, update_preferences: next })),
-      onOpenChannel: () => setChannelOpen(true)
-    }),
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(Btn, { disabled: busy, onClick: () => run("check") }, "\u68C0\u67E5\u793E\u533A\u7248\u66F4\u65B0"),
-      h(
-        Btn,
-        {
-          disabled: busy,
-          onClick: async () => {
-            try {
-              const r = await apiJson("/dsh-purge/audit?limit=10");
-              const lines = (r.entries || []).map(
-                (x) => `${new Date(x.at).toLocaleString()}  ${x.event}  ${JSON.stringify(
-                  Object.fromEntries(
-                    Object.entries(x).filter(
-                      ([k]) => !["at", "event", "pid"].includes(k)
-                    )
-                  )
-                )}`
-              );
-              setNotice(lines.length ? lines.join("\n") : "\u8FD8\u6CA1\u6709\u52A8\u4F5C\u8BB0\u5F55");
-            } catch (e) {
-              setNotice(e.message);
-            }
-          }
-        },
-        "\u6700\u8FD1\u52A8\u4F5C"
-      ),
-      h(
-        "a",
-        {
-          href: "https://github.com/kingcharleslzy-ai/dsh-purge/releases",
-          target: "_blank",
-          rel: "noreferrer"
-        },
-        "\u53D1\u884C\u8BB0\u5F55"
-      )
-    ),
-    releases?.length ? h(
-      "div",
-      { className: "dshpp-row" },
-      h(
-        "select",
-        {
-          "aria-label": "\u9009\u62E9\u793E\u533A\u53D1\u884C\u7248\u672C",
-          value: release,
-          onChange: (e) => setRelease(e.target.value),
-          disabled: busy
-        },
-        releases.map(
-          (r) => h("option", { key: r.ref, value: r.ref }, r.label)
-        )
-      ),
-      h(
-        Btn,
-        { disabled: busy || !release, onClick: () => run("update") },
-        "\u5B89\u88C5\u6240\u9009\u7248\u672C"
-      )
-    ) : null,
-    h("h3", { style: { marginTop: 20 } }, "\u672C\u673A\u5907\u4EFD"),
-    h(
-      Btn,
-      { disabled: busy || listState === "loading", onClick: load },
-      "\u5237\u65B0\u5907\u4EFD\u5217\u8868"
-    ),
-    listState === "loading" ? h("p", { role: "status" }, "\u6B63\u5728\u8BFB\u53D6\u5907\u4EFD\u2026") : null,
-    listState === "error" ? h("p", { role: "alert" }, `\u8BFB\u53D6\u5907\u4EFD\u5931\u8D25\uFF1A${listError}`) : null,
-    listState === "ready" && !value.backups.length ? h("p", { role: "status" }, "\u6682\u65E0\u5907\u4EFD") : null,
-    h(
-      "div",
-      { className: "dshpp-row" },
-      h(Btn, { disabled: busy, onClick: () => run("backup") }, "\u7ACB\u5373\u5907\u4EFD"),
-      h(
-        "select",
-        {
-          "aria-label": "\u9009\u62E9\u56DE\u6EDA\u5907\u4EFD",
-          value: selected,
-          onChange: (e) => setSelected(e.target.value),
-          disabled: busy || listState !== "ready"
-        },
-        h("option", { value: "" }, "\u9009\u62E9\u5907\u4EFD"),
-        ...(value?.backups || []).map(
-          (b) => h(
-            "option",
-            { key: b.id, value: b.id },
-            `${new Date(b.created_at).toLocaleString()} \xB7 ${b.plugins.map((p) => p.version).join(" / ")}`
-          )
-        )
-      ),
-      h(
-        Btn,
-        {
-          disabled: busy || !selected || listState !== "ready",
-          onClick: () => run("rollback")
-        },
-        "\u56DE\u6EDA\u63D2\u4EF6"
-      )
-    ),
-    h(
-      "p",
-      { className: "dshpp-hint" },
-      "\u5907\u4EFD\u53EA\u4FDD\u5B58\u5728\u672C\u673A\u3002\u56DE\u6EDA\u4FDD\u7559\u5F53\u524D\u63D0\u793A\u8BCD\u3001\u89C4\u5219\u548C\u5176\u4ED6\u63D2\u4EF6\u8BBE\u7F6E\uFF1B\u5B89\u88C5\u6216\u56DE\u6EDA\u540E\u9700\u8981\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002"
-    ),
-    notice ? h("p", { role: "status" }, notice) : null,
-    // 对话框挂在面板内部，靠固定定位脱离容器，不依赖 portal。
-    channelOpen && value ? h(UpdateChannelDialog, {
-      value: value.update_preferences,
-      onClose: () => setChannelOpen(false),
-      onSaved: (next) => {
-        setValue((current) => ({ ...current, update_preferences: next }));
-        setNotice(
-          tr("updch.saved", "\u66F4\u65B0\u901A\u9053\u5DF2\u4FDD\u5B58\uFF0C\u4E0B\u4E00\u6B21\u68C0\u67E5\u66F4\u65B0\u5373\u751F\u6548\u3002")
-        );
-      }
-    }) : null
   );
 }
 
@@ -11291,6 +11320,7 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const tRef = useRef(t);
   tRef.current = t;
   const [state, setState] = useState(null);
+  const [scannedAt, setScannedAt] = useState(null);
   useEffect(() => {
     if (onStatus) onStatus(state);
   }, [state, onStatus]);
@@ -11516,6 +11546,16 @@ function PurgifySection({ page = "status", onStatus } = {}) {
     apiJson("/dsh-purge/status").then((d) => {
       if (d && d.ok) {
         setState(d);
+        try {
+          setScannedAt(
+            (/* @__PURE__ */ new Date()).toLocaleTimeString("zh-CN", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false
+            })
+          );
+        } catch {
+        }
         setNotice(
           (previous) => previous?.source === "status" ? { kind: "idle", text: "" } : previous
         );
@@ -11857,24 +11897,8 @@ function PurgifySection({ page = "status", onStatus } = {}) {
   const hostSurface = hostSurfaceOf(s);
   const desktopLikely = hostSurface === "desktop" || clientGuessSurface() === "desktop";
   const sealedReady = !located && desktopLikely && !!(s && (s.asar_still_sealed || s.desktop_exe || s.desktop_install));
-  const patchesLost = !located && !!(s && s.patches_lost);
-  const tally = located ? tallyPatches(patchRowsOf(s)) : { applied: 0, pending: 0, unmatched: 0, skipped: 0, total: 0 };
-  const total = tally.total;
-  const applied = tally.applied;
-  const pct = located && total ? Math.round(applied / total * 100) : 0;
-  const metricNotes = [];
-  if (tally.pending)
-    metricNotes.push(t("metric.pendingShort", { n: tally.pending }));
-  if (tally.unmatched)
-    metricNotes.push(t("metric.unmatchedShort", { n: tally.unmatched }));
-  if (tally.partial)
-    metricNotes.push(t("metric.partialShort", { n: tally.partial }));
-  if (tally.drifted)
-    metricNotes.push(t("metric.driftedShort", { n: tally.drifted }));
-  if (tally.disabled)
-    metricNotes.push(t("metric.disabledShort", { n: tally.disabled }));
-  if (tally.skipped)
-    metricNotes.push(t("metric.skipShort", { n: tally.skipped }));
+  const evidence = patchEvidence(s);
+  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const versions = updateInfo && updateInfo.versions || [];
   const channelNow = updateInfo && updateInfo.channel || channel || "stable";
   const localVer = s && s.plugin_version || updateInfo && updateInfo.localVersion || "";
@@ -11975,38 +11999,23 @@ function PurgifySection({ page = "status", onStatus } = {}) {
     h(
       "div",
       { hidden: page !== "status" },
+      // 标题行：左侧页面名，右侧操作组 + 扫描时间（对齐样稿，不再用 hero 卡包一层）
       h(
         "div",
-        { className: "dshpp-hero" },
+        { className: "dshpp-status-head" },
+        h("h3", { className: "dshpp-status-title" }, t("status.title")),
         h(
           "div",
-          { className: "dshpp-hero-state" },
-          h("i", {
-            className: "dshpp-dot " + (!located ? "is-warn" : patchBusy ? "" : s?.asar_still_sealed || tally.pending ? "is-warn" : "is-ok")
-          }),
-          h(
-            "b",
-            null,
-            !s ? "\u6B63\u5728\u8BFB\u53D6\u5BBF\u4E3B\u72B6\u6001\u2026" : s.ok === false ? "\u72B6\u6001\u8BFB\u53D6\u5931\u8D25\uFF0C\u5BBF\u4E3B\u4E0E\u8865\u4E01\u72B6\u6001\u672A\u77E5" : !located ? sealedReady ? "\u5BBF\u4E3B\u8FD8\u6CA1\u89E3\u5F00\uFF1A\u70B9\u300C\u5E94\u7528\u300D" : "\u672A\u5B9A\u4F4D\u5230\u5BBF\u4E3B\uFF1A\u70B9\u300C\u5E94\u7528\u300D\u91CD\u8BD5" : s?.asar_still_sealed ? `${applied}/${total} \u6761\u78C1\u76D8\u8865\u4E01\uFF08\u9000\u51FA\u91CD\u5F00\u540E\u52A0\u8F7D\uFF09` : tally.pending ? `\u8FD8\u6709 ${tally.pending} \u6761\u5F85\u5E94\u7528` : `${applied}/${total} \u6761\u8865\u4E01\u5DF2\u751F\u6548`
-          ),
-          h(
-            "span",
-            { className: "dshpp-hero-sub" },
-            t("surface." + hostSurface)
-          )
-        ),
-        h(
-          "div",
-          { className: "dshpp-hero-actions" },
+          { className: "dshpp-status-ops" },
           h(
             Btn,
             {
               kind: "primary",
-              className: "dshpp-btn-lead",
+              className: "dshpp-btn-apply",
               disabled: patchBusy || uninstallBusy || !overrideLoaded,
               onClick: () => doAction("apply", "action.apply")
             },
-            patchBusy ? t("btn.apply.busy") : t("btn.apply")
+            patchBusy ? t("btn.apply.busy") : t("btn.apply") + (counts?.pending ? " " + counts.pending : "")
           ),
           h(
             Btn,
@@ -12027,60 +12036,42 @@ function PurgifySection({ page = "status", onStatus } = {}) {
             uninstallBusy ? t("btn.uninstall.busy") : t("btn.uninstall")
           ),
           h(
-            Btn,
+            "button",
             {
-              tiny: true,
+              type: "button",
+              className: "dshpp-scan",
               onClick: loadAll,
-              disabled: patchBusy || uninstallBusy
+              disabled: patchBusy || uninstallBusy,
+              title: t("scan.hint")
             },
-            "\u5237\u65B0"
+            scannedAt ? t("scan.recent", { time: scannedAt }) : t("scan.hint")
           )
-        ),
-        h(
-          "p",
-          { className: "dshpp-hero-hint" },
-          "\u88C5\u597D\u63D2\u4EF6\u3001\u66F4\u65B0\u8FC7 DSH\u3001\u6216\u53D1\u73B0\u6A21\u578B\u53C8\u5F00\u59CB\u63A8\u8131\u65F6\uFF1A\u70B9\u4E00\u6B21\u300C\u5E94\u7528\u300D\uFF0C\u7136\u540E\u9000\u51FA\u5E76\u91CD\u5F00 DSH\uFF0C\u5C31\u4F1A\u6062\u590D\u3002"
-        ),
-        noticeNode(notice)
+        )
       ),
+      !located ? h(
+        "p",
+        { className: "dshpp-status-note" },
+        sealedReady ? "\u5BBF\u4E3B\u8FD8\u6CA1\u89E3\u5F00\uFF1A\u70B9\u300C\u5E94\u7528\u300D" : t("metric.unlocated")
+      ) : null,
+      noticeNode(notice),
+      h(PatchHealth, { state: s }),
+      h(PatchGroupSwitches, { state: s, onSaved: loadAll }),
       h(
-        "div",
-        { className: "dshpp-rel" },
+        "section",
+        { className: "dshpp-fold is-open" },
         h(
-          "div",
-          { className: "dshpp-now" },
-          h("span", { className: "dshpp-now-label" }, t("channel.local")),
+          "h4",
+          { className: "dshpp-fold-t" },
+          t("detail.title"),
           h(
-            "b",
-            { className: "dshpp-now-ver" },
-            localVer ? "v" + localVer : "\u2014"
-          ),
-          h("em", { className: "dshpp-now-mark" }, t("update.current"))
-        ),
-        h(
-          "details",
-          { className: "dshpp-editions" },
-          h("summary", null, "\u7248\u672C\u7BA1\u7406"),
-          renderEdition("stable"),
-          renderEdition("beta")
-        ),
-        noticeNode(updateNotice)
-      ),
-      h(
-        "details",
-        { className: "dshpp-fold" },
-        h(
-          "summary",
-          null,
-          "\u8865\u4E01\u660E\u7EC6 ",
-          h(
-            "b",
-            null,
-            !s ? "\u8BFB\u53D6\u4E2D" : s.ok === false ? "\u72B6\u6001\u672A\u77E5" : s.ai_base ? `${applied}/${total} \u5DF2\u5E94\u7528` : "\u672A\u5B9A\u4F4D\u5BBF\u4E3B"
+            "span",
+            { className: "dshpp-fold-n" },
+            !s ? t("detail.reading") : s.ok === false ? t("detail.unknown") : s.ai_base ? counts ? `${counts.applied} / ${counts.denom}` : t("evidence." + evidence.kind) : t("detail.unlocated")
           )
         ),
         h(PatchGroups, { state: s })
       ),
+      h(PatchApplySteps, null),
       h(
         "details",
         null,
@@ -12291,13 +12282,13 @@ function PurgifySection({ page = "status", onStatus } = {}) {
 // src/state/session-context.js
 var import_react11 = require("react");
 var host = null;
-var listeners = /* @__PURE__ */ new Set();
+var listeners2 = /* @__PURE__ */ new Set();
 function notify() {
-  for (const listener of listeners) listener();
+  for (const listener of listeners2) listener();
 }
 function subscribe(listener) {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
+  listeners2.add(listener);
+  return () => listeners2.delete(listener);
 }
 function bindSessionContext(ctx) {
   host = ctx;
@@ -13174,153 +13165,713 @@ function SkillsSection() {
   );
 }
 
-// src/components/settings-shell.js
-function CommunityCompatibilityNote() {
+// src/components/maintenance.js
+function useText() {
   const t = useT();
-  const [info, setInfo] = useState(null);
-  const [error, setError] = useState("");
-  useEffect(() => {
-    apiJson("/dsh-purge/community").then((d) => {
-      if (d && d.ok !== false) setInfo(d);
-      else setError(d && d.error || "bad response");
-    }).catch((e) => setError(e && e.message || String(e)));
-  }, []);
-  const compat = info && info.compatibility || null;
-  const host3 = compat && compat.host_version || "unknown";
-  const text = compat ? t("compat.host", {
-    version: info && info.version ? info.version : "\u2014",
-    host: host3,
-    level: compatibilityLevelText(t, compat.level)
-  }) : error ? t("compat.unavailable", { error }) : t("compat.loading");
-  return h(
-    "p",
-    {
-      role: "status",
-      className: "dshpp-hint",
-      style: { margin: "0 20px 10px" }
-    },
-    text,
-    compat && compat.message ? " " + compat.message : ""
-  );
-}
-function CompatibilityNote({ status }) {
-  if (true) return h(CommunityCompatibilityNote);
-  if (!status) return null;
-  const v = String(status.plugin_version || "");
-  const valid = typeof status.patches_total === "number" && !!v;
-  if (valid && v === "1.1.71") return null;
-  return h(
-    "p",
-    {
-      role: "status",
-      className: "dshpp-hint",
-      style: { margin: "0 20px 10px" }
-    },
-    valid ? "\u5B98\u65B9\u7248\u672C " + v + "\uFF1B\u6B64\u754C\u9762\u5DF2\u9A8C\u8BC1 1.1.71\u3002\u5982\u9047\u8BBE\u7F6E\u5F02\u5E38\uFF0C\u8BF7\u66F4\u65B0\u754C\u9762\u63D2\u4EF6\u3002" : "\u65E0\u6CD5\u786E\u8BA4\u5B98\u65B9 Purge \u63A5\u53E3\u3002\u8BF7\u68C0\u67E5\u5B98\u65B9\u63D2\u4EF6\u662F\u5426\u542F\u7528\uFF0C\u6216\u66F4\u65B0\u754C\u9762\u63D2\u4EF6\u3002"
-  );
-}
-function SettingsRoot(props = {}) {
-  const t = typeof props.t === "function" ? props.t : useT();
-  const [page, setPage] = useState("status");
-  const [backendStatus, setBackendStatus] = useState(null);
-  const st = useDock();
-  const [visited, setVisited] = useState({ status: true });
-  const select = (id) => {
-    setPage(id);
-    setVisited((v) => ({ ...v, [id]: true }));
+  return (key, fallback) => {
+    const hit = t(key);
+    return hit && hit !== key ? hit : fallback;
   };
+}
+function StatusExtras() {
+  const [check, setCheck] = useState(null);
+  const [boost, setBoost] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+  const load = () => Promise.all([
+    apiJson("/dsh-purge/selfcheck").then(setCheck).catch(() => setCheck(null)),
+    apiJson("/dsh-purge/boost").then((r) => setBoost(!!r.enabled)).catch(() => setBoost(null))
+  ]);
   useEffect(() => {
-    if (st.tab === "drill" && st.open) select("drill");
-  }, [st.tab, st.open]);
-  setTranslate(t);
+    load();
+  }, []);
+  async function toggle() {
+    try {
+      const r = await apiJson("/dsh-purge/boost", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ enabled: !boost })
+      });
+      setBoost(!!r.enabled);
+      setNotice(r.enabled ? "\u5DF2\u5F00\u542F\uFF0C\u91CD\u542F\u540E\u751F\u6548" : "\u5DF2\u5173\u95ED\uFF0C\u91CD\u542F\u540E\u751F\u6548");
+    } catch (e) {
+      setNotice(e.message);
+    }
+  }
+  async function rerun() {
+    setBusy(true);
+    try {
+      setCheck(await apiJson("/dsh-purge/selfcheck"));
+    } catch (e) {
+      setNotice(e.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  const layers = check && Array.isArray(check.layers) ? check.layers : [];
+  const failed = layers.filter(
+    (l) => l.state === "broken" || !l.state && !l.ok
+  );
+  const pendingLayers = layers.filter((l) => l.state === "pending");
+  const uncertain = layers.filter(
+    (l) => ["inferred", "unknown"].includes(l.state)
+  );
+  const pendingPatches = pendingLayers.reduce(
+    (n, l) => n + (l.pending?.length || 0),
+    0
+  );
+  const total = layers.filter((layer) => layer.applicable !== false).length;
   return h(
-    "div",
-    { className: "dshpp-native dshpp-root" },
-    h("style", null, base_default + native_default),
+    "section",
+    { className: "dshpp-card", "aria-label": "\u7834\u7532\u72B6\u6001" },
     h(
-      "header",
-      { className: "dshpp-native-head" },
-      h("div", null, h("h2", null, "Purge"), h("p", null, "\u63D2\u4EF6\u8BBE\u7F6E")),
+      "div",
+      { className: "dshpp-line" },
       h(
         "span",
-        { className: "dshpp-native-badge" },
-        (true ? "\u793E\u533A\u7248 " : "\u72EC\u7ACB\u754C\u9762 ") + "1.6.98-lahvey.1"
-      )
-    ),
-    h(CompatibilityNote, { status: backendStatus }),
-    h(
-      "nav",
-      { className: "dshpp-native-nav", "aria-label": "Purge \u8BBE\u7F6E\u5206\u7C7B" },
-      [
-        ["status", "\u72B6\u6001"],
-        ["prompt", "\u63D0\u793A\u8BCD"],
-        ["rules", "\u89C4\u5219"],
-        ["skills", "\u6280\u80FD"],
-        ["more", "\u66F4\u591A"]
-      ].map(
-        ([id, label]) => h(
-          "button",
-          {
-            key: id,
-            type: "button",
-            "aria-pressed": page === id,
-            onClick: () => select(id)
-          },
-          label
+        { className: "dshpp-line-main" },
+        h("i", {
+          className: "dshpp-dot " + (check ? failed.length ? "is-bad" : pendingLayers.length || uncertain.length ? "is-warn" : "is-ok" : "")
+        }),
+        "\u7834\u7532\u81EA\u68C0",
+        h(
+          "b",
+          null,
+          check ? failed.length ? `${failed.length} \u5C42\u672A\u751F\u6548` : pendingLayers.length ? `${pendingPatches} \u6761\u5F85\u5E94\u7528` : uncertain.length ? `${uncertain.length} \u5C42\u9700\u786E\u8BA4` : `${total} \u5C42\u5168\u90E8\u5728\u4F4D` : "\u68C0\u6D4B\u4E2D\u2026"
         )
+      ),
+      h(
+        "details",
+        { className: "dshpp-fold-inline" },
+        h("summary", null, "\u67E5\u770B\u9010\u5C42"),
+        h(
+          "div",
+          { className: "dshpp-checks" },
+          check && Array.isArray(check.layers) ? check.layers.map(
+            (layer) => h(
+              "div",
+              {
+                key: layer.title,
+                className: "dshpp-check" + (["pending", "inferred", "unknown"].includes(layer.state) ? " is-warn" : layer.ok ? "" : " is-bad")
+              },
+              h("i", {
+                className: "dshpp-dot " + (["pending", "inferred", "unknown"].includes(layer.state) ? "is-warn" : layer.ok ? "is-ok" : "is-bad")
+              }),
+              h("span", { className: "dshpp-check-name" }, layer.title),
+              h(
+                "span",
+                { className: "dshpp-check-val" },
+                layer.applicable === false ? "\u4E0D\u9002\u7528" : layer.state === "pending" ? `\u5F85\u5E94\u7528 #${(layer.pending || []).join("/#")}` : layer.state === "inferred" ? "\u5BBF\u4E3B\u63A8\u5BFC" : layer.state === "unknown" ? "\u672A\u786E\u8BA4" : `${layer.applied}/${layer.required ?? layer.total}`
+              ),
+              layer.note ? h(HelpTip, { title: layer.title }, layer.note) : null
+            )
+          ) : h("div", { className: "dshpp-muted" }, "\u68C0\u6D4B\u4E2D\u2026")
+        )
+      ),
+      h(
+        Btn,
+        { tiny: true, disabled: busy, onClick: rerun },
+        busy ? "\u2026" : "\u91CD\u6D4B"
+      ),
+      h(
+        Btn,
+        {
+          tiny: true,
+          title: "\u751F\u6210\u4E00\u6B21\u6027\u63A2\u9488\uFF1A\u4E0B\u4E00\u8F6E\u56DE\u590D\u91CC\u770B\u6A21\u578B\u6709\u6CA1\u6709\u539F\u6837\u56DE\u663E\u8BE5\u6807\u8BB0",
+          onClick: async () => {
+            try {
+              const r = await apiJson("/dsh-purge/probe", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: "{}"
+              });
+              setNotice(r.message || "");
+            } catch (e) {
+              setNotice(e.message);
+            }
+          }
+        },
+        "\u63A2\u9488"
       )
     ),
     h(
       "div",
-      { className: "dshpp-native-content" },
-      page === "status" ? h(CommunityMaintenance) : null,
+      { className: "dshpp-line" },
       h(
-        "div",
-        { hidden: !["status", "prompt", "more"].includes(page) },
-        h(PurgifySection, { page, onStatus: setBackendStatus })
-      ),
-      visited.rules ? h("div", { hidden: page !== "rules" }, h(RulesSection)) : null,
-      visited.skills ? h("div", { hidden: page !== "skills" }, h(SkillsSection)) : null,
-      h(
-        "div",
-        { hidden: page !== "more", className: "dshpp-more" },
-        h("h3", null, "\u6F14\u7EC3\u53F0"),
-        h("p", null, "\u6253\u5F00\u63D2\u4EF6\u539F\u6709\u7684\u6F14\u7EC3\u5DE5\u5177\u4E0E\u73AF\u5883\u8BBE\u7F6E\u3002"),
+        "span",
+        { className: "dshpp-line-main" },
+        "\u7834\u7532\u5F3A\u5316\u6BB5",
         h(
-          Btn,
-          {
-            onClick: () => {
-              select("drill");
-              requestDrill("tab");
-            }
-          },
-          "\u6253\u5F00\u6F14\u7EC3\u53F0"
+          HelpTip,
+          { title: "\u7834\u7532\u5F3A\u5316\u6BB5" },
+          "\u5728\u7CFB\u7EDF\u63D0\u793A\u8BCD\u672B\u5C3E\u8FFD\u52A0\u4E00\u6BB5\u4E0E\u6CE8\u5165\u540C\u7EA7\u7684\u6587\u672C\uFF1A\u5C42\u7EA7\u58F0\u660E / \u62D2\u7EDD\u5373\u6545\u969C / \u6297\u8C04\u5A9A / \u591A\u8F6E\u91CD\u7533\u3002\u9ED8\u8BA4\u5F00\u542F\u3002"
         ),
-        h(
-          "p",
-          { className: "dshpp-attribution" },
-          true ? "\u57FA\u4E8E YuJunZhiXue/dsh-purge 1.1.71 \u72EC\u7ACB\u7EF4\u62A4\uFF0C\u4FDD\u7559\u539F\u4F5C\u8005\u7F72\u540D\uFF1B\u66F4\u65B0\u4EC5\u6765\u81EA\u672C fork\u3002" : "\u754C\u9762\u72EC\u7ACB\u7EF4\u62A4\uFF1B\u5B98\u65B9 Purge \u53EF\u5355\u72EC\u66F4\u65B0\u3002\u57FA\u4E8E YuJunZhiXue/dsh-purge 1.1.71\uFF08MIT\uFF09\u3002"
+        h("b", null, boost === null ? "\u2026" : boost ? "\u5DF2\u5F00\u542F" : "\u5DF2\u5173\u95ED")
+      ),
+      h(
+        Btn,
+        { tiny: true, disabled: boost === null, onClick: toggle },
+        boost ? "\u5173\u95ED" : "\u5F00\u542F"
+      ),
+      notice ? h("span", { className: "dshpp-muted" }, notice) : null
+    )
+  );
+}
+function assertMaintenanceResult(result) {
+  if (!result || typeof result !== "object")
+    throw new Error("\u7EF4\u62A4\u63A5\u53E3\u8FD4\u56DE\u4E86\u65E0\u6548\u7ED3\u679C");
+  if (result.ok === false) {
+    const errors = Array.isArray(result.errors) ? result.errors.filter(Boolean).join("\uFF1B") : "";
+    const partial = result.applied ? "\uFF1B\u90E8\u5206\u76EE\u6807\u5DF2\u66F4\u65B0\uFF0C\u8BF7\u91CD\u542F\u5BF9\u5E94 DSH \u8FDB\u7A0B\u52A0\u8F7D" : "";
+    throw new Error((result.error || errors || "\u7EF4\u62A4\u64CD\u4F5C\u5931\u8D25") + partial);
+  }
+}
+function maintenanceNotice(op, result) {
+  if (op === "backup") {
+    if (!result.id)
+      throw new Error("\u5907\u4EFD\u64CD\u4F5C\u672A\u8FD4\u56DE\u5907\u4EFD\u7F16\u53F7\uFF0C\u8BF7\u5237\u65B0\u5217\u8868\u6838\u5BF9\u7ED3\u679C");
+    return `\u5907\u4EFD\u5DF2\u521B\u5EFA\uFF1A${result.id}`;
+  }
+  if (op === "rollback")
+    return (result.note || "\u63D2\u4EF6\u56DE\u6EDA\u5DF2\u5B8C\u6210") + "\u3002\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002";
+  if (op === "update") {
+    if (result.applied === false || result.skipped)
+      return result.note || "\u672A\u5B89\u88C5\u65B0\u7248\u672C\uFF0C\u5F53\u524D\u5B89\u88C5\u672A\u66F4\u65B0\u3002";
+    if (result.applied || result.needRestart || result.restart_required) {
+      const version = result.release?.version || result.localVersion || result.remoteVersion;
+      const warnings = result.cleanup_warnings || [];
+      const cleanup = warnings.length ? `\u6E05\u7406\u672A\u5B8C\u6210\uFF08${warnings.map((w) => `${w.stage}:${w.code}`).join("\uFF0C")}\uFF09\uFF0C\u6B8B\u7559\u5DF2\u4FDD\u7559\u3002` : "";
+      return `${cleanup}\u63D2\u4EF6\u5DF2\u5B89\u88C5${version ? "\uFF1A" + version : ""}\u3002\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002`;
+    }
+    return result.note || "\u66F4\u65B0\u8BF7\u6C42\u5DF2\u5B8C\u6210\uFF0C\u8BF7\u5237\u65B0\u72B6\u6001\u6838\u5BF9\u5B89\u88C5\u7ED3\u679C\u3002";
+  }
+  return result.note || "\u7EF4\u62A4\u64CD\u4F5C\u5DF2\u5B8C\u6210";
+}
+function UpdatePreferences({
+  value,
+  status = {},
+  onSaved,
+  onOpenChannel
+}) {
+  const tr = useText();
+  const [saving, setSaving] = useState(false), [error, setError] = useState("");
+  const locked = useRef(false);
+  if (!value) return null;
+  async function save(patch) {
+    if (locked.current) return;
+    locked.current = true;
+    setSaving(true);
+    setError("");
+    try {
+      const result = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op: "preferences", value: patch })
+      });
+      assertMaintenanceResult(result);
+      onSaved(result.update_preferences);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      locked.current = false;
+      setSaving(false);
+    }
+  }
+  return h(
+    "section",
+    { "aria-label": "\u81EA\u52A8\u66F4\u65B0\u8BBE\u7F6E", className: "dshpp-card" },
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "label",
+        null,
+        h("input", {
+          type: "checkbox",
+          checked: value.autoCheck,
+          disabled: saving,
+          onChange: (e) => save({ autoCheck: e.target.checked }),
+          "aria-label": "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0"
+        }),
+        "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0"
+      ),
+      h(HelpTip, {
+        title: "\u81EA\u52A8\u68C0\u67E5\u66F4\u65B0",
+        children: "\u542F\u52A8 30 \u79D2\u540E\u68C0\u67E5\uFF0C\u4E4B\u540E\u6309\u95F4\u9694\u68C0\u67E5\u3002\u5173\u95ED\u4E0D\u4F1A\u6539\u53D8\u5DF2\u4FDD\u5B58\u7684\u81EA\u52A8\u5B89\u88C5\u504F\u597D\uFF0C\u4F46\u4F1A\u6682\u505C\u81EA\u52A8\u5B89\u88C5\u3002"
+      }),
+      h(
+        "select",
+        {
+          "aria-label": "\u66F4\u65B0\u68C0\u67E5\u95F4\u9694",
+          value: value.intervalHours,
+          disabled: saving || !value.autoCheck,
+          onChange: (e) => save({ intervalHours: Number(e.target.value) })
+        },
+        [.../* @__PURE__ */ new Set([1, 6, 12, 24, value.intervalHours])].sort((a, b) => a - b).map((v) => h("option", { key: v, value: v }, `\u6BCF ${v} \u5C0F\u65F6`))
+      ),
+      // 「更新通道」与上面两个控件同行并排，尺寸与 select 一致：
+      // 它配置的正是这条更新检查走的代理/密钥，不该漂到标题最右端。
+      onOpenChannel ? h(
+        Btn,
+        {
+          tiny: true,
+          className: "dshpp-updch-open",
+          disabled: saving,
+          onClick: () => onOpenChannel(),
+          title: tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5")
+        },
+        tr("updch.open", "\u66F4\u65B0\u901A\u9053")
+      ) : null
+    ),
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "label",
+        null,
+        h("input", {
+          type: "checkbox",
+          checked: value.autoInstall,
+          disabled: saving,
+          onChange: (e) => save({ autoInstall: e.target.checked }),
+          "aria-label": "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0"
+        }),
+        "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0"
+      ),
+      h(HelpTip, {
+        title: "\u81EA\u52A8\u5B89\u88C5\u66F4\u65B0",
+        children: "\u4EC5\u5728\u81EA\u52A8\u68C0\u67E5\u5F00\u542F\u3001\u53D1\u73B0\u672A\u9501\u5B9A\u7684\u65B0\u6B63\u5F0F\u7248\u65F6\u5B89\u88C5\u3002\u5B89\u88C5\u524D\u5907\u4EFD\u3001\u6821\u9A8C\u53D1\u884C\u5305\uFF1B\u5931\u8D25\u4E0D\u81EA\u52A8\u5207\u6362\u6765\u6E90\u3002\u5B89\u88C5\u540E\u7B49\u5F85\u4F60\u624B\u52A8\u91CD\u542F\uFF0C\u4E0D\u4F1A\u81EA\u52A8\u91CD\u542F DSH\u3002"
+      })
+    ),
+    h(
+      "p",
+      { className: "dshpp-hint" },
+      status.reconciliationError ? "\u5B89\u88C5\u72B6\u6001\u5F85\u6838\u5BF9\uFF0C\u81EA\u52A8\u5B89\u88C5\u5DF2\u6682\u505C\u3002" : status.restartRequired ? `\u78C1\u76D8\u7248\u672C ${status.pendingVersion}\uFF0C\u5F53\u524D\u8FD0\u884C ${status.runningVersion || "\u672A\u77E5"}\uFF1B\u7B49\u5F85\u4F60\u624B\u52A8\u91CD\u542F DSH\u3002` : !value.autoCheck ? "\u81EA\u52A8\u68C0\u67E5\u5DF2\u5173\u95ED\uFF0C\u81EA\u52A8\u5B89\u88C5\u6682\u505C\u3002" : status.checkedAt ? `\u4E0A\u6B21\u68C0\u67E5\uFF1A${new Date(status.checkedAt).toLocaleString()}${status.hasUpdate ? ` \xB7 \u53EF\u7528\u7248\u672C ${status.availableVersion}` : ""}` : "\u542F\u52A8\u540E\u81EA\u52A8\u68C0\u67E5\uFF1B\u5B89\u88C5\u540E\u4EC5\u63D0\u793A\u624B\u52A8\u91CD\u542F\u3002"
+    ),
+    [
+      ...new Set(
+        [
+          status.reconciliationError,
+          status.error,
+          status.installError,
+          error
+        ].filter(Boolean)
+      )
+    ].map((message) => h("p", { key: message, role: "alert" }, message))
+  );
+}
+function UpdateChannelDialog({ value, onClose, onSaved }) {
+  const tr = useText();
+  const [proxy, setProxy] = useState(value?.proxyUrl || "");
+  const [mirror, setMirror] = useState(value?.mirrorUrl || "");
+  const [token, setToken] = useState("");
+  const [clearToken, setClearToken] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const proxyRef = useRef(null);
+  const hasToken = !!value?.hasGithubToken;
+  useEffect(() => {
+    try {
+      proxyRef.current?.focus?.();
+    } catch {
+    }
+  }, []);
+  useEffect(() => {
+    if (typeof document === "undefined" || !document.addEventListener)
+      return void 0;
+    const onKey = (e) => {
+      if (e.key !== "Escape") return;
+      e.stopPropagation();
+      onClose();
+    };
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
+  }, [onClose]);
+  async function save() {
+    if (saving) return;
+    const next = {};
+    if (mirror.trim() !== (value?.mirrorUrl || ""))
+      next.mirrorUrl = mirror.trim();
+    if (proxy.trim() !== (value?.proxyUrl || "")) next.proxyUrl = proxy.trim();
+    if (clearToken) next.clearGithubToken = true;
+    else if (token.trim()) next.githubToken = token.trim();
+    setSaving(true);
+    setError("");
+    try {
+      const result = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op: "preferences", value: next })
+      });
+      assertMaintenanceResult(result);
+      onSaved(result.update_preferences);
+      onClose();
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setSaving(false);
+    }
+  }
+  return h(
+    "div",
+    {
+      className: "dshpp-updch-mask",
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-label": tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5"),
+      onClick: (e) => {
+        if (e.target === e.currentTarget && !saving) onClose();
+      }
+    },
+    h(
+      "div",
+      { className: "dshpp-updch-card" },
+      h(
+        "h4",
+        { className: "dshpp-updch-title" },
+        tr("updch.title", "\u66F4\u65B0\u901A\u9053\uFF1A\u4EE3\u7406\u4E0E GitHub \u5BC6\u94A5")
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        tr(
+          "updch.scope",
+          "\u8FD9\u91CC\u7684\u4EE3\u7406\u4E0E\u5BC6\u94A5\u53EA\u4F5C\u7528\u4E8E\u672C\u63D2\u4EF6\u7684\u66F4\u65B0\u68C0\u67E5\u4E0E\u4E0B\u8F7D\u901A\u9053\uFF0C\u4E0D\u5F71\u54CD\u5176\u5B83\u6A21\u578B\u5382\u5546\u7684\u8BF7\u6C42\uFF0C\u4E5F\u4E0D\u5199\u5165\u5BBF\u4E3B\u8FDB\u7A0B\u73AF\u5883\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002"
         )
       ),
-      page === "drill" ? h(
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, "GitHub \u955C\u50CF\uFF08\u53EF\u9009\uFF09"),
+        h("input", {
+          type: "text",
+          value: mirror,
+          placeholder: "https://\u955C\u50CF\u4E3B\u673A/",
+          onChange: (e) => setMirror(e.target.value),
+          disabled: saving
+        }),
+        h(
+          "small",
+          null,
+          "\u7528\u4E8E\u67E5\u8BE2\u4E0E\u4E0B\u8F7D\uFF1B\u4E0D\u53D1\u9001 GitHub \u5BC6\u94A5\u3002\u5B89\u88C5\u4ECD\u987B\u4ECE GitHub \u83B7\u53D6\u5B98\u65B9\u6821\u9A8C\u503C\uFF0C\u53EF\u4F7F\u7528\u66F4\u65B0\u4EE3\u7406\u3002\u7559\u7A7A\u5173\u95ED\u955C\u50CF\u3002"
+        )
+      ),
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, tr("updch.proxy", "\u4EE3\u7406\u5730\u5740")),
+        h("input", {
+          ref: proxyRef,
+          type: "text",
+          className: "dshpp-field dshpp-updch-field",
+          "aria-label": tr("updch.proxy", "\u4EE3\u7406\u5730\u5740"),
+          value: proxy,
+          disabled: saving,
+          placeholder: tr("updch.proxy.ph", "socks5://127.0.0.1:60808"),
+          spellCheck: false,
+          autoComplete: "off",
+          onChange: (e) => setProxy(e.target.value)
+        })
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        tr(
+          "updch.proxy.hint",
+          "\u652F\u6301 http:// / https:// / socks5:// \u524D\u7F00\uFF0C\u4F8B\u5982 http://127.0.0.1:7890\u3002\u7559\u7A7A\u7EE7\u627F\u5DF2\u6709\u66F4\u65B0\u4EE3\u7406\u73AF\u5883\u3002"
+        )
+      ),
+      h(
+        "label",
+        { className: "dshpp-updch-label" },
+        h("span", null, tr("updch.token", "GitHub \u5BC6\u94A5")),
+        h("input", {
+          type: "password",
+          className: "dshpp-field dshpp-updch-field",
+          "aria-label": tr("updch.token", "GitHub \u5BC6\u94A5"),
+          value: token,
+          disabled: saving || clearToken,
+          placeholder: tr(
+            "updch.token.ph",
+            "\u53EF\u9009\uFF1A\u63D0\u9AD8 GitHub API \u989D\u5EA6\uFF0C\u7559\u7A7A\u5219\u4E0D\u4FEE\u6539"
+          ),
+          spellCheck: false,
+          autoComplete: "off",
+          onChange: (e) => setToken(e.target.value)
+        })
+      ),
+      h(
+        "p",
+        { className: "dshpp-hint" },
+        hasToken ? tr(
+          "updch.token.set",
+          "\u672C\u673A\u5DF2\u914D\u7F6E\u5BC6\u94A5\u3002\u8F93\u5165\u6846\u59CB\u7EC8\u4E3A\u7A7A\uFF0C\u7559\u7A7A\u4FDD\u5B58\u8868\u793A\u4FDD\u6301\u4E0D\u53D8\u3002"
+        ) : tr("updch.token.unset", "\u672C\u673A\u5C1A\u672A\u914D\u7F6E\u5BC6\u94A5\u3002\u7559\u7A7A\u8868\u793A\u4E0D\u914D\u7F6E\u3002")
+      ),
+      hasToken ? h(
+        "label",
+        { className: "dshpp-updch-check" },
+        h("input", {
+          type: "checkbox",
+          checked: clearToken,
+          disabled: saving,
+          "aria-label": tr("updch.token.clear", "\u6E05\u9664\u5DF2\u4FDD\u5B58\u7684\u5BC6\u94A5"),
+          onChange: (e) => setClearToken(!!e.target.checked)
+        }),
+        h("span", null, tr("updch.token.clear", "\u6E05\u9664\u5DF2\u4FDD\u5B58\u7684\u5BC6\u94A5"))
+      ) : null,
+      error ? h("p", { role: "alert" }, error) : null,
+      h(
         "div",
-        { className: "dshpp-native-drill" },
-        // 演练台自带一套 CSS（.rt-*）；旧版由 dock 注入 <head>，重构时丢了，
-        // 结果面板在右侧栏里完全没样式、文字被挤成一列。这里随组件一起挂上。
-        __dshPurgeDrill && __dshPurgeDrill.CSS ? h("style", { "data-dsh-purge-drill": "1" }, __dshPurgeDrill.CSS) : null,
+        { className: "dshpp-updch-ops" },
         h(
           Btn,
-          {
-            onClick: () => {
-              setDock({ tab: "clean" });
-              select("more");
-            }
-          },
-          "\u8FD4\u56DE\u8BBE\u7F6E"
+          { disabled: saving, onClick: onClose },
+          tr("updch.cancel", "\u53D6\u6D88")
         ),
-        readDrillAuth() ? h(__dshPurgeDrill.Panel, { embedded: true }) : h("p", null, "\u8BF7\u5148\u5B8C\u6210\u6F14\u7EC3\u53F0\u6388\u6743\u3002")
-      ) : null
+        h(
+          Btn,
+          { kind: "primary", disabled: saving, onClick: save },
+          saving ? tr("updch.saving", "\u4FDD\u5B58\u4E2D\u2026") : tr("updch.save", "\u4FDD\u5B58")
+        )
+      )
     )
+  );
+}
+var preferenceListeners = /* @__PURE__ */ new Set();
+function publishPreferences(next) {
+  for (const receive of preferenceListeners) receive(next);
+}
+function CommunityMaintenance({ localVersion = "" } = {}) {
+  const [value, setValue] = useState(null), [notice, setNotice] = useState(""), [busy, setBusy] = useState(false), [selected, setSelected] = useState(""), [releases, setReleases] = useState(null), [release, setRelease] = useState("");
+  const [listState, setListState] = useState("loading"), [listError, setListError] = useState("");
+  const [channelOpen, setChannelOpen] = useState(false);
+  const tr = useText();
+  const mounted = useRef(false), generation = useRef(0), running = useRef(false);
+  const latestSave = useRef(null);
+  const load = useCallback(async () => {
+    const previousSave = latestSave.current;
+    const request = ++generation.current;
+    setListState("loading");
+    setListError("");
+    try {
+      const result = await apiJson("/dsh-purge/community");
+      assertMaintenanceResult(result);
+      if (!Array.isArray(result.backups)) throw new Error("\u5907\u4EFD\u5217\u8868\u54CD\u5E94\u65E0\u6548");
+      if (!mounted.current || request !== generation.current) return;
+      setValue(
+        previousSave === latestSave.current ? result : { ...result, update_preferences: latestSave.current }
+      );
+      setSelected(
+        (current) => result.backups.some((b) => b.id === current) ? current : ""
+      );
+      setListState("ready");
+    } catch (e) {
+      if (!mounted.current || request !== generation.current) return;
+      setListError(e.message);
+      setListState("error");
+    }
+  }, []);
+  useEffect(() => {
+    mounted.current = true;
+    const receive = (next) => {
+      latestSave.current = next;
+      setValue(
+        (current) => current && { ...current, update_preferences: next }
+      );
+    };
+    preferenceListeners.add(receive);
+    load();
+    return () => {
+      preferenceListeners.delete(receive);
+      mounted.current = false;
+      generation.current++;
+    };
+  }, [load]);
+  async function run(op) {
+    if (running.current) return;
+    if (op === "rollback" && !window.confirm(
+      "\u53EA\u56DE\u6EDA Purge \u63D2\u4EF6\u53CA\u5176\u5165\u53E3\uFF0C\u4FDD\u7559\u5F53\u524D\u63D0\u793A\u8BCD\u548C\u8BBE\u7F6E\uFF1B\u5B8C\u6210\u540E\u9700\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002\u7EE7\u7EED\uFF1F"
+    ))
+      return;
+    if (op === "update" && !window.confirm(
+      "\u5C06\u5148\u5907\u4EFD\uFF0C\u518D\u5B89\u88C5\u6240\u9009\u793E\u533A\u6B63\u5F0F\u7248\uFF1B\u4E0D\u4F1A\u91CD\u65B0\u5E94\u7528\u5BBF\u4E3B\u8865\u4E01\u3002\u5B89\u88C5\u540E\u8BF7\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002\u7EE7\u7EED\uFF1F"
+    ))
+      return;
+    running.current = true;
+    setBusy(true);
+    setNotice("\u5904\u7406\u4E2D\u2026");
+    try {
+      const r = await apiJson("/dsh-purge/community", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ op, id: selected, ref: release })
+      });
+      assertMaintenanceResult(r);
+      if (!mounted.current) return;
+      if (op === "check") {
+        if (!Array.isArray(r.versions)) throw new Error("\u53D1\u884C\u5217\u8868\u54CD\u5E94\u65E0\u6548");
+        setReleases(r.versions.filter((v) => v.asset));
+        setRelease(r.versions.find((v) => v.asset)?.ref || "");
+        setNotice(
+          r.degraded ? `${r.degraded}\uFF1B${r.stale ? "\u5F53\u524D\u663E\u793A\u7F13\u5B58\u5217\u8868\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5" : "\u5DF2\u663E\u793A\u5907\u7528\u5217\u8868"}` : r.error ? `\u68C0\u67E5\u66F4\u65B0\u5931\u8D25\uFF1A${r.error}` : r.hasUpdate ? `\u53D1\u73B0\u65B0\u7248\u672C ${r.remoteVersion}` : "\u5F53\u524D\u5DF2\u662F\u6700\u65B0\u6B63\u5F0F\u7248"
+        );
+      } else {
+        setNotice(maintenanceNotice(op, r));
+      }
+    } catch (e) {
+      if (mounted.current)
+        setNotice(
+          e.message === "timeout" ? "\u7EF4\u62A4\u8BF7\u6C42\u8D85\u65F6\uFF0C\u64CD\u4F5C\u53EF\u80FD\u4ECD\u5728\u6267\u884C\uFF1B\u8BF7\u5148\u5237\u65B0\u72B6\u6001\uFF0C\u52FF\u91CD\u590D\u63D0\u4EA4\u3002" : e.message
+        );
+    } finally {
+      if (op !== "check" && mounted.current) await load();
+      running.current = false;
+      if (mounted.current) setBusy(false);
+    }
+  }
+  return h(
+    "section",
+    { className: "dshpp-panel", "aria-label": "\u793E\u533A\u7248\u7EF4\u62A4" },
+    h(
+      "div",
+      { className: "dshpp-maint-head" },
+      h("h3", null, "\u7EF4\u62A4\uFF1A\u66F4\u65B0\u4E0E\u672C\u673A\u5907\u4EFD"),
+      localVersion ? h(
+        "span",
+        { className: "dshpp-maint-ver" },
+        "\u672C\u673A v" + localVersion,
+        h("b", null, "\u5F53\u524D")
+      ) : null
+    ),
+    // 通道现状摘要：代理是否直连、密钥是否已配置（密钥明文永不回显）。
+    // 入口按钮不在这里，它跟「自动检查更新」放在同一行。
+    value ? h(
+      "p",
+      { className: "dshpp-hint" },
+      (value.update_preferences?.proxyUrl ? tr("updch.state.proxy", "\u66F4\u65B0\u901A\u9053\u4EE3\u7406\uFF1A") + value.update_preferences.proxyUrl : tr("updch.state.direct", "\u66F4\u65B0\u901A\u9053\uFF1A\u7EE7\u627F\u73AF\u5883\u6216\u7CFB\u7EDF\u4EE3\u7406")) + " \xB7 " + (value.update_preferences?.hasGithubToken ? tr("updch.state.token.on", "GitHub \u5BC6\u94A5\u5DF2\u914D\u7F6E") : tr("updch.state.token.off", "\u672A\u914D\u7F6E GitHub \u5BC6\u94A5"))
+    ) : null,
+    h(UpdatePreferences, {
+      value: value?.update_preferences,
+      status: value?.update_status,
+      onSaved: publishPreferences,
+      onOpenChannel: () => setChannelOpen(true)
+    }),
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(Btn, { disabled: busy, onClick: () => run("check") }, "\u68C0\u67E5\u793E\u533A\u7248\u66F4\u65B0"),
+      h(
+        Btn,
+        {
+          disabled: busy,
+          onClick: async () => {
+            try {
+              const r = await apiJson("/dsh-purge/audit?limit=10");
+              const lines = (r.entries || []).map(
+                (x) => `${new Date(x.at).toLocaleString()}  ${x.event}  ${JSON.stringify(
+                  Object.fromEntries(
+                    Object.entries(x).filter(
+                      ([k]) => !["at", "event", "pid"].includes(k)
+                    )
+                  )
+                )}`
+              );
+              setNotice(lines.length ? lines.join("\n") : "\u8FD8\u6CA1\u6709\u52A8\u4F5C\u8BB0\u5F55");
+            } catch (e) {
+              setNotice(e.message);
+            }
+          }
+        },
+        "\u6700\u8FD1\u52A8\u4F5C"
+      ),
+      h(
+        "a",
+        {
+          href: "https://github.com/kingcharleslzy-ai/dsh-purge/releases",
+          target: "_blank",
+          rel: "noreferrer"
+        },
+        "\u53D1\u884C\u8BB0\u5F55"
+      )
+    ),
+    releases?.length ? h(
+      "div",
+      { className: "dshpp-row" },
+      h(
+        "select",
+        {
+          "aria-label": "\u9009\u62E9\u793E\u533A\u53D1\u884C\u7248\u672C",
+          value: release,
+          onChange: (e) => setRelease(e.target.value),
+          disabled: busy
+        },
+        releases.map(
+          (r) => h("option", { key: r.ref, value: r.ref }, r.label)
+        )
+      ),
+      h(
+        Btn,
+        { disabled: busy || !release, onClick: () => run("update") },
+        "\u5B89\u88C5\u6240\u9009\u7248\u672C"
+      )
+    ) : null,
+    h("h3", { style: { marginTop: 20 } }, "\u672C\u673A\u5907\u4EFD"),
+    h(
+      Btn,
+      { disabled: busy || listState === "loading", onClick: load },
+      "\u5237\u65B0\u5907\u4EFD\u5217\u8868"
+    ),
+    listState === "loading" ? h("p", { role: "status" }, "\u6B63\u5728\u8BFB\u53D6\u5907\u4EFD\u2026") : null,
+    listState === "error" ? h("p", { role: "alert" }, `\u8BFB\u53D6\u5907\u4EFD\u5931\u8D25\uFF1A${listError}`) : null,
+    listState === "ready" && !value.backups.length ? h("p", { role: "status" }, "\u6682\u65E0\u5907\u4EFD") : null,
+    h(
+      "div",
+      { className: "dshpp-row" },
+      h(Btn, { disabled: busy, onClick: () => run("backup") }, "\u7ACB\u5373\u5907\u4EFD"),
+      h(
+        "select",
+        {
+          "aria-label": "\u9009\u62E9\u56DE\u6EDA\u5907\u4EFD",
+          value: selected,
+          onChange: (e) => setSelected(e.target.value),
+          disabled: busy || listState !== "ready"
+        },
+        h("option", { value: "" }, "\u9009\u62E9\u5907\u4EFD"),
+        ...(value?.backups || []).map(
+          (b) => h(
+            "option",
+            { key: b.id, value: b.id },
+            `${new Date(b.created_at).toLocaleString()} \xB7 ${b.plugins.map((p) => p.version).join(" / ")}`
+          )
+        )
+      ),
+      h(
+        Btn,
+        {
+          disabled: busy || !selected || listState !== "ready",
+          onClick: () => run("rollback")
+        },
+        "\u56DE\u6EDA\u63D2\u4EF6"
+      )
+    ),
+    h(
+      "p",
+      { className: "dshpp-hint" },
+      "\u5907\u4EFD\u53EA\u4FDD\u5B58\u5728\u672C\u673A\u3002\u56DE\u6EDA\u4FDD\u7559\u5F53\u524D\u63D0\u793A\u8BCD\u3001\u89C4\u5219\u548C\u5176\u4ED6\u63D2\u4EF6\u8BBE\u7F6E\uFF1B\u5B89\u88C5\u6216\u56DE\u6EDA\u540E\u9700\u8981\u91CD\u542F DSH \u8FDB\u7A0B\uFF1B\u4EC5\u5237\u65B0\u6D4F\u89C8\u5668\u4E0D\u4F1A\u52A0\u8F7D\u65B0\u7248\u540E\u7AEF\u3002"
+    ),
+    notice ? h("p", { role: "status" }, notice) : null,
+    // 对话框挂在面板内部，靠固定定位脱离容器，不依赖 portal。
+    channelOpen && value ? h(UpdateChannelDialog, {
+      value: value.update_preferences,
+      onClose: () => setChannelOpen(false),
+      onSaved: (next) => {
+        publishPreferences(next);
+        setNotice(
+          tr("updch.saved", "\u66F4\u65B0\u901A\u9053\u5DF2\u4FDD\u5B58\uFF0C\u4E0B\u4E00\u6B21\u68C0\u67E5\u66F4\u65B0\u5373\u751F\u6548\u3002")
+        );
+      }
+    }) : null
   );
 }
 
@@ -13331,7 +13882,7 @@ var TABS = [
   ["rules", "\u89C4\u5219", "\u89C4\u5219\u96C6\u4E0E\u5DE5\u4F5C\u533A\u7B56\u7565"],
   ["skills", "\u6280\u80FD", "DSH \u6280\u80FD\u76EE\u5F55"],
   ["drill", "\u6F14\u7EC3\u53F0", "\u7EA2\u961F\u6F14\u7EC3\u4E0E\u73AF\u5883\u9002\u914D"],
-  ["more", "\u66F4\u591A", "\u670D\u52A1\u5668\u540D\u5355\u3001\u66F4\u65B0\u4E0E\u7EF4\u62A4"]
+  ["more", "\u66F4\u591A", "\u4F1A\u8BDD\u5916\u89C2\u4E0E\u670D\u52A1\u5668\u8BBE\u7F6E"]
 ];
 function PurgeGlyph({ size = 18 } = {}) {
   return h(
@@ -13351,6 +13902,8 @@ function PurgeGlyph({ size = 18 } = {}) {
 }
 function StatusStrip({ info }) {
   const t = useT();
+  const evidence = patchEvidence(info);
+  const counts = evidence.kind === "detail" ? patchGroupCounts(evidence.rows) : null;
   const compat = info?.compatibility || {};
   const level = compat.level || "";
   const ok = level === "qualified";
@@ -13388,20 +13941,20 @@ function StatusStrip({ info }) {
       h(
         "b",
         null,
-        `${info?.patches_applied ?? "?"}/${info?.patches_total ?? "?"}`,
-        info?.patches_na > 0 ? ` \xB7 ${info.patches_na} \u6761\u672C\u673A\u4E0D\u9002\u7528` : ""
+        counts ? `${counts.applied}/${counts.denom}` : t("evidence." + evidence.kind),
+        counts?.na > 0 ? ` \xB7 ${counts.na} \u6761\u672C\u673A\u4E0D\u9002\u7528` : ""
       ),
       h(
         HelpTip,
         { title: "\u5BBF\u4E3B\u8865\u4E01" },
-        `\u5B9E\u9645\u5199\u8FDB DSH \u5BBF\u4E3B\u4EE3\u7801\u7684\u8865\u4E01\u6761\u6570\uFF08\u5206\u6BCD\u53EA\u7B97\u672C\u673A\u9002\u7528\u7684\uFF09\u3002\u5168\u90E8\u8865\u4E01 ${info?.patches_total_all ?? "?"} \u6761\uFF0C\u5176\u4E2D ${info?.patches_na ?? 0} \u6761\u76EE\u6807\u63D2\u4EF6/\u9884\u8BBE\u672A\u5B89\u88C5\uFF1B\u5F85\u5E94\u7528\u8868\u793A\u951A\u70B9\u8FD8\u5728\u3001\u8FD8\u6CA1\u5199\u5165\uFF1B\u6CA1\u5BF9\u4E0A\u8868\u793A\u5BBF\u4E3B\u6E90\u7801\u5DF2\u53D8\uFF0C\u9700\u8981\u91CD\u65B0\u5B9A\u4F4D\u951A\u70B9\u3002`
+        "\u4EC5\u6709\u9010\u6761\u660E\u7EC6\u65F6\u7EDF\u8BA1\u5B9E\u9645\u5199\u5165\u6570\u3002\u90E8\u5206\u751F\u6548\u3001\u7F3A\u5931\u6216\u65E0\u6CD5\u8BFB\u53D6\u5747\u4E0D\u7B97\u5DF2\u5199\u5165\u3002"
       )
     ),
     h(
       "span",
       { className: "dshpp-strip-item" },
       "\u63D2\u4EF6 ",
-      h("b", null, info?.plugin_version || "1.6.98-lahvey.1")
+      h("b", null, info?.plugin_version || "1.7.20-lahvey.1")
     )
   );
 }
@@ -13464,11 +14017,11 @@ function VersionNotice({ info }) {
   }
   const backend = info?.plugin_version;
   const base = (v) => String(v || "").split("-")[0].split("+")[0];
-  if (!backend || base(backend) === base("1.6.98-lahvey.1")) return null;
+  if (!backend || base(backend) === base("1.7.20-lahvey.1")) return null;
   return h(
     "p",
     { className: "dshpp-warn", role: "status" },
-    `\u5B98\u65B9\u7248\u672C ${backend}\uFF1B\u754C\u9762 ${"1.6.98-lahvey.1"}\u3002\u4E24\u8005\u4E0D\u4E00\u81F4\u65F6\u8BBE\u7F6E\u53EF\u80FD\u4E0D\u751F\u6548\uFF0C\u8BF7\u66F4\u65B0\u5230\u540C\u4E00\u7248\u672C\u540E\u91CD\u542F DSH\u3002`
+    `\u5B98\u65B9\u7248\u672C ${backend}\uFF1B\u754C\u9762 ${"1.7.20-lahvey.1"}\u3002\u4E24\u8005\u4E0D\u4E00\u81F4\u65F6\u8BBE\u7F6E\u53EF\u80FD\u4E0D\u751F\u6548\uFF0C\u8BF7\u66F4\u65B0\u5230\u540C\u4E00\u7248\u672C\u540E\u91CD\u542F DSH\u3002`
   );
 }
 function PurgePage() {
@@ -13518,12 +14071,11 @@ function PurgePage() {
           true ? h(
             "span",
             { className: "dshpp-page-ver" },
-            "\u793E\u533A\u7248 1.6.98-lahvey.1"
+            "\u793E\u533A\u7248 1.7.20-lahvey.1"
           ) : null
         )
       )
     ),
-    h(StatusStrip, { info }),
     h(VersionNotice, { info }),
     h(LayoutNotice, { info }),
     h(
@@ -13550,9 +14102,10 @@ function PurgePage() {
       h(
         "div",
         { hidden: tab !== "status", className: "dshpp-sec" },
+        h(StatusStrip, { info }),
         h(PurgifySection, { page: "status", onStatus: mergeInfo }),
         h(StatusExtras),
-        h(CommunityMaintenance)
+        h(CommunityMaintenance, { localVersion: info?.plugin_version || "" })
       ),
       h(
         "div",
@@ -13572,6 +14125,7 @@ function PurgePage() {
       h(
         "div",
         { hidden: tab !== "more", className: "dshpp-sec" },
+        tab === "more" ? h(RewindSetting) : null,
         visited.more ? h(PurgifySection, { page: "more" }) : null
       ),
       tab === "drill" ? h(
@@ -13607,6 +14161,9 @@ function PurgePage() {
     )
   );
 }
+
+// src/assets/sidebar-glyph.png
+var sidebar_glyph_default = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAIUUlEQVR42t1baWxVRRT+3uOxtNUWpAWLIkrFBRAlSsRYd0KVRUJ/uIQqVuqCUaNxQYMmRoQQYzRxCQTcFVSIwahEJURFRDEhGkVEDOK+YK0NINTSls8/303Gce599953b1s6yeTe9+bOnHO+OXPOLGcyJNFFqReAwQB2AujoKiaynUyvH4BxAGYD2ADgFz1n6/9+nQ1AJmUNyEio0QCuAlAHoDTg+90AXgLwLIBNANpTR4BkGnkgyVqSq0m28L9pD8nFJKeSPEbPxfrfTNenxNt/clIN9SJZRfIWkq/z/2mHhDyWZLFPG8UCrYVkG8mGAHrZ7gCAJ/TtJLc6hP6G5F0SOheyzQGq20yyvw/N50luIXmb6Bd1JgBFJM8Q8S0OobeRvJvkCDEbtf1HSXaQXO5TXuug2SztOjMOGPk+yEg1x/uMU5J8h+QlJMtjCN3PeK+U6pPkKMe3OZI/CqBPSb7p4GUPycdJni87FBuAw0hWy4i1WkSa9P9lYYlYgA4heQHJZeq9V0mOU3sdJL/3AfJy0f/VAK6C5DQJ3ewAZBHJsyRPaAAyJDc51OwRksNjqFkfkieTnENyA91pGskn9D49wDaQZH3A8PQM8a9W+5skVygABssS75Xajy9A6PkOZprU++eI4UEkT1XZdpK9He3Nl3b8HtKg9pOtWiQ5WiRXKACGGMyWRBC6jOQEkvPEqJl+JHkfyRMdAvYi+bO+u8fRbn/DNlwU4EZducTgYUgcAMry+OIyMbXSodbrSF5BcqRPr3q5Wt+3yZDa5Q+rfJ48DEmuEN2yPHOCskIBKHWUDyV5kyyxndZL6MF+Y85hb1ZLvec5yk9Sux0C8gVDG7z0qfgZ6qhfmjQAx1vEW0k+RfJs9V4moq04zmhrmAOcNRJ4ndHTJaq3xOGhTkgbgAliaIuMXEmBU9H71LtrHeCNNfg4KWCMT5TNaRN/kQCIuhxuBZADsB/A5wD2FrAOGwBgrpbkcwCYy9I+AFYDOADgIQCbfdrYC2ANgN/EV2va+wEZo16hewm3iumdDgFrAVQKgIUhZMha/HXbDREv5QBcqfc7pVFe6g3gYb0/DqCpJ+0IeWkSgGFS3ZetsnvV+z8AuL2nbYnZPfyK1fslAuCAdpLO7YkAHAmgSttdDziMWi2Av7VhuhbACwDO0rDpEQDU6vkPgMsBFFvlqwAcDuBBAH9qH/EDAF8DmJI0EF0BwAoA3wA4BMBj2hm+zgKiRa5xKIAG/VcF4A0An+XZWO32APwEYCSAGgBfAugPYLHcYYPF0z8AngJwhDRgt3aYyw92L9ChCcxYADcA+FYasRTARzKUZmrWxKkUwAIAOw52ALzUDmARgDE6D9gH4HR5A5PHjTKK3wG4vyfMA+y0D8DrsgNvA9hllN0hgABgepzp7sEAQBZAvfz/M8a6YJwxFb5G64/U3SDFCHzK0khHAZio9/f0HCj3BwDLATwd5qAralnWZ56eDZjDp5FmC/T18v0A8KJmgzsBXB/QKWH56xUWgD/kp+Eg+lcKQycH4Gq1uVg91QDgQpWfDGBPSE3+y/r/gHHoui8sAK0Atuu9r1X2tVGPCU6NvYnNmxJ4qX7PlAbkU/usxR8s/jc6wAnVk2f6fF+e4Fn+dG2ArNTvd9Rz6zQMECLmoNxHHo//tqheoMhHA9o0FR0kv5xEmmCsAear3d0ALg057geLny8cgnr8F0cFYLWeMxwTlw/F2KgEhD9aewP7Retm/X96CNX30ijx85YjoGKGJU9oAL5So65FxyeqV5MAAJcZvTxZz3sMIxwm1Ygfl5Clav+rqBEildpJ3eXYGR6ondzGPAce+XJfHVt1aEe3jeS7EWIJIPqNaqPCsSO8S3JU+rXhpwGNWrWVAqh2uML3ZHgmFND7lRqb7coHNO7bI9qPcvHzp1VWLf5/kjyRhkA7gOfE1CyH23lS7zcWAMBcPffLkp8XxKhP8ug/6XDLs8T/c4GgBqjXSCPo4FDH6at3AFoVU/2bjJOduTHaqFLd361AC4hfL5hjZNwIkd6GkFMc5fXGQWVU5quNo7VNEce9l1cExAtMUdnOfHYqH5FZMjDbHEz2FQGSHB2R+TnGkdWAGMKPNgTs6wil2Sa+6wuNERqkhkhysg9AQYENfnm8zhfHxhC+t+hR9O3yycbQLUoiSmyJXNR2R+xO1ginWRkjXiiO+1xphL1kHcEW28XvkqTC5IZYsTx2ebkMGknWpRzZWWeE2biCKablOw2OGyc43zBarqCJiQbhupSFp+i5Qmk8r3J/0oGSfYxxtzBEEGNdisLX+nzzmso/jjK8ojAxJkQgswnCjISEnxFC+IuNb8akGSq70CA0IgQIy31ifsPk/qqfT/gqY86/MO1Y4axUzLMHfrPAGsMw7iU5KSKdSarnGbwan++GG0FTy+JEkcfpmQpDuDYx4TeHWGdpw7EBTGZVvtwKtRsUQvgmkod0Zrh8WBAystiNhlAbSJ5mzCxz+m2G0TaqXiak8BVdcV/ABKElwCZ4i6eZxvckuVmRoZutMNqZjsWNmUcYt1AKEj6JGyMVllDXhYjhrTfWEDTm9PV5BIfaZ1LCJ3VlpoLk+wZjq0IscIrU04/qWRTiJskqg8b7SQif5J2hLMkFVgTp1JjLXHtlN9WKCF3QXe4MufIpxoyRuks0OQYQOdXbasUhn9Jdb43Z+wQN1hjfKt+eCyH4JMd9pFlJ9nraAHj5CC1JbSBqHEDk9L8t+FK10+3vDQblI409BfMe4V0kj9Jzh+URFqjeQXNxMkw+VEOj2efeUBPJawu9B9idATBdYL1xTeZn/S7qAl5SvzwdlIoVBdLkd3bfGelfIQ46gMinIh4AAAAASUVORK5CYII=";
 
 // src/state/preset-menu.js
 function bindPresetMenu(doc, listPresets) {
@@ -14298,21 +14855,10 @@ var RewindFallback = class extends Component {
     );
   }
 };
-var rewindVisible = true;
-var rewindProbe = null;
-function loadRewindVisibility() {
-  if (!rewindProbe) {
-    rewindProbe = apiJson("/dsh-purge/boost").then((r) => {
-      rewindVisible = r && r.rewind !== false;
-      return rewindVisible;
-    }).catch(() => true);
-  }
-  return rewindProbe;
-}
 var RewindSafe = class extends Component {
   constructor(p) {
     super(p);
-    this.state = { failed: false };
+    this.state = { failed: false, visible: false };
   }
   static getDerivedStateFromError() {
     return { failed: true };
@@ -14324,30 +14870,27 @@ var RewindSafe = class extends Component {
     }
   }
   componentDidMount() {
-    loadRewindVisibility().then((on) => {
-      if (!on && !this.unmounted) this.forceUpdate();
+    this.unsubscribe = subscribeRewind((visible2) => this.setState({ visible: visible2 }));
+    readRewindVisibility().catch(() => {
+      if (false)
+        this.setState({ visible: true });
     });
   }
   componentWillUnmount() {
-    this.unmounted = true;
+    this.unsubscribe?.();
+    this.unsubscribe = null;
   }
   render() {
-    if (!rewindVisible) return null;
-    if (this.state.failed) return h(RewindFallback, this.props);
-    return h(RewindButton, this.props);
+    return h(
+      import_react.default.Fragment,
+      null,
+      !this.state.failed && h(RewindDraftSync, this.props),
+      this.state.visible ? h(this.state.failed ? RewindFallback : RewindButton, this.props) : null
+    );
   }
 };
-function RewindButton(props) {
-  const fallbackT = useT();
-  const t = props.t || fallbackT;
-  const sessions = hostSessions();
-  const inputActions = props.inputActions;
-  const sessionId = props.sessionId || currentSessionId(sessions);
-  const wrapRef = useRef(null);
-  const menuRef = useRef(null);
-  const [busy, setBusy] = useState(false);
-  const [notice, setNotice] = useState("");
-  const [menu, setMenu] = useState(false);
+function RewindDraftSync({ sessionId: slotSession, inputActions }) {
+  const sessionId = slotSession || currentSessionId(hostSessions());
   useEffect(() => {
     if (!sessionId) return;
     const armed = takeArmedFill(sessionId);
@@ -14357,6 +14900,18 @@ function RewindButton(props) {
     }
     scheduleEchoClear(sessionId, inputActions);
   }, [sessionId, inputActions]);
+  return null;
+}
+function RewindButton(props) {
+  const fallbackT = useT();
+  const t = props.t || fallbackT;
+  const sessions = hostSessions();
+  const sessionId = props.sessionId || currentSessionId(sessions);
+  const wrapRef = useRef(null);
+  const menuRef = useRef(null);
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [menu, setMenu] = useState(false);
   useEffect(() => {
     if (!menu) return;
     if (typeof document === "undefined" || !document.addEventListener)
@@ -15004,7 +15559,26 @@ function PurgeIcon({ size = 20 } = {}) {
   );
 }
 function PurgeGlyphIcon({ size = 16 } = {}) {
-  return h(PurgeGlyph, { size });
+  const paint = {
+    width: size,
+    height: size,
+    display: "block",
+    backgroundColor: "currentColor",
+    maskImage: `url("${sidebar_glyph_default}")`,
+    WebkitMaskImage: `url("${sidebar_glyph_default}")`,
+    maskSize: "contain",
+    WebkitMaskSize: "contain",
+    maskRepeat: "no-repeat",
+    WebkitMaskRepeat: "no-repeat",
+    maskPosition: "center",
+    WebkitMaskPosition: "center"
+  };
+  return h("span", { "aria-hidden": true, style: paint });
+}
+function DetailSettings({ view } = {}) {
+  if (view === "summary")
+    return h("span", null, "Purge \xB7 1.7.20-lahvey.1");
+  return h("div", { className: "dshpp-detail-settings" }, h(PurgePage));
 }
 function PanelOverlays() {
   const st = useDock();
@@ -15084,7 +15658,18 @@ function apply(ctx) {
         key: true ? "dsh-purge-community" : "dsh-purge-panel",
         inject: () => ({ t })
       },
-      SettingsRoot
+      DetailSettings
+    )
+  );
+  ctx.slots.inject(
+    "plugins.row.config",
+    () => ctx.slots.register(
+      {
+        name: "plugins.row.config",
+        key: name + "#" + (true ? "dsh-purge" : "dsh-purge-panel"),
+        inject: () => ({ t })
+      },
+      DetailSettings
     )
   );
 }

@@ -12,6 +12,12 @@ const readmeEn = read("docs/README.en.md");
 const agents = read("AGENTS.md");
 
 const problems = [];
+const releaseSummary = `docs/releases/${version}.md`;
+if (!fs.existsSync(releaseSummary)) {
+  problems.push(`${releaseSummary} 缺少本版发行摘要`);
+} else if (fs.statSync(releaseSummary).size > 8 * 1024) {
+  problems.push(`${releaseSummary} 超过 8 KiB。请保留本版变化和已知限制，将详细记录改为链接。`);
+}
 if (read("README.zh-CN.md") !== readme) problems.push("README.zh-CN.md 必须与 README.md 保持一致");
 for (const file of ["docs/MAINTENANCE.md", "docs/INSTALLATION.md"]) {
   if (!read(file).includes(`当前版本 **${version}**`)) problems.push(`${file} 当前版本未同步到 ${version}`);
@@ -46,7 +52,8 @@ if (!hostLine) problems.push("README.md 缺少「适配 DSH Desktop …」的版
 // Copyable release commands must move with the package version, not retain an old TGZ.
 for (const file of ["README.md", "docs/README.en.md"]) {
   const doc = read(file);
-  const links = [...doc.matchAll(/releases\/download\/v([0-9.]+)\/dsh-purge-community-([0-9.]+)\.tgz/g)];
+  // 社区版（lahvey fork）用 X.Y.Z-lahvey.N 区分镜像版本，链接里也可能带这个后缀。
+  const links = [...doc.matchAll(/releases\/download\/v([0-9.]+(?:-lahvey\.[0-9]+)?)\/dsh-purge-community-([0-9.]+(?:-lahvey\.[0-9]+)?)\.tgz/g)];
   if (!links.length) problems.push(`${file} 缺少固定版本的官方 CLI 安装来源`);
   for (const [, tag, archive] of links) if (tag !== version || archive !== version)
     problems.push(`${file} CLI 安装链接版本必须为 ${version}`);
