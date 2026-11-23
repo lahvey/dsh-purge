@@ -12,6 +12,7 @@
  * 只改版本号与指向本版的位置，不动历史版本记录和发行说明正文。
  */
 import fs from 'node:fs'
+import { spawnSync } from 'node:child_process'
 
 const next = process.argv[2]
 if (!/^\d+\.\d+\.\d+(?:-lahvey\.\d+)?$/.test(next || '')) {
@@ -96,5 +97,13 @@ if (!fs.existsSync(summary)) {
     `# ${next}\n\n## 这一版做了什么\n\n- 版本推进到 \`${next}\`：与上一版同一提交集，只同步版本号、固定版本 TGZ 链接与文档版本行。\n- 功能与补丁表未改动；升级后重启 DSH 一次即可。\n\n## 已知限制\n\n- 本仓库不带自动发行流水线，固定版本 TGZ 由本机 \`npm pack\` 产出。\n`,
   )
 }
+
+// 8) client.js 内联了版本号（面板横幅与版本提示），版本变了必须重新构建，
+//    否则 `npm run check:client` 会判"client.js is stale"。
+if (!fs.existsSync('node_modules/esbuild')) {
+  throw Error('缺少 node_modules/esbuild：先 npm ci 再跑本脚本，否则无法重建 client.js')
+}
+const build = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build:client'], { stdio: 'inherit' })
+if (build.status !== 0) throw Error('重建 client.js 失败：版本面已改，client.js 仍是旧版')
 
 console.log(`版本 ${previous} → ${next}：package.json、README（中/英）、维护/安装文档、AGENTS.md、release-notes 与发行摘要已同步`)

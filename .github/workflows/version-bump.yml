@@ -70,7 +70,7 @@ jobs:
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add package.json package-lock.json README.md README.zh-CN.md docs/README.en.md \
+          git add package.json package-lock.json client.js README.md README.zh-CN.md docs/README.en.md \
             docs/MAINTENANCE.md docs/INSTALLATION.md AGENTS.md release-notes.md \
             "docs/releases/${{ steps.next.outputs.version }}.md"
           git commit -m "chore[bump]: ${{ steps.next.outputs.version }}"
