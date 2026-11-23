@@ -74,5 +74,6 @@ jobs:
             docs/MAINTENANCE.md docs/INSTALLATION.md AGENTS.md release-notes.md \
             "docs/releases/${{ steps.next.outputs.version }}.md"
           git commit -m "chore[bump]: ${{ steps.next.outputs.version }}"
-          git tag "${{ steps.next.outputs.tag }}"
+          # 注释标签：--follow-tags 只推 annotated tag，轻量标签会留在本地
+          git tag -a "${{ steps.next.outputs.tag }}" -m "${{ steps.next.outputs.tag }}"
           git push origin "HEAD:master" --follow-tags
