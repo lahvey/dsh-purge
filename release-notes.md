@@ -1,3 +1,7 @@
+# 1.7.20-lahvey.2
+
+- 版本推进：与上一版同一提交集，仅同步版本号与固定版本安装链接，无功能改动。
+
 # 1.7.20-lahvey.1
 
 - 同步上游 kingcharleslzy-ai/dsh-purge **v1.7.20**：并入 1.6.98 → 1.7.20 的全部修复，包括拒绝重试三臂（fiction / seed / decompose）与 `partial_refused`、`empty_after_retry` 两个新审计标签，权限补丁默认开启并收成组开关，状态页四态重建与窄屏适配，逐条诊断计数统一。
